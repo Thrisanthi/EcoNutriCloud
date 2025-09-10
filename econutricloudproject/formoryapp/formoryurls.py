@@ -1,0 +1,23 @@
+from django.urls import path
+from . import views
+
+from formoryapp.controller import authview,cart,wishlist
+urlpatterns = [
+    path("",views.home,name = "home"),
+    path('category/',views.category,name="category"),
+    path('category/<str:slug>',views.categoryview,name="categoryview"),
+    path('category/<str:cate_slug>/<str:prod_slug>',views.productview,name='productview'),
+
+    path('register/',authview.register,name='register'),
+    path('login/',authview.loginpage,name="loginpage"),
+    path('logout/',authview.logoutpage,name="logout"),
+
+    path('add-to-cart',cart.addtocart,name='addtocart'),
+    path('cart',cart.viewcart,name="cart"),
+    path('update-cart',cart.updatecart,name="update-cart"),
+    path('delete-cart-item',cart.deletecartitem,name="deletecartitem"),
+
+    path('wishlist',wishlist.index,name='wishlist'),
+    path('add-to-wishlist',wishlist.addtowishlist,name="addtowishlist")
+]
+

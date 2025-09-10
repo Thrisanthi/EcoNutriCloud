@@ -1,0 +1,63 @@
+/* Product card styling */
+.card {
+    min-height: auto;               /* grow with content */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+}
+
+/* Card body */
+.card-body {
+    text-align: center;
+    padding: 15px;
+    flex-grow: 1;                   /* ensures body expands evenly */
+}
+
+/* Category image */
+.category-image {
+    max-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 10px;
+}
+
+.category-image img {
+    max-height: 220px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover .category-image img {
+    transform: scale(1.05);
+}
+
+/* ✅ Responsive Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* ✅ Mobile adjustments */
+@media (max-width: 768px) {
+    .category-image {
+        max-height: 180px;
+    }
+    .category-image img {
+        max-height: 160px;
+    }
+}
