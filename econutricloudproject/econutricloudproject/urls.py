@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",include("formoryapp.formoryurls"))
+    path("",include("formoryapp.formoryurls")),
+    path("",include("kitchenapp.kitchenurls")),
 ]
 
 if settings.DEBUG:
