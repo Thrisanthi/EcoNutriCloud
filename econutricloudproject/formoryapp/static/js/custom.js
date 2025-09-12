@@ -92,7 +92,7 @@ $(document).ready(function () {
         });
     });
 
-    $$(document).on('click','.delete-cart-item', function (e) { 
+    $(document).on('click','.delete-cart-item', function (e) { 
         e.preventDefault();
         
         var product_id = $(this).closest('.product_data').find('.prod_id').val();
