@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'nutric/css/product.css' %}">
+<title>Nutrition Foods</title>
+</head>
+<body>
+
+<header>
+  Nutrition Foods
+  <a href="{% url 'nutrichome' %}">Back to Home</a>
+</header>
+
+<div class="sidebar">
+  <h2>Filters</h2>
+  <input type="text" id="search" placeholder="Search food...">
+  <select id="categoryFilter">
+    <option value="all">All Categories</option>
+    <option value="Fruit">Fruits</option>
+    <option value="Vegetable">Vegetables</option>
+    <option value="Grain">Grains</option>
+    <option value="Legume">Legumes</option>
+    <option value="Nut">Nuts</option>
+    <option value="Dairy">Dairy</option>
+    <option value="Meat">Meat</option>
+    <option value="Egg">Eggs</option>
+    <option value="Oil">Oils & Fats</option>
+  </select>
+
+  <label for="ageFilter">Age Group:</label>
+  <select id="ageFilter">
+    <option value="all">All Ages</option>
+    <option value="Kids">Kids</option>
+    <option value="Teens">Teens</option>
+    <option value="Adults">Adults</option>
+  </select>
+</div>
+
+<div class="main-content">
+  <div class="grid" id="foodGrid"></div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <p id="modalExtra"></p>
+  </div>
+</div>
+
+<script src="{% static 'nutric/js/product.js' %}"></script>
+</body>
+</html>

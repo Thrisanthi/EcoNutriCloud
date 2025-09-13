@@ -24,7 +24,7 @@ def addtocart(request):
                 return JsonResponse({'status':"No such products found"})
         else:
             return JsonResponse({'status':"Login to Continue"})
-        return redirect('/')
+    return redirect('/')
 
 @login_required(login_url='loginpage')
 def viewcart(request):

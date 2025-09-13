@@ -1,7 +1,58 @@
 {% extends "main.html" %}
-{% block content %}
+{% load static %}{% block content %}
 {% include "slider.html" %}
-<h1>Welcome</h1>
+<link rel="stylesheet" href="{% static 'nutric/css/organic.css' %}">
+<!-- About Organic -->
+  <section class="about">
+    {% comment %} <img src="{% static 'nutricapp/staticnutric/images/farm.jpeg' %}" alt="Organic Farm"> {% endcomment %}
+    <div class="about-text">
+      <h2>Why Choose Organic?</h2>
+      <p>Organic foods are grown without synthetic fertilizers, pesticides, or GMOs, ensuring better health for you and the environment.</p>
+      <p>They are rich in nutrients, antioxidants, and promote sustainable farming practices that protect the planet.</p>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="products">
+    <h2>Our Organic Products</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="{% static 'images/apples.jpg' %}" alt="Organic Apples">
+        <h3>Organic Fruits</h3>
+      </div>
+      <div class="product-card">
+        <img src="{% static 'images/vegetables.jpg' %}" alt="Organic Carrots">
+        <h3>Organic Vegetables</h3>
+      </div>
+      <div class="product-card">
+        <img src="{% static 'images/grains1.jpg' %}" alt="Organic Spinach">
+        <h3>Organic Grains</h3>
+      </div>
+      <div class="product-card">
+        <img src="{% static 'images/drinks.jpg' %}" alt="Organic Almonds">
+        <h3>Organic drinks</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits">
+    <div class="benefit-card">
+      <h3>Healthier</h3>
+      <p>Rich in nutrients and antioxidants that boost immunity.</p>
+    </div>
+    <div class="benefit-card">
+      <h3>Eco-Friendly</h3>
+      <p>Supports sustainable farming and reduces chemical pollution.</p>
+    </div>
+    <div class="benefit-card">
+      <h3>Fresh & Natural</h3>
+      <p>Pesticide-free and naturally grown for better taste and quality.</p>
+    </div>
+  </section>
+
+  <footer><p>&copy; 2025 EcoNutriCloud | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p></footer>
+
 {% endblock content %}
     
 

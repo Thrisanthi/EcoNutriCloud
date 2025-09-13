@@ -1,6 +1,6 @@
-/* Product card styling */
+/* ✅ Product card styling */
 .card {
-    min-height: auto;               /* grow with content */
+    height: 100%;                  /* take full height */
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -11,16 +11,17 @@
     background: #fff;
 }
 
-/* Card body */
-.card-body {
-    text-align: center;
-    padding: 15px;
-    flex-grow: 1;                   /* ensures body expands evenly */
+/* ✅ Responsive Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    align-items: stretch;          /* makes all cards equal height */
 }
 
-/* Category image */
+/* ✅ Category image */
 .category-image {
-    max-height: 250px;
+    height: 220px;                 /* fixed height for images */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,13 +30,36 @@
 }
 
 .category-image img {
-    max-height: 220px;
-    width: auto;
-    object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;           /* keeps image proportions */
     transition: transform 0.3s ease;
 }
 
-/* Hover Effects */
+/* ✅ Card body */
+.card-body {
+    text-align: center;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* push name/price to bottom */
+    flex-grow: 1;
+}
+
+/* ✅ Product name */
+.card-body h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* ✅ Price section */
+.price {
+    font-size: 1rem;
+    color: #007bff;
+    margin-top: auto; /* pushes to bottom */
+}
+
+/* ✅ Hover Effects */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
@@ -45,17 +69,10 @@
     transform: scale(1.05);
 }
 
-/* ✅ Responsive Grid */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
 /* ✅ Mobile adjustments */
 @media (max-width: 768px) {
     .category-image {
-        max-height: 180px;
+        height: 180px;
     }
     .category-image img {
         max-height: 160px;

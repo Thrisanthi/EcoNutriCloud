@@ -7,7 +7,7 @@ from .cart import Cart
 from django.shortcuts import render
 from .models import Product, Category
 
-def kitchen_home(request):
+def kitchenhome(request):
     categories = Category.objects.filter(status=True)   # only active categories
     products = Product.objects.filter(status=True)      # only active products
     

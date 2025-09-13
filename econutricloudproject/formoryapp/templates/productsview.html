@@ -3,7 +3,7 @@
 
 <div class="py-3 bg-primary">
     <div class="container">
-        <a class="text-white" href="{% url 'home' %}">Home/</a>
+        <a class="text-white" href="{% url 'formoryhome' %}">Home/</a>
         <a class="text-white" href="{% url 'category' %}">Collections/</a>
         <a class="text-white" href="{% url 'categoryview' products.category.slug %}">{{ products.category.name }}/</a>
         <a class="text-white" href="{% url 'productview' products.category.slug products.slug%}">{{ products.name }}</a>

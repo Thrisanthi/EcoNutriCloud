@@ -3,7 +3,7 @@ from django.contrib import messages
 from .models import *
 
 # Create your views here.
-def home(request):
+def formoryhome(request):
     return render(request,"index.html")
 
 def category(request):

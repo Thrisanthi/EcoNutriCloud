@@ -2,7 +2,7 @@ from django.urls import path
 from kitchenapp import views
 
 urlpatterns = [
-    path('kitchenhome', views.kitchen_home, name="kitchen_home"),
+    path('kitchenhome', views.kitchenhome, name="kitchenhome"),
     path("menu/", views.menu, name="menu"),
     path('category/',views.category,name="category"),
     path('category/<str:slug>',views.categoryview,name="categoryview"),

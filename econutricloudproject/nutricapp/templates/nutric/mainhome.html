@@ -1,0 +1,94 @@
+{% extends "nutric/main.html" %}
+{% load static %}
+{% block content%}
+   <link rel="stylesheet" href="{% static 'nutric/css/mainhome.css' %}">
+<nav>
+    <div class="logo"><img src="{% static 'nutric/images/Econooo.png' %}" height="40" alt="Logo"><h2>EcoNutriCloud</h2></div>
+    <ul id="menu">
+      <li><a href="{% url 'mainhome' %}">HOME</a></li>
+      <li><a href="{% url 'organic' %}">ORGANIC</a></li>
+      <li><a href="{% url 'recipes' %}">RECIPES</a></li>
+      <li><a href="{% url 'nutrition' %}">NUTRITION</a></li>
+      <li><a href="{% url 'maincontact' %}">CONTACT US</a></li>
+      <li><a href="#">Login</a></li>
+    </ul>
+  </nav>
+
+    <section class="hero" style="background: url('{% static 'nutric/images/image.jpeg' %}') center/cover no-repeat;">
+    <h2>Fresh, Organic, Healthy – Delivered to Your Door</h2>
+</section>
+
+
+    <!-- Products Section -->
+    <section class="section">
+        <h2>Our Products</h2>
+        <div class="products">
+            <div class="video-cards">
+                <video autoplay loop muted playsinline>
+                    <source src="{% static 'nutric/media/video.mp4' %}" type="video/mp4">
+                </video>
+                <h3>Organic Vegetables</h3>
+                <p>Fresh and healthy veggies straight from the farm.</p>
+            </div>
+            <div class="video-cards">
+                <video autoplay loop muted playsinline>
+                    <source src="{% static 'nutric/media/homemade.mp4' %}" type="video/mp4">
+                </video>
+                <h3>Homemade Snacks</h3>
+                <p>Tasty snacks made with love and natural ingredients.</p>
+            </div>
+            <div class="video-cards">
+                <video autoplay loop muted playsinline>
+                    <source src="{% static 'nutric/media/Nutriction.mp4' %}" type="video/mp4">
+                </video>
+                <h3>Nutrition Plans</h3>
+                <p>Customized meal plans for a healthier lifestyle.</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section" style="background:#f0f0f0;">
+        <h2>Why Choose Us</h2>
+        <div class="features">
+            <div class="card">
+                <h3>100% Organic</h3>
+                <p>Our products are certified organic and chemical-free.</p>
+            </div>
+            <div class="card">
+                <h3>Fresh & Natural</h3>
+                <p>We deliver fresh products sourced directly from farms.</p>
+            </div>
+            <div class="card">
+                <h3>Healthy Recipes</h3>
+                <p>Nutritionist-approved recipes for a balanced diet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonials">
+            <div class="card">
+                <p>"Mama's Kitchen has transformed the way I eat. Fresh and tasty!"</p>
+                <h3>- Sarah J.</h3>
+            </div>
+            <div class="card">
+                <p>"The organic products are amazing, and delivery is always on time."</p>
+                <h3>- Raj K.</h3>
+            </div>
+            <div class="card">
+                <p>"Love the nutrition plans. They made my lifestyle much healthier."</p>
+                <h3>- Ananya P.</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 EcoNutriCloud | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+    </footer>
+{%endblock content%}
+
+

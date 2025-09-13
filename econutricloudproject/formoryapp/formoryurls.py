@@ -3,7 +3,7 @@ from . import views
 
 from formoryapp.controller import authview,cart,wishlist,checkout
 urlpatterns = [
-    path("",views.home,name = "home"),
+    path("formoryhome",views.formoryhome,name = "formoryhome"),
     path('category/',views.category,name="category"),
     path('category/<str:slug>',views.categoryview,name="categoryview"),
     path('category/<str:cate_slug>/<str:prod_slug>',views.productview,name='productview'),

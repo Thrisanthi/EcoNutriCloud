@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutric - Contact Us</title>
+<!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="{% static 'css/maincontact.css' %}">
+</head>
+<body>
+
+<header>
+  Nutric - Contact Us
+  <!-- <a href="home.html">Back to Home</a> -->
+</header>
+
+<main>
+  <h1>Contact Us</h1>
+  <p>If you have questions, suggestions, or feedback about nutrition and wellness, 
+     feel free to reach out to us using the form below or through our contact details.</p>
+
+  <div class="contact-container">
+    
+    <div class="contact-form">
+      <h2>Submit a Question</h2>
+      <form id="contactForm">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="details">More Detail / Explanation</label>
+        <textarea id="details" name="details"></textarea>
+        
+        <div class="file-upload">
+          <label for="file">Attach File (optional)</label>
+          <input type="file" id="file" name="file">
+        </div>
+        
+        <button type="submit" class="submit-btn">Submit Your Question</button>
+      </form>
+    </div>
+
+  
+    <div class="contact-info">
+      <h2>Phone</h2>
+      <p>+91 98765 43210 (Nutric Support Center)</p>
+      
+      <!-- Mailing Addresses Section -->
+<section class="mailing-address">
+  <h2>Mailing Address</h2>
+
+  <div class="address-card">
+    <h3>Nutric</h3>
+    <p>NUTRIC</p>
+    <p>123 Wellness Street</p>
+    <p>Hyderabad, India</p>
+  </div>
+
+  <div class="address-card">
+    <h3>Organic</h3>
+    <p>FORMARY</p>
+    <p>123 Wellness Street</p>
+    <p>Hyderabad, India</p>
+  </div>
+
+  <div class="address-card">
+    <h3>MAMA'S KITCHEN</h3>
+    <p>Home Made Food</p>
+    <p>123 Wellness Street</p>
+    <p>Hyderabad, India</p>
+  </div>
+</section>
+      
+      <h2>Email</h2>
+      <p>support@formary.com</p>
+      <p>support@nutric.com</p>
+      <p>support@mamaskitchen.com</p>
+    </div>
+  </div>
+</main>
+
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2>✅ Thank you!</h2>
+    <p>Your question has been submitted successfully. Our team will get back to you soon.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 EcoNutriCloud | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+</footer>
+
+<script src="{% static 'js/maincontact.js' %}"></script>
+
+</body>
+</html>
+
+

@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <div class="py-3 bg-primary">
     <div class="container">
-        <a class="text-white" href="{% url 'home' %}">Home/</a>
+        <a class="text-white" href="{% url 'formoryhome' %}">Home/</a>
         <a class="text-white" href="{% url 'category' %}">Collections/</a>
         <a class="text-white" href="{% url 'categoryview' category.slug %}">{{ category.name }}</a>
     </div>
@@ -25,8 +25,8 @@
                                <img src="{{ item.product_image.url }}" alt="Product image" class="w-100" />
                            </div>
                            <h4 class="text-center"> {{ item.name }} </h4>
-                           <span class="float-start">{{ item.original_price | stringformat:'d'}}</span>
-                           <span class="float-end">{{ item.selling_price | stringformat:'d'}}</span>
+                           <span class="float-start">Original Price : {{ item.original_price | stringformat:'d'}}</span>
+                           <span class="float-end">Selling Price : {{ item.selling_price | stringformat:'d'}}</span>
                        </div>
                      </a>
                    </div>
