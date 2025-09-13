@@ -88,7 +88,7 @@ def clear_cart(request):
     Cart(request).clear()
     return redirect("menu")
 
-def checkout(request):
-    cart = Cart(request)
-    cart.clear()
-    return render(request, "checkout_success.html")
+# def checkout(request):
+#     cart = Cart(request)
+#     cart.clear()
+#     return render(request, "checkout.html")
