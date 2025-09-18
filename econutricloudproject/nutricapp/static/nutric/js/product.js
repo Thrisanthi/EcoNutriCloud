@@ -5,7 +5,7 @@
 //     category: "Fruit",
 //     desc: "Rich in fiber and vitamin C.",
 //     more: "Apples are loaded with dietary fiber that supports healthy digestion.\nThey contain vitamin C which strengthens the immune system.\nRegular consumption may help reduce the risk of chronic diseases.\nApples are low in calories, making them ideal for weight management.\nThey support heart health by lowering cholesterol.\nGreat as a snack, in salads, or juices.",
-//     img: "https://via.placeholder.com/150",
+//     img: STATIC_URL + "nutric/images/apples.jpg",
 //     age: "All Ages",
 //     calories: 52
 //   },
@@ -1575,274 +1575,533 @@
 //     calories: 884
 //   }
 // ];
-// const products = [
-//   // ===== FRUITS (20) =====
-//   {name:"Apple",category:"Fruit",desc:"Rich in fiber and vitamin C.",more:"Apples are loaded with dietary fiber that supports healthy digestion.\nThey contain vitamin C which strengthens the immune system.\nRegular consumption may help reduce the risk of chronic diseases.\nApples are low in calories, making them ideal for weight management.\nThey support heart health by lowering cholesterol.\nGreat as a snack, in salads, or juices.",img:"https://via.placeholder.com/150",age:"All Ages",calories:52},
-//   {name:"Banana",category:"Fruit",desc:"High in potassium and energy.",more:"Bananas are an excellent source of potassium that helps regulate blood pressure.\nThey provide quick energy, making them great for athletes and kids.\nContain vitamin B6 which supports brain health.\nBananas aid digestion due to their fiber content.\nThey may help reduce muscle cramps and soreness.\nPerfect for smoothies, snacks, or breakfast bowls.",img: "https://via.placeholder.com/150",age:"All Ages",calories:89},
-//   {name:"Orange",category:"Fruit",desc:"Vitamin C powerhouse.",more:"Oranges strengthen immunity and improve skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:47},
-//   {name:"Mango",category:"Fruit",desc:"Rich in vitamins and antioxidants.",more:"Mangoes improve digestion and boost immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:60},
-//   {name:"Grapes",category:"Fruit",desc:"Packed with antioxidants.",more:"Grapes support heart health and boost energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:69},
-//   {name:"Strawberry",category:"Fruit",desc:"High in vitamin C.",more:"Strawberries improve immunity and skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:32},
-//   {name:"Pineapple",category:"Fruit",desc:"Tropical fruit with bromelain.",more:"Pineapple aids digestion and reduces inflammation.",img:"https://via.placeholder.com/150",age:"All Ages",calories:50},
-//   {name:"Papaya",category:"Fruit",desc:"Rich in digestive enzymes.",more:"Papaya supports digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:43},
-//   {name:"Kiwi",category:"Fruit",desc:"Rich in vitamin C and fiber.",more:"Kiwi improves immunity and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:61},
-//   {name:"Watermelon",category:"Fruit",desc:"Hydrating fruit.",more:"Watermelon supports hydration and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:30},
-//   {name:"Blueberry",category:"Fruit",desc:"Rich in antioxidants.",more:"Blueberries improve brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:57},
-//   {name:"Cherry",category:"Fruit",desc:"High in antioxidants.",more:"Cherries reduce inflammation and support sleep.",img:"https://via.placeholder.com/150",age:"All Ages",calories:50},
-//   {name:"Peach",category:"Fruit",desc:"Rich in vitamins and fiber.",more:"Peaches improve digestion and skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:39},
-//   {name:"Plum",category:"Fruit",desc:"High in antioxidants.",more:"Plums support heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:46},
-//   {name:"Pear",category:"Fruit",desc:"Rich in fiber.",more:"Pears improve digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:57},
-//   {name:"Pomegranate",category:"Fruit",desc:"Rich in antioxidants.",more:"Pomegranates improve heart health and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:83},
-//   {name:"Guava",category:"Fruit",desc:"Rich in vitamin C.",more:"Guava boosts immunity and aids digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:68},
-//   {name:"Lychee",category:"Fruit",desc:"Sweet tropical fruit.",more:"Lychee improves immunity and hydration.",img:"https://via.placeholder.com/150",age:"All Ages",calories:66},
-//   {name:"Apricot",category:"Fruit",desc:"Rich in vitamins and fiber.",more:"Apricots improve digestion and skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:48},
-//   {name:"Raspberry",category:"Fruit",desc:"High in fiber and antioxidants.",more:"Raspberries support heart health and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:52},
+const products = [
+  // ===== FRUITS (20) =====
+  {name:"Apple",category:"Fruit",desc:"Rich in fiber and vitamin C.",more:"Apples are loaded with dietary fiber that supports healthy digestion.\nThey contain vitamin C which strengthens the immune system.\nRegular consumption may help reduce the risk of chronic diseases.\nApples are low in calories, making them ideal for weight management.\nThey support heart health by lowering cholesterol.\nGreat as a snack, in salads, or juices.",img:"{% static 'nutric/images/apple.jpg' %}",age:"All Ages",calories:52},
+  {name:"Banana",category:"Fruit",desc:"High in potassium and energy.",more:"Bananas are an excellent source of potassium that helps regulate blood pressure.\nThey provide quick energy, making them great for athletes and kids.\nContain vitamin B6 which supports brain health.\nBananas aid digestion due to their fiber content.\nThey may help reduce muscle cramps and soreness.\nPerfect for smoothies, snacks, or breakfast bowls.",img: "https://via.placeholder.com/150",age:"All Ages",calories:89},
+  {name:"Orange",category:"Fruit",desc:"Vitamin C powerhouse.",more:"Oranges strengthen immunity and improve skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:47},
+  {name:"Mango",category:"Fruit",desc:"Rich in vitamins and antioxidants.",more:"Mangoes improve digestion and boost immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:60},
+  {name:"Grapes",category:"Fruit",desc:"Packed with antioxidants.",more:"Grapes support heart health and boost energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:69},
+  {name:"Strawberry",category:"Fruit",desc:"High in vitamin C.",more:"Strawberries improve immunity and skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:32},
+  {name:"Pineapple",category:"Fruit",desc:"Tropical fruit with bromelain.",more:"Pineapple aids digestion and reduces inflammation.",img:"https://via.placeholder.com/150",age:"All Ages",calories:50},
+  {name:"Papaya",category:"Fruit",desc:"Rich in digestive enzymes.",more:"Papaya supports digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:43},
+  {name:"Kiwi",category:"Fruit",desc:"Rich in vitamin C and fiber.",more:"Kiwi improves immunity and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:61},
+  {name:"Watermelon",category:"Fruit",desc:"Hydrating fruit.",more:"Watermelon supports hydration and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:30},
+  {name:"Blueberry",category:"Fruit",desc:"Rich in antioxidants.",more:"Blueberries improve brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:57},
+  {name:"Cherry",category:"Fruit",desc:"High in antioxidants.",more:"Cherries reduce inflammation and support sleep.",img:"https://via.placeholder.com/150",age:"All Ages",calories:50},
+  {name:"Peach",category:"Fruit",desc:"Rich in vitamins and fiber.",more:"Peaches improve digestion and skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:39},
+  {name:"Plum",category:"Fruit",desc:"High in antioxidants.",more:"Plums support heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:46},
+  {name:"Pear",category:"Fruit",desc:"Rich in fiber.",more:"Pears improve digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:57},
+  {name:"Pomegranate",category:"Fruit",desc:"Rich in antioxidants.",more:"Pomegranates improve heart health and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:83},
+  {name:"Guava",category:"Fruit",desc:"Rich in vitamin C.",more:"Guava boosts immunity and aids digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:68},
+  {name:"Lychee",category:"Fruit",desc:"Sweet tropical fruit.",more:"Lychee improves immunity and hydration.",img:"https://via.placeholder.com/150",age:"All Ages",calories:66},
+  {name:"Apricot",category:"Fruit",desc:"Rich in vitamins and fiber.",more:"Apricots improve digestion and skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:48},
+  {name:"Raspberry",category:"Fruit",desc:"High in fiber and antioxidants.",more:"Raspberries support heart health and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:52},
 
-//   // ===== VEGETABLES (20) =====
-//   {name:"Carrot",category:"Vegetable",desc:"Rich in beta-carotene.",more:"Carrots improve eye health and support immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:41},
-//   {name:"Spinach",category:"Vegetable",desc:"Leafy green rich in iron.",more:"Spinach strengthens bones and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:23},
-//   {name:"Broccoli",category:"Vegetable",desc:"High in fiber and vitamins.",more:"Broccoli supports heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:55},
-//   {name:"Cauliflower",category:"Vegetable",desc:"Rich in vitamins.",more:"Cauliflower improves digestion and supports immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:25},
-//   {name:"Cabbage",category:"Vegetable",desc:"High in fiber.",more:"Cabbage improves digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:26},
-//   {name:"Bell Pepper",category:"Vegetable",desc:"Rich in vitamin C.",more:"Bell peppers boost immunity and improve skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:31},
-//   {name:"Tomato",category:"Vegetable",desc:"Good source of antioxidants.",more:"Tomatoes improve heart health and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:18},
-//   {name:"Onion",category:"Vegetable",desc:"Rich in antioxidants.",more:"Onions boost immunity and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:40},
-//   {name:"Garlic",category:"Vegetable",desc:"Supports immunity.",more:"Garlic has antimicrobial properties and supports heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:149},
-//   {name:"Potato",category:"Vegetable",desc:"High in carbohydrates.",more:"Potatoes provide energy and support digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:77},
-//   {name:"Sweet Potato",category:"Vegetable",desc:"Rich in fiber and vitamins.",more:"Sweet potatoes improve digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:86},
-//   {name:"Pumpkin",category:"Vegetable",desc:"High in vitamin A.",more:"Pumpkin improves vision and supports immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:26},
-//   {name:"Lettuce",category:"Vegetable",desc:"Low calorie leafy green.",more:"Lettuce aids digestion and hydration.",img:"https://via.placeholder.com/150",age:"All Ages",calories:15},
-//   {name:"Cucumber",category:"Vegetable",desc:"Hydrating vegetable.",more:"Cucumber improves hydration and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:16},
-//   {name:"Radish",category:"Vegetable",desc:"Low calorie root.",more:"Radish improves digestion and detoxification.",img:"https://via.placeholder.com/150",age:"All Ages",calories:16},
-//   {name:"Zucchini",category:"Vegetable",desc:"Rich in vitamins.",more:"Zucchini supports heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:17},
-//   {name:"Green Beans",category:"Vegetable",desc:"Rich in fiber.",more:"Green beans support digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:31},
-//   {name:"Peas",category:"Vegetable",desc:"High in protein.",more:"Peas support muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:81},
-//   {name:"Eggplant",category:"Vegetable",desc:"Contains antioxidants.",more:"Eggplant improves heart health and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:25},
-//   {name:"Kale",category:"Vegetable",desc:"Leafy green rich in vitamins.",more:"Kale supports bones, heart, and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:49},
+  // ===== VEGETABLES (20) =====
+  {name:"Carrot",category:"Vegetable",desc:"Rich in beta-carotene.",more:"Carrots improve eye health and support immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:41},
+  {name:"Spinach",category:"Vegetable",desc:"Leafy green rich in iron.",more:"Spinach strengthens bones and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:23},
+  {name:"Broccoli",category:"Vegetable",desc:"High in fiber and vitamins.",more:"Broccoli supports heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:55},
+  {name:"Cauliflower",category:"Vegetable",desc:"Rich in vitamins.",more:"Cauliflower improves digestion and supports immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:25},
+  {name:"Cabbage",category:"Vegetable",desc:"High in fiber.",more:"Cabbage improves digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:26},
+  {name:"Bell Pepper",category:"Vegetable",desc:"Rich in vitamin C.",more:"Bell peppers boost immunity and improve skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:31},
+  {name:"Tomato",category:"Vegetable",desc:"Good source of antioxidants.",more:"Tomatoes improve heart health and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:18},
+  {name:"Onion",category:"Vegetable",desc:"Rich in antioxidants.",more:"Onions boost immunity and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:40},
+  {name:"Garlic",category:"Vegetable",desc:"Supports immunity.",more:"Garlic has antimicrobial properties and supports heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:149},
+  {name:"Potato",category:"Vegetable",desc:"High in carbohydrates.",more:"Potatoes provide energy and support digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:77},
+  {name:"Sweet Potato",category:"Vegetable",desc:"Rich in fiber and vitamins.",more:"Sweet potatoes improve digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:86},
+  {name:"Pumpkin",category:"Vegetable",desc:"High in vitamin A.",more:"Pumpkin improves vision and supports immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:26},
+  {name:"Lettuce",category:"Vegetable",desc:"Low calorie leafy green.",more:"Lettuce aids digestion and hydration.",img:"https://via.placeholder.com/150",age:"All Ages",calories:15},
+  {name:"Cucumber",category:"Vegetable",desc:"Hydrating vegetable.",more:"Cucumber improves hydration and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:16},
+  {name:"Radish",category:"Vegetable",desc:"Low calorie root.",more:"Radish improves digestion and detoxification.",img:"https://via.placeholder.com/150",age:"All Ages",calories:16},
+  {name:"Zucchini",category:"Vegetable",desc:"Rich in vitamins.",more:"Zucchini supports heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:17},
+  {name:"Green Beans",category:"Vegetable",desc:"Rich in fiber.",more:"Green beans support digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:31},
+  {name:"Peas",category:"Vegetable",desc:"High in protein.",more:"Peas support muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:81},
+  {name:"Eggplant",category:"Vegetable",desc:"Contains antioxidants.",more:"Eggplant improves heart health and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:25},
+  {name:"Kale",category:"Vegetable",desc:"Leafy green rich in vitamins.",more:"Kale supports bones, heart, and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:49},
 
-//   // ===== GRAINS (20) =====
-//   {name:"Rice",category:"Grain",desc:"Staple food rich in carbohydrates.",more:"Rice provides energy and supports digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:130},
-//   {name:"Wheat",category:"Grain",desc:"High in fiber.",more:"Wheat supports digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:340},
-//   {name:"Barley",category:"Grain",desc:"Good source of fiber.",more:"Barley improves digestion and lowers cholesterol.",img:"https://via.placeholder.com/150",age:"All Ages",calories:354},
-//   {name:"Oats",category:"Grain",desc:"Whole grain rich in fiber.",more:"Oats support heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:389},
-//   {name:"Quinoa",category:"Grain",desc:"High in protein and fiber.",more:"Quinoa supports muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:120},
-//   {name:"Corn",category:"Grain",desc:"Rich in carbohydrates.",more:"Corn provides energy and fiber.",img:"https://via.placeholder.com/150",age:"All Ages",calories:86},
-//   {name:"Millet",category:"Grain",desc:"Gluten-free grain.",more:"Millet improves digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:119},
-//   {name:"Rye",category:"Grain",desc:"High in fiber.",more:"Rye supports digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:335},
-//   {name:"Sorghum",category:"Grain",desc:"Gluten-free grain.",more:"Sorghum aids digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:329},
-//   {name:"Bulgur",category:"Grain",desc:"Rich in fiber.",more:"Bulgur supports digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:83},
-//   {name:"Amaranth",category:"Grain",desc:"High in protein.",more:"Amaranth supports muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:371},
-//   {name:"Buckwheat",category:"Grain",desc:"Gluten-free seed grain.",more:"Buckwheat supports heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:343},
-//   {name:"Teff",category:"Grain",desc:"High in fiber.",more:"Teff improves digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:367},
-//   {name:"Spelt",category:"Grain",desc:"Ancient grain.",more:"Spelt supports heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:338},
-//   {name:"Farro",category:"Grain",desc:"Whole grain.",more:"Farro improves digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:340},
-//   {name:"Kamut",category:"Grain",desc:"Ancient wheat.",more:"Kamut supports digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:337},
-//   {name:"Maize",category:"Grain",desc:"Rich in carbohydrates.",more:"Maize provides energy and fiber.",img:"https://via.placeholder.com/150",age:"All Ages",calories:86},
-//   {name:"Fonio",category:"Grain",desc:"Small African grain.",more:"Fonio supports digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:360},
-//   {name:"Ragi",category:"Grain",desc:"Finger millet.",more:"Ragi supports bone health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:328},
+  // ===== GRAINS (20) =====
+  {name:"Rice",category:"Grain",desc:"Staple food rich in carbohydrates.",more:"Rice provides energy and supports digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:130},
+  {name:"Wheat",category:"Grain",desc:"High in fiber.",more:"Wheat supports digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:340},
+  {name:"Barley",category:"Grain",desc:"Good source of fiber.",more:"Barley improves digestion and lowers cholesterol.",img:"https://via.placeholder.com/150",age:"All Ages",calories:354},
+  {name:"Oats",category:"Grain",desc:"Whole grain rich in fiber.",more:"Oats support heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:389},
+  {name:"Quinoa",category:"Grain",desc:"High in protein and fiber.",more:"Quinoa supports muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:120},
+  {name:"Corn",category:"Grain",desc:"Rich in carbohydrates.",more:"Corn provides energy and fiber.",img:"https://via.placeholder.com/150",age:"All Ages",calories:86},
+  {name:"Millet",category:"Grain",desc:"Gluten-free grain.",more:"Millet improves digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:119},
+  {name:"Rye",category:"Grain",desc:"High in fiber.",more:"Rye supports digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:335},
+  {name:"Sorghum",category:"Grain",desc:"Gluten-free grain.",more:"Sorghum aids digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:329},
+  {name:"Bulgur",category:"Grain",desc:"Rich in fiber.",more:"Bulgur supports digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:83},
+  {name:"Amaranth",category:"Grain",desc:"High in protein.",more:"Amaranth supports muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:371},
+  {name:"Buckwheat",category:"Grain",desc:"Gluten-free seed grain.",more:"Buckwheat supports heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:343},
+  {name:"Teff",category:"Grain",desc:"High in fiber.",more:"Teff improves digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:367},
+  {name:"Spelt",category:"Grain",desc:"Ancient grain.",more:"Spelt supports heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:338},
+  {name:"Farro",category:"Grain",desc:"Whole grain.",more:"Farro improves digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:340},
+  {name:"Kamut",category:"Grain",desc:"Ancient wheat.",more:"Kamut supports digestion and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:337},
+  {name:"Maize",category:"Grain",desc:"Rich in carbohydrates.",more:"Maize provides energy and fiber.",img:"https://via.placeholder.com/150",age:"All Ages",calories:86},
+  {name:"Fonio",category:"Grain",desc:"Small African grain.",more:"Fonio supports digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:360},
+  {name:"Ragi",category:"Grain",desc:"Finger millet.",more:"Ragi supports bone health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:328},
 
-//   // ===== LEGUMES (20) =====
-//   {name:"Lentils",category:"Legume",desc:"High in protein and fiber.",more:"Lentils aid digestion and support heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:116},
-//   {name:"Chickpeas",category:"Legume",desc:"Rich in protein.",more:"Chickpeas support muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:164},
-//   {name:"Kidney Beans",category:"Legume",desc:"High in protein and fiber.",more:"Kidney beans support heart and digestive health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:127},
-//   {name:"Black Beans",category:"Legume",desc:"Rich in protein and fiber.",more:"Black beans improve digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:132},
-//   {name:"Soybeans",category:"Legume",desc:"High in protein.",more:"Soybeans support muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:446},
-//   {name:"Mung Beans",category:"Legume",desc:"Rich in protein and fiber.",more:"Mung beans aid digestion and boost immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:105},
-//   {name:"Peas",category:"Legume",desc:"High in protein and fiber.",more:"Peas support muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:81},
-//   {name:"Pigeon Peas",category:"Legume",desc:"High protein legume.",more:"Pigeon peas support digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:116},
-//   {name:"Lima Beans",category:"Legume",desc:"Rich in protein and fiber.",more:"Lima beans aid digestion and support muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:115},
-//   {name:"Black-eyed Peas",category:"Legume",desc:"High in protein.",more:"Black-eyed peas improve heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:116},
-//   {name:"Adzuki Beans",category:"Legume",desc:"Rich in protein.",more:"Adzuki beans support digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:128},
-//   {name:"Navy Beans",category:"Legume",desc:"High in protein and fiber.",more:"Navy beans aid digestion and support heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:140},
-//   {name:"Cannellini Beans",category:"Legume",desc:"Rich in protein.",more:"Cannellini beans support digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:140},
-//   {name:"Fava Beans",category:"Legume",desc:"High in protein and fiber.",more:"Fava beans improve muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:88},
-//   {name:"Green Gram",category:"Legume",desc:"High in protein.",more:"Green gram aids digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:105},
-//   {name:"Broad Beans",category:"Legume",desc:"Rich in protein.",more:"Broad beans support heart health and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:341},
-//   {name:"Split Peas",category:"Legume",desc:"High in protein and fiber.",more:"Split peas improve digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:118},
-//   {name:"Lupins",category:"Legume",desc:"High in protein.",more:"Lupins support muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:371},
-//   {name:"Soy Nuts",category:"Legume",desc:"Protein-rich snack.",more:"Soy nuts boost muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:450},
+  // ===== LEGUMES (20) =====
+  {name:"Lentils",category:"Legume",desc:"High in protein and fiber.",more:"Lentils aid digestion and support heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:116},
+  {name:"Chickpeas",category:"Legume",desc:"Rich in protein.",more:"Chickpeas support muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:164},
+  {name:"Kidney Beans",category:"Legume",desc:"High in protein and fiber.",more:"Kidney beans support heart and digestive health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:127},
+  {name:"Black Beans",category:"Legume",desc:"Rich in protein and fiber.",more:"Black beans improve digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:132},
+  {name:"Soybeans",category:"Legume",desc:"High in protein.",more:"Soybeans support muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:446},
+  {name:"Mung Beans",category:"Legume",desc:"Rich in protein and fiber.",more:"Mung beans aid digestion and boost immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:105},
+  {name:"Peas",category:"Legume",desc:"High in protein and fiber.",more:"Peas support muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:81},
+  {name:"Pigeon Peas",category:"Legume",desc:"High protein legume.",more:"Pigeon peas support digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:116},
+  {name:"Lima Beans",category:"Legume",desc:"Rich in protein and fiber.",more:"Lima beans aid digestion and support muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:115},
+  {name:"Black-eyed Peas",category:"Legume",desc:"High in protein.",more:"Black-eyed peas improve heart health and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:116},
+  {name:"Adzuki Beans",category:"Legume",desc:"Rich in protein.",more:"Adzuki beans support digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:128},
+  {name:"Navy Beans",category:"Legume",desc:"High in protein and fiber.",more:"Navy beans aid digestion and support heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:140},
+  {name:"Cannellini Beans",category:"Legume",desc:"Rich in protein.",more:"Cannellini beans support digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:140},
+  {name:"Fava Beans",category:"Legume",desc:"High in protein and fiber.",more:"Fava beans improve muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:88},
+  {name:"Green Gram",category:"Legume",desc:"High in protein.",more:"Green gram aids digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:105},
+  {name:"Broad Beans",category:"Legume",desc:"Rich in protein.",more:"Broad beans support heart health and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:341},
+  {name:"Split Peas",category:"Legume",desc:"High in protein and fiber.",more:"Split peas improve digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:118},
+  {name:"Lupins",category:"Legume",desc:"High in protein.",more:"Lupins support muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:371},
+  {name:"Soy Nuts",category:"Legume",desc:"Protein-rich snack.",more:"Soy nuts boost muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:450},
 
-//   // ===== NUTS (20) =====
-//   {name:"Almonds",category:"Nut",desc:"High in healthy fats.",more:"Almonds support heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:579},
-//   {name:"Walnuts",category:"Nut",desc:"Rich in omega-3 fats.",more:"Walnuts support brain health and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:654},
-//   {name:"Cashews",category:"Nut",desc:"Rich in healthy fats.",more:"Cashews boost heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:553},
-//   {name:"Pistachios",category:"Nut",desc:"High in protein.",more:"Pistachios support heart and weight management.",img:"https://via.placeholder.com/150",age:"All Ages",calories:562},
-//   {name:"Hazelnuts",category:"Nut",desc:"Rich in vitamins and minerals.",more:"Hazelnuts improve heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:628},
-//   {name:"Macadamia",category:"Nut",desc:"High in fats.",more:"Macadamia supports heart health and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:718},
-//   {name:"Brazil Nuts",category:"Nut",desc:"Rich in selenium.",more:"Brazil nuts improve immunity and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:659},
-//   {name:"Pecans",category:"Nut",desc:"High in antioxidants.",more:"Pecans support heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:691},
-//   {name:"Chestnuts",category:"Nut",desc:"Low in fat.",more:"Chestnuts support digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:213},
-//   {name:"Pine Nuts",category:"Nut",desc:"Rich in healthy fats.",more:"Pine nuts improve heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:673},
-//   {name:"Peanuts",category:"Nut",desc:"High in protein.",more:"Peanuts boost muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:567},
-//   {name:"Coconut",category:"Nut",desc:"Rich in healthy fats.",more:"Coconut improves heart and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:354},
-//   {name:"Marcona Almonds",category:"Nut",desc:"Spanish variety.",more:"Marcona almonds support heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:575},
-//   {name:"Tiger Nuts",category:"Nut",desc:"Sweet tuber.",more:"Tiger nuts support digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:496},
-//   {name:"Ginkgo Nuts",category:"Nut",desc:"Rich in antioxidants.",more:"Ginkgo nuts support brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:182},
-//   {name:"Kola Nuts",category:"Nut",desc:"Used as stimulant.",more:"Kola nuts boost energy and alertness.",img:"https://via.placeholder.com/150",age:"All Ages",calories:97},
-//   {name:"Sacha Inchi",category:"Nut",desc:"Rich in omega-3.",more:"Sacha inchi supports heart and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:446},
-//   {name:"Beechnuts",category:"Nut",desc:"High in fat.",more:"Beechnuts boost energy and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:650},
-//   {name:"Candlenuts",category:"Nut",desc:"High in fat.",more:"Candlenuts support heart and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:700},
-//   {name:"Pili Nuts",category:"Nut",desc:"Rich in fats.",more:"Pili nuts boost energy and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:719},
+  // ===== NUTS (20) =====
+  {name:"Almonds",category:"Nut",desc:"High in healthy fats.",more:"Almonds support heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:579},
+  {name:"Walnuts",category:"Nut",desc:"Rich in omega-3 fats.",more:"Walnuts support brain health and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:654},
+  {name:"Cashews",category:"Nut",desc:"Rich in healthy fats.",more:"Cashews boost heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:553},
+  {name:"Pistachios",category:"Nut",desc:"High in protein.",more:"Pistachios support heart and weight management.",img:"https://via.placeholder.com/150",age:"All Ages",calories:562},
+  {name:"Hazelnuts",category:"Nut",desc:"Rich in vitamins and minerals.",more:"Hazelnuts improve heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:628},
+  {name:"Macadamia",category:"Nut",desc:"High in fats.",more:"Macadamia supports heart health and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:718},
+  {name:"Brazil Nuts",category:"Nut",desc:"Rich in selenium.",more:"Brazil nuts improve immunity and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:659},
+  {name:"Pecans",category:"Nut",desc:"High in antioxidants.",more:"Pecans support heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:691},
+  {name:"Chestnuts",category:"Nut",desc:"Low in fat.",more:"Chestnuts support digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:213},
+  {name:"Pine Nuts",category:"Nut",desc:"Rich in healthy fats.",more:"Pine nuts improve heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:673},
+  {name:"Peanuts",category:"Nut",desc:"High in protein.",more:"Peanuts boost muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:567},
+  {name:"Coconut",category:"Nut",desc:"Rich in healthy fats.",more:"Coconut improves heart and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:354},
+  {name:"Marcona Almonds",category:"Nut",desc:"Spanish variety.",more:"Marcona almonds support heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:575},
+  {name:"Tiger Nuts",category:"Nut",desc:"Sweet tuber.",more:"Tiger nuts support digestion and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:496},
+  {name:"Ginkgo Nuts",category:"Nut",desc:"Rich in antioxidants.",more:"Ginkgo nuts support brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:182},
+  {name:"Kola Nuts",category:"Nut",desc:"Used as stimulant.",more:"Kola nuts boost energy and alertness.",img:"https://via.placeholder.com/150",age:"All Ages",calories:97},
+  {name:"Sacha Inchi",category:"Nut",desc:"Rich in omega-3.",more:"Sacha inchi supports heart and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:446},
+  {name:"Beechnuts",category:"Nut",desc:"High in fat.",more:"Beechnuts boost energy and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:650},
+  {name:"Candlenuts",category:"Nut",desc:"High in fat.",more:"Candlenuts support heart and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:700},
+  {name:"Pili Nuts",category:"Nut",desc:"Rich in fats.",more:"Pili nuts boost energy and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:719},
 
-//   // ===== DAIRY (20) =====
-//   {name:"Milk",category:"Dairy",desc:"Rich in calcium.",more:"Milk strengthens bones and teeth.",img:"https://via.placeholder.com/150",age:"All Ages",calories:42},
-//   {name:"Cheese",category:"Dairy",desc:"High in protein.",more:"Cheese supports bone and muscle health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:402},
-//   {name:"Yogurt",category:"Dairy",desc:"Probiotic-rich.",more:"Yogurt improves digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:59},
-//   {name:"Butter",category:"Dairy",desc:"Rich in fats.",more:"Butter provides energy and fat-soluble vitamins.",img:"https://via.placeholder.com/150",age:"All Ages",calories:717},
-//   {name:"Cream",category:"Dairy",desc:"High in fat.",more:"Cream adds flavor and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:340},
-//   {name:"Paneer",category:"Dairy",desc:"High in protein.",more:"Paneer supports muscles and bones.",img:"https://via.placeholder.com/150",age:"All Ages",calories:265},
-//   {name:"Kefir",category:"Dairy",desc:"Fermented milk.",more:"Kefir improves digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:41},
-//   {name:"Ghee",category:"Dairy",desc:"Clarified butter.",more:"Ghee supports energy and fat-soluble vitamin absorption.",img:"https://via.placeholder.com/150",age:"All Ages",calories:900},
-//   {name:"Condensed Milk",category:"Dairy",desc:"Sweet milk.",more:"Condensed milk provides energy and sweetness.",img:"https://via.placeholder.com/150",age:"All Ages",calories:321},
-//   {name:"Evaporated Milk",category:"Dairy",desc:"Concentrated milk.",more:"Evaporated milk provides calcium and protein.",img:"https://via.placeholder.com/150",age:"All Ages",calories:134},
-//   {name:"Sour Cream",category:"Dairy",desc:"Tangy flavor.",more:"Sour cream adds taste and calcium.",img:"https://via.placeholder.com/150",age:"All Ages",calories:193},
-//   {name:"Ricotta",category:"Dairy",desc:"Soft cheese.",more:"Ricotta supports muscles and bones.",img:"https://via.placeholder.com/150",age:"All Ages",calories:174},
-//   {name:"Mozzarella",category:"Dairy",desc:"Soft cheese.",more:"Mozzarella supports calcium and protein.",img:"https://via.placeholder.com/150",age:"All Ages",calories:280},
-//   {name:"Swiss Cheese",category:"Dairy",desc:"Hard cheese.",more:"Swiss cheese supports bones and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:380},
-//   {name:"Cheddar",category:"Dairy",desc:"Hard cheese.",more:"Cheddar improves bones and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:403},
-//   {name:"Feta",category:"Dairy",desc:"Soft cheese.",more:"Feta improves heart and bone health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:264},
-//   {name:"Goat Cheese",category:"Dairy",desc:"Soft cheese.",more:"Goat cheese supports bones and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:364},
-//   {name:"Blue Cheese",category:"Dairy",desc:"Strong-flavored cheese.",more:"Blue cheese improves calcium intake.",img:"https://via.placeholder.com/150",age:"All Ages",calories:353},
-//   {name:"Provolone",category:"Dairy",desc:"Semi-hard cheese.",more:"Provolone supports bones and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:351},
+  // ===== DAIRY (20) =====
+  {name:"Milk",category:"Dairy",desc:"Rich in calcium.",more:"Milk strengthens bones and teeth.",img:"https://via.placeholder.com/150",age:"All Ages",calories:42},
+  {name:"Cheese",category:"Dairy",desc:"High in protein.",more:"Cheese supports bone and muscle health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:402},
+  {name:"Yogurt",category:"Dairy",desc:"Probiotic-rich.",more:"Yogurt improves digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:59},
+  {name:"Butter",category:"Dairy",desc:"Rich in fats.",more:"Butter provides energy and fat-soluble vitamins.",img:"https://via.placeholder.com/150",age:"All Ages",calories:717},
+  {name:"Cream",category:"Dairy",desc:"High in fat.",more:"Cream adds flavor and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:340},
+  {name:"Paneer",category:"Dairy",desc:"High in protein.",more:"Paneer supports muscles and bones.",img:"https://via.placeholder.com/150",age:"All Ages",calories:265},
+  {name:"Kefir",category:"Dairy",desc:"Fermented milk.",more:"Kefir improves digestion and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:41},
+  {name:"Ghee",category:"Dairy",desc:"Clarified butter.",more:"Ghee supports energy and fat-soluble vitamin absorption.",img:"https://via.placeholder.com/150",age:"All Ages",calories:900},
+  {name:"Condensed Milk",category:"Dairy",desc:"Sweet milk.",more:"Condensed milk provides energy and sweetness.",img:"https://via.placeholder.com/150",age:"All Ages",calories:321},
+  {name:"Evaporated Milk",category:"Dairy",desc:"Concentrated milk.",more:"Evaporated milk provides calcium and protein.",img:"https://via.placeholder.com/150",age:"All Ages",calories:134},
+  {name:"Sour Cream",category:"Dairy",desc:"Tangy flavor.",more:"Sour cream adds taste and calcium.",img:"https://via.placeholder.com/150",age:"All Ages",calories:193},
+  {name:"Ricotta",category:"Dairy",desc:"Soft cheese.",more:"Ricotta supports muscles and bones.",img:"https://via.placeholder.com/150",age:"All Ages",calories:174},
+  {name:"Mozzarella",category:"Dairy",desc:"Soft cheese.",more:"Mozzarella supports calcium and protein.",img:"https://via.placeholder.com/150",age:"All Ages",calories:280},
+  {name:"Swiss Cheese",category:"Dairy",desc:"Hard cheese.",more:"Swiss cheese supports bones and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:380},
+  {name:"Cheddar",category:"Dairy",desc:"Hard cheese.",more:"Cheddar improves bones and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:403},
+  {name:"Feta",category:"Dairy",desc:"Soft cheese.",more:"Feta improves heart and bone health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:264},
+  {name:"Goat Cheese",category:"Dairy",desc:"Soft cheese.",more:"Goat cheese supports bones and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:364},
+  {name:"Blue Cheese",category:"Dairy",desc:"Strong-flavored cheese.",more:"Blue cheese improves calcium intake.",img:"https://via.placeholder.com/150",age:"All Ages",calories:353},
+  {name:"Provolone",category:"Dairy",desc:"Semi-hard cheese.",more:"Provolone supports bones and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:351},
 
-//   // ===== MEAT (20) =====
-//   {name:"Chicken",category:"Meat",desc:"Rich in protein.",more:"Chicken supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:239},
-//   {name:"Beef",category:"Meat",desc:"High in protein and iron.",more:"Beef supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:250},
-//   {name:"Lamb",category:"Meat",desc:"Rich in protein.",more:"Lamb supports muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:294},
-//   {name:"Pork",category:"Meat",desc:"High in protein.",more:"Pork improves energy and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:242},
-//   {name:"Turkey",category:"Meat",desc:"Lean protein source.",more:"Turkey supports muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:189},
-//   {name:"Duck",category:"Meat",desc:"Rich in protein and fat.",more:"Duck supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:337},
-//   {name:"Goat",category:"Meat",desc:"High protein meat.",more:"Goat supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:122},
-//   {name:"Venison",category:"Meat",desc:"Lean red meat.",more:"Venison supports muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:158},
-//   {name:"Rabbit",category:"Meat",desc:"Lean protein.",more:"Rabbit supports muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:173},
-//   {name:"Bison",category:"Meat",desc:"High protein meat.",more:"Bison supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:143},
-//   {name:"Sausage",category:"Meat",desc:"Processed meat.",more:"Sausage provides protein and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:301},
-//   {name:"Bacon",category:"Meat",desc:"Processed pork.",more:"Bacon provides protein and fat.",img:"https://via.placeholder.com/150",age:"All Ages",calories:541},
-//   {name:"Ham",category:"Meat",desc:"Cured meat.",more:"Ham provides protein and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:145},
-//   {name:"Salami",category:"Meat",desc:"Cured meat.",more:"Salami supports energy and protein.",img:"https://via.placeholder.com/150",age:"All Ages",calories:336},
-//   {name:"Prosciutto",category:"Meat",desc:"Cured Italian ham.",more:"Prosciutto supports protein intake.",img:"https://via.placeholder.com/150",age:"All Ages",calories:158},
-//   {name:"Chorizo",category:"Meat",desc:"Spicy cured meat.",more:"Chorizo boosts protein and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:455},
-//   {name:"Liver",category:"Meat",desc:"Rich in iron.",more:"Liver supports blood and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:135},
-//   {name:"Kidney",category:"Meat",desc:"Rich in protein.",more:"Kidney supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:103},
-//   {name:"Tongue",category:"Meat",desc:"High protein meat.",more:"Tongue supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:284},
-//   {name:"Heart",category:"Meat",desc:"Rich in protein and iron.",more:"Heart supports muscles and blood health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:112},
+  // ===== MEAT (20) =====
+  {name:"Chicken",category:"Meat",desc:"Rich in protein.",more:"Chicken supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:239},
+  {name:"Beef",category:"Meat",desc:"High in protein and iron.",more:"Beef supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:250},
+  {name:"Lamb",category:"Meat",desc:"Rich in protein.",more:"Lamb supports muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:294},
+  {name:"Pork",category:"Meat",desc:"High in protein.",more:"Pork improves energy and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:242},
+  {name:"Turkey",category:"Meat",desc:"Lean protein source.",more:"Turkey supports muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:189},
+  {name:"Duck",category:"Meat",desc:"Rich in protein and fat.",more:"Duck supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:337},
+  {name:"Goat",category:"Meat",desc:"High protein meat.",more:"Goat supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:122},
+  {name:"Venison",category:"Meat",desc:"Lean red meat.",more:"Venison supports muscles and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:158},
+  {name:"Rabbit",category:"Meat",desc:"Lean protein.",more:"Rabbit supports muscles and digestion.",img:"https://via.placeholder.com/150",age:"All Ages",calories:173},
+  {name:"Bison",category:"Meat",desc:"High protein meat.",more:"Bison supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:143},
+  {name:"Sausage",category:"Meat",desc:"Processed meat.",more:"Sausage provides protein and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:301},
+  {name:"Bacon",category:"Meat",desc:"Processed pork.",more:"Bacon provides protein and fat.",img:"https://via.placeholder.com/150",age:"All Ages",calories:541},
+  {name:"Ham",category:"Meat",desc:"Cured meat.",more:"Ham provides protein and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:145},
+  {name:"Salami",category:"Meat",desc:"Cured meat.",more:"Salami supports energy and protein.",img:"https://via.placeholder.com/150",age:"All Ages",calories:336},
+  {name:"Prosciutto",category:"Meat",desc:"Cured Italian ham.",more:"Prosciutto supports protein intake.",img:"https://via.placeholder.com/150",age:"All Ages",calories:158},
+  {name:"Chorizo",category:"Meat",desc:"Spicy cured meat.",more:"Chorizo boosts protein and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:455},
+  {name:"Liver",category:"Meat",desc:"Rich in iron.",more:"Liver supports blood and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:135},
+  {name:"Kidney",category:"Meat",desc:"Rich in protein.",more:"Kidney supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:103},
+  {name:"Tongue",category:"Meat",desc:"High protein meat.",more:"Tongue supports muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:284},
+  {name:"Heart",category:"Meat",desc:"Rich in protein and iron.",more:"Heart supports muscles and blood health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:112},
 
-//   // ===== EGGS (20) =====
-//   {name:"Chicken Egg",category:"Egg",desc:"High in protein.",more:"Eggs support muscles and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
-//   {name:"Duck Egg",category:"Egg",desc:"Rich in protein and fat.",more:"Duck eggs support energy and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:185},
-//   {name:"Quail Egg",category:"Egg",desc:"Small protein-rich egg.",more:"Quail eggs support immunity and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:158},
-//   {name:"Goose Egg",category:"Egg",desc:"Large protein-rich egg.",more:"Goose eggs support muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:185},
-//   {name:"Turkey Egg",category:"Egg",desc:"High in protein.",more:"Turkey eggs improve muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
-//   {name:"Ostrich Egg",category:"Egg",desc:"Very large egg.",more:"Ostrich eggs support energy and protein.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
-//   {name:"Emu Egg",category:"Egg",desc:"Large egg rich in protein.",more:"Emu eggs improve muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
-//   {name:"Pheasant Egg",category:"Egg",desc:"Small protein-rich egg.",more:"Pheasant eggs support muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
-//   {name:"Goose Bantam Egg",category:"Egg",desc:"Tiny egg.",more:"Supports muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
-//   {name:"Duck Bantam Egg",category:"Egg",desc:"Small protein-rich egg.",more:"Supports muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
-//   {name:"Silkie Chicken Egg",category:"Egg",desc:"Small egg.",more:"Supports energy and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
-//   {name:"Arowana Egg",category:"Egg",desc:"Fish egg.",more:"Rich in protein and omega-3.",img:"https://via.placeholder.com/150",age:"All Ages",calories:140},
-//   {name:"Caviar",category:"Egg",desc:"Fish eggs.",more:"Supports brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:264},
-//   {name:"Trout Egg",category:"Egg",desc:"Rich in protein.",more:"Supports muscles and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:143},
-//   {name:"Salmon Egg",category:"Egg",desc:"Rich in omega-3.",more:"Supports heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:156},
-//   {name:"Sturgeon Egg",category:"Egg",desc:"Protein-rich caviar.",more:"Supports muscles and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:250},
-//   {name:"Flying Fish Egg",category:"Egg",desc:"Rich in omega-3.",more:"Supports heart and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
-//   {name:"Roe",category:"Egg",desc:"Fish eggs.",more:"Supports heart and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:200},
-//   {name:"Lumpfish Egg",category:"Egg",desc:"Small caviar.",more:"Supports heart and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
-//   {name:"Capelin Egg",category:"Egg",desc:"Rich in protein.",more:"Supports muscles and heart.",img:"https://via.placeholder.com/150",age:"All Ages",calories:140},
+  // ===== EGGS (20) =====
+  {name:"Chicken Egg",category:"Egg",desc:"High in protein.",more:"Eggs support muscles and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
+  {name:"Duck Egg",category:"Egg",desc:"Rich in protein and fat.",more:"Duck eggs support energy and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:185},
+  {name:"Quail Egg",category:"Egg",desc:"Small protein-rich egg.",more:"Quail eggs support immunity and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:158},
+  {name:"Goose Egg",category:"Egg",desc:"Large protein-rich egg.",more:"Goose eggs support muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:185},
+  {name:"Turkey Egg",category:"Egg",desc:"High in protein.",more:"Turkey eggs improve muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
+  {name:"Ostrich Egg",category:"Egg",desc:"Very large egg.",more:"Ostrich eggs support energy and protein.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
+  {name:"Emu Egg",category:"Egg",desc:"Large egg rich in protein.",more:"Emu eggs improve muscles and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
+  {name:"Pheasant Egg",category:"Egg",desc:"Small protein-rich egg.",more:"Pheasant eggs support muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:155},
+  {name:"Goose Bantam Egg",category:"Egg",desc:"Tiny egg.",more:"Supports muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
+  {name:"Duck Bantam Egg",category:"Egg",desc:"Small protein-rich egg.",more:"Supports muscles and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
+  {name:"Silkie Chicken Egg",category:"Egg",desc:"Small egg.",more:"Supports energy and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
+  {name:"Arowana Egg",category:"Egg",desc:"Fish egg.",more:"Rich in protein and omega-3.",img:"https://via.placeholder.com/150",age:"All Ages",calories:140},
+  {name:"Caviar",category:"Egg",desc:"Fish eggs.",more:"Supports brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:264},
+  {name:"Trout Egg",category:"Egg",desc:"Rich in protein.",more:"Supports muscles and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:143},
+  {name:"Salmon Egg",category:"Egg",desc:"Rich in omega-3.",more:"Supports heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:156},
+  {name:"Sturgeon Egg",category:"Egg",desc:"Protein-rich caviar.",more:"Supports muscles and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:250},
+  {name:"Flying Fish Egg",category:"Egg",desc:"Rich in omega-3.",more:"Supports heart and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
+  {name:"Roe",category:"Egg",desc:"Fish eggs.",more:"Supports heart and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:200},
+  {name:"Lumpfish Egg",category:"Egg",desc:"Small caviar.",more:"Supports heart and muscles.",img:"https://via.placeholder.com/150",age:"All Ages",calories:150},
+  {name:"Capelin Egg",category:"Egg",desc:"Rich in protein.",more:"Supports muscles and heart.",img:"https://via.placeholder.com/150",age:"All Ages",calories:140},
 
-//   // ===== OILS (20) =====
-//   {name:"Olive Oil",category:"Oil",desc:"Healthy oil from olives.",more:"Olive oil supports heart health and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Coconut Oil",category:"Oil",desc:"Used in cooking and baking.",more:"Coconut oil supports heart and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:862},
-//   {name:"Sunflower Oil",category:"Oil",desc:"Rich in vitamin E.",more:"Sunflower oil supports heart and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Canola Oil",category:"Oil",desc:"Low saturated fat.",more:"Canola oil supports heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Sesame Oil",category:"Oil",desc:"Rich in antioxidants.",more:"Sesame oil supports heart and skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Peanut Oil",category:"Oil",desc:"High smoke point.",more:"Peanut oil supports heart and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Avocado Oil",category:"Oil",desc:"Rich in healthy fats.",more:"Avocado oil supports heart and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Flaxseed Oil",category:"Oil",desc:"High in omega-3.",more:"Flaxseed oil supports heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Grapeseed Oil",category:"Oil",desc:"Rich in antioxidants.",more:"Grapeseed oil supports heart and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Walnut Oil",category:"Oil",desc:"Rich in omega-3.",more:"Walnut oil supports brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Almond Oil",category:"Oil",desc:"Rich in vitamin E.",more:"Almond oil supports skin and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Pumpkin Seed Oil",category:"Oil",desc:"Rich in antioxidants.",more:"Supports heart and prostate health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Hemp Oil",category:"Oil",desc:"Rich in omega-3 and 6.",more:"Supports brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Safflower Oil",category:"Oil",desc:"Low saturated fat.",more:"Supports heart and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Rice Bran Oil",category:"Oil",desc:"Rich in antioxidants.",more:"Supports heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Mustard Oil",category:"Oil",desc:"Used in cooking.",more:"Supports heart and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Palm Oil",category:"Oil",desc:"High smoke point.",more:"Supports energy and cooking needs.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Corn Oil",category:"Oil",desc:"Rich in polyunsaturated fat.",more:"Supports heart health and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Soybean Oil",category:"Oil",desc:"High in omega-6.",more:"Supports heart and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
-//   {name:"Camelina Oil",category:"Oil",desc:"Rich in omega-3.",more:"Supports heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884}
+  // ===== OILS (20) =====
+  {name:"Olive Oil",category:"Oil",desc:"Healthy oil from olives.",more:"Olive oil supports heart health and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Coconut Oil",category:"Oil",desc:"Used in cooking and baking.",more:"Coconut oil supports heart and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:862},
+  {name:"Sunflower Oil",category:"Oil",desc:"Rich in vitamin E.",more:"Sunflower oil supports heart and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Canola Oil",category:"Oil",desc:"Low saturated fat.",more:"Canola oil supports heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Sesame Oil",category:"Oil",desc:"Rich in antioxidants.",more:"Sesame oil supports heart and skin health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Peanut Oil",category:"Oil",desc:"High smoke point.",more:"Peanut oil supports heart and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Avocado Oil",category:"Oil",desc:"Rich in healthy fats.",more:"Avocado oil supports heart and brain.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Flaxseed Oil",category:"Oil",desc:"High in omega-3.",more:"Flaxseed oil supports heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Grapeseed Oil",category:"Oil",desc:"Rich in antioxidants.",more:"Grapeseed oil supports heart and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Walnut Oil",category:"Oil",desc:"Rich in omega-3.",more:"Walnut oil supports brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Almond Oil",category:"Oil",desc:"Rich in vitamin E.",more:"Almond oil supports skin and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Pumpkin Seed Oil",category:"Oil",desc:"Rich in antioxidants.",more:"Supports heart and prostate health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Hemp Oil",category:"Oil",desc:"Rich in omega-3 and 6.",more:"Supports brain and heart health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Safflower Oil",category:"Oil",desc:"Low saturated fat.",more:"Supports heart and skin.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Rice Bran Oil",category:"Oil",desc:"Rich in antioxidants.",more:"Supports heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Mustard Oil",category:"Oil",desc:"Used in cooking.",more:"Supports heart and immunity.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Palm Oil",category:"Oil",desc:"High smoke point.",more:"Supports energy and cooking needs.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Corn Oil",category:"Oil",desc:"Rich in polyunsaturated fat.",more:"Supports heart health and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Soybean Oil",category:"Oil",desc:"High in omega-6.",more:"Supports heart and energy.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884},
+  {name:"Camelina Oil",category:"Oil",desc:"Rich in omega-3.",more:"Supports heart and brain health.",img:"https://via.placeholder.com/150",age:"All Ages",calories:884}
+];
+
+
+// Populate category filter
+const categoryFilter = document.getElementById("categoryFilter");
+const categories = [...new Set(products.map(p => p.category))];
+categories.forEach(cat => {
+  const option = document.createElement("option");
+  option.value = cat;
+  option.textContent = cat;
+  categoryFilter.appendChild(option);
+});
+
+const grid = document.getElementById("foodGrid");
+const searchInput = document.getElementById("search");
+const ageFilter = document.getElementById("ageFilter");
+
+// Modal elements
+const modal = document.getElementById("myModal");
+const modalImg = document.getElementById("modalImg");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalExtra = document.getElementById("modalExtra");
+const closeBtn = document.querySelector(".close");
+
+// Render products
+function renderProducts(list) {
+  grid.innerHTML = "";
+  if (list.length === 0) {
+    grid.innerHTML = "<p style='grid-column: 1/-1; text-align:center;color:#777;'>No products found.</p>";
+    return;
+  }
+  list.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.name}" class="card-img">
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+    `;
+    card.querySelector(".card-img").addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.src = p.img;
+      modalTitle.textContent = p.name;
+      modalDesc.textContent = p.more || p.desc;
+      modalExtra.textContent = `Category: ${p.category} | Age Group: ${p.age} | Calories: ${p.calories}`;
+    });
+    grid.appendChild(card);
+  });
+}
+
+// Filters
+function applyFilters() {
+  const searchValue = searchInput.value.toLowerCase();
+  const selectedCategory = categoryFilter.value;
+  const selectedAge = ageFilter.value;
+
+  const filtered = products.filter(p => {
+    const matchesSearch = p.name.toLowerCase().includes(searchValue) || p.desc.toLowerCase().includes(searchValue);
+    const matchesCategory = selectedCategory === "all" || p.category === selectedCategory;
+    const matchesAge = selectedAge === "all" || p.age === selectedAge || p.age === "All Ages";
+    return matchesSearch && matchesCategory && matchesAge;
+  });
+  renderProducts(filtered);
+}
+
+searchInput.addEventListener("input", applyFilters);
+categoryFilter.addEventListener("change", applyFilters);
+ageFilter.addEventListener("change", applyFilters);
+
+// Initial render
+renderProducts(products);
+
+// Modal close
+closeBtn.addEventListener("click", () => modal.style.display = "none");
+window.addEventListener("click", e => { if (e.target === modal) modal.style.display = "none"; });
+
+// foods.js
+
+// const foods = [
+//   // ---------------- Fruits ----------------
+//   {
+//     name: "Apple",
+//     category: "Fruit",
+//     desc: "Rich in fiber and vitamin C.",
+//     more: "Apples are loaded with dietary fiber that supports digestion and immunity.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 52
+//   },
+//   {
+//     name: "Banana",
+//     category: "Fruit",
+//     desc: "High in potassium and natural energy.",
+//     more: "Bananas are an excellent source of potassium that helps regulate blood pressure.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Kids",
+//     calories: 89
+//   },
+//   {
+//     name: "Mango",
+//     category: "Fruit",
+//     desc: "Sweet tropical fruit rich in vitamin A.",
+//     more: "Mangoes are high in vitamin A and antioxidants that boost eye health.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Teens",
+//     calories: 60
+//   },
+
+//   // ---------------- Vegetables ----------------
+//   {
+//     name: "Carrot",
+//     category: "Vegetable",
+//     desc: "Rich in beta-carotene and fiber.",
+//     more: "Carrots are loaded with beta-carotene which converts into vitamin A for good vision.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 41
+//   },
+//   {
+//     name: "Spinach",
+//     category: "Vegetable",
+//     desc: "Leafy green high in iron and vitamins.",
+//     more: "Spinach is rich in iron which supports red blood cell production.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 23
+//   },
+//   {
+//     name: "Broccoli",
+//     category: "Vegetable",
+//     desc: "Cruciferous veggie rich in antioxidants.",
+//     more: "Broccoli contains sulforaphane, an antioxidant that supports immunity.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Adults",
+//     calories: 34
+//   },
+
+//   // ---------------- Grains ----------------
+//   {
+//     name: "Rice",
+//     category: "Grain",
+//     desc: "Staple grain providing energy.",
+//     more: "Rice is a carbohydrate-rich staple that fuels the body with quick energy.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 130
+//   },
+//   {
+//     name: "Wheat",
+//     category: "Grain",
+//     desc: "Whole grain rich in fiber.",
+//     more: "Wheat is a primary source of energy and contains fiber for digestion.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 327
+//   },
+//   {
+//     name: "Oats",
+//     category: "Grain",
+//     desc: "High-fiber breakfast grain.",
+//     more: "Oats are excellent for heart health and digestion.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 389
+//   },
+
+//   // ---------------- Legumes ----------------
+//   {
+//     name: "Lentils",
+//     category: "Legume",
+//     desc: "High in protein and fiber.",
+//     more: "Lentils are packed with plant protein and support muscle growth and digestion.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Adults",
+//     calories: 116
+//   },
+//   {
+//     name: "Chickpeas",
+//     category: "Legume",
+//     desc: "Protein-rich legume.",
+//     more: "Chickpeas provide plant protein, fiber, and support healthy digestion.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 164
+//   },
+//   {
+//     name: "Kidney Beans",
+//     category: "Legume",
+//     desc: "Iron-rich legume.",
+//     more: "Kidney beans are high in iron and protein, perfect for vegetarians.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Teens",
+//     calories: 127
+//   },
+
+//   // ---------------- Nuts ----------------
+//   {
+//     name: "Almonds",
+//     category: "Nut",
+//     desc: "Rich in vitamin E and healthy fats.",
+//     more: "Almonds support brain health, provide protein, and improve skin health.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 576
+//   },
+//   {
+//     name: "Walnuts",
+//     category: "Nut",
+//     desc: "Omega-3 powerhouse nut.",
+//     more: "Walnuts are good for brain health and contain healthy fats.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 654
+//   },
+//   {
+//     name: "Cashews",
+//     category: "Nut",
+//     desc: "Creamy and nutrient-rich.",
+//     more: "Cashews are rich in magnesium and good for bone health.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Adults",
+//     calories: 553
+//   },
+
+//   // ---------------- Dairy ----------------
+//   {
+//     name: "Milk",
+//     category: "Dairy",
+//     desc: "Calcium-rich drink.",
+//     more: "Milk supports bone health and provides protein.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 42
+//   },
+//   {
+//     name: "Cheese",
+//     category: "Dairy",
+//     desc: "Protein-rich dairy product.",
+//     more: "Cheese is high in protein and calcium.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 402
+//   },
+//   {
+//     name: "Yogurt",
+//     category: "Dairy",
+//     desc: "Probiotic dairy food.",
+//     more: "Yogurt supports gut health with probiotics.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 59
+//   },
+
+//   // ---------------- Meat ----------------
+//   {
+//     name: "Chicken",
+//     category: "Meat",
+//     desc: "Lean source of protein.",
+//     more: "Chicken is rich in protein and low in fat when skinless.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Adults",
+//     calories: 239
+//   },
+//   {
+//     name: "Fish",
+//     category: "Meat",
+//     desc: "Rich in omega-3 fatty acids.",
+//     more: "Fish supports heart health and brain function.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 206
+//   },
+//   {
+//     name: "Beef",
+//     category: "Meat",
+//     desc: "Protein and iron-rich meat.",
+//     more: "Beef is high in iron and vitamin B12.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Adults",
+//     calories: 250
+//   },
+
+//   // ---------------- Eggs ----------------
+//   {
+//     name: "Egg",
+//     category: "Egg",
+//     desc: "Protein-packed food.",
+//     more: "Eggs provide high-quality protein, vitamins, and minerals.",
+//     img: "https://via.placeholder.com/150",
+//     age: "All Ages",
+//     calories: 155
+//   },
+//   {
+//     name: "Duck Egg",
+//     category: "Egg",
+//     desc: "Larger egg with more nutrients.",
+//     more: "Duck eggs have higher fat and protein than chicken eggs.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Adults",
+//     calories: 185
+//   },
+
+//   // ---------------- Oils ----------------
+//   {
+//     name: "Olive Oil",
+//     category: "Oil",
+//     desc: "Healthy cooking oil rich in MUFAs.",
+//     more: "Olive oil supports heart health and reduces inflammation.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Adults",
+//     calories: 884
+//   },
+//   {
+//     name: "Coconut Oil",
+//     category: "Oil",
+//     desc: "Cooking oil with medium-chain fats.",
+//     more: "Coconut oil provides quick energy and supports metabolism.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Adults",
+//     calories: 862
+//   },
+//   {
+//     name: "Ghee",
+//     category: "Oil",
+//     desc: "Traditional clarified butter.",
+//     more: "Ghee is rich in healthy fats and fat-soluble vitamins.",
+//     img: "https://via.placeholder.com/150",
+//     age: "Kids",
+//     calories: 876
+//   }
 // ];
 
-
-// // Populate category filter
-// const categoryFilter = document.getElementById("categoryFilter");
-// const categories = [...new Set(products.map(p => p.category))];
-// categories.forEach(cat => {
-//   const option = document.createElement("option");
-//   option.value = cat;
-//   option.textContent = cat;
-//   categoryFilter.appendChild(option);
-// });
-
-// const grid = document.getElementById("foodGrid");
-// const searchInput = document.getElementById("search");
-// const ageFilter = document.getElementById("ageFilter");
-
-// // Modal elements
-// const modal = document.getElementById("myModal");
-// const modalImg = document.getElementById("modalImg");
-// const modalTitle = document.getElementById("modalTitle");
-// const modalDesc = document.getElementById("modalDesc");
-// const modalExtra = document.getElementById("modalExtra");
-// const closeBtn = document.querySelector(".close");
-
-// // Render products
-// function renderProducts(list) {
-//   grid.innerHTML = "";
-//   if (list.length === 0) {
-//     grid.innerHTML = "<p style='grid-column: 1/-1; text-align:center;color:#777;'>No products found.</p>";
-//     return;
-//   }
-//   list.forEach(p => {
-//     const card = document.createElement("div");
-//     card.className = "card";
-//     card.innerHTML = `
-//       <img src="${p.img}" alt="${p.name}" class="card-img">
-//       <h3>${p.name}</h3>
-//       <p>${p.desc}</p>
-//     `;
-//     card.querySelector(".card-img").addEventListener("click", () => {
-//       modal.style.display = "block";
-//       modalImg.src = p.img;
-//       modalTitle.textContent = p.name;
-//       modalDesc.textContent = p.more || p.desc;
-//       modalExtra.textContent = `Category: ${p.category} | Age Group: ${p.age} | Calories: ${p.calories}`;
-//     });
-//     grid.appendChild(card);
-//   });
-// }
-
-// // Filters
-// function applyFilters() {
-//   const searchValue = searchInput.value.toLowerCase();
-//   const selectedCategory = categoryFilter.value;
-//   const selectedAge = ageFilter.value;
-
-//   const filtered = products.filter(p => {
-//     const matchesSearch = p.name.toLowerCase().includes(searchValue) || p.desc.toLowerCase().includes(searchValue);
-//     const matchesCategory = selectedCategory === "all" || p.category === selectedCategory;
-//     const matchesAge = selectedAge === "all" || p.age === selectedAge || p.age === "All Ages";
-//     return matchesSearch && matchesCategory && matchesAge;
-//   });
-//   renderProducts(filtered);
-// }
-
-// searchInput.addEventListener("input", applyFilters);
-// categoryFilter.addEventListener("change", applyFilters);
-// ageFilter.addEventListener("change", applyFilters);
-
-// // Initial render
-// renderProducts(products);
-
-// // Modal close
-// closeBtn.addEventListener("click", () => modal.style.display = "none");
-// window.addEventListener("click", e => { if (e.target === modal) modal.style.display = "none"; });
+// // Debug log
+// console.log("✅ Loaded foods:", foods.length, "items");

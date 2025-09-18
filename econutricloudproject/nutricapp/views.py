@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from formoryapp.views import *
-from kitchenapp.views import *
 
 # Create your views here.
 
@@ -31,6 +30,8 @@ def nutrition(request):
 def maincontact(request):
     return render(request, 'nutric/contact.html')
 
-def login_view(request):
-    return render(request, 'nutric/login.html')
+def econutricloud(request):
+    return render(request, 'nutric/econutriccloud.html')
+# def login_view(request):
+#     return render(request, 'login.html')
 

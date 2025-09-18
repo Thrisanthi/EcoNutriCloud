@@ -42,6 +42,7 @@ class Product(models.Model):
     meta_description = models.TextField(max_length=500, null=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+
     def __str__(self):
         return f"{self.name}"
     
@@ -93,6 +94,19 @@ class OrderItem(models.Model):
     def __str__(self):
         return f"{self.order.id}-{self.order.tracking_no}"
  
+class Rating(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="ratings")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    stars = models.IntegerField(default=1)  # 1–5
+    review = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("product", "user")  # one rating per user per product
+
+    def __str__(self):
+        return f"{self.product.name} – {self.stars}⭐ by {self.user.username}"
+
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     phone = models.CharField(max_length=50,null=False)

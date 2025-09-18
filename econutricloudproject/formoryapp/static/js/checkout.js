@@ -1,5 +1,91 @@
+// $(document).ready(function () {
+//     $('.PayWithRazorpay').click(function (e) {
+//         e.preventDefault();
+
+//         var fname = $("[name='fname']").val();
+//         var lname = $("[name='lname']").val();
+//         var email = $("[name='email']").val();
+//         var phone = $("[name='phone']").val();
+//         var address = $("[name='address']").val();
+//         var city = $("[name='city']").val();
+//         var state = $("[name='state']").val();
+//         var country = $("[name='country']").val();
+//         var pincode = $("[name='pincode']").val();
+//         var token = $("[name='csrfmiddlewaretoken']").val();
+
+//         if (fname == "" || lname == "" || email == "" || phone == "" || address == "" || city == "" || state == "" || country == "" || pincode == "") {
+//             // alert("All fields are mandatory");
+//             Swal.fire({
+//         icon: "error",
+//         title: "Alert!",
+//         text: "All fields are mandatory",
+//     });
+//             return false;
+//         }
+//         else {
+//             $.ajax({
+//                 type: "GET",
+//                 url: "/proceed-to-pay",
+//                 success: function (response) {
+//                     // console.log(response);
+//                      var options = {
+//             "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
+//             "amount": 1*100,//response.total_price, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+//             "currency": "INR",
+//             "name": "Thrisanthi",
+//             "description": "Thank you for buying us",
+//             "image": "https://example.com/your_logo",
+//             // "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+//             "handler": function (responseb){
+//                 alert(responseb.razorpay_payment_id);
+//                 data = {
+//                     "fname": fname,
+//                     "lname": lname,
+//                     "email": email,
+//                     "phone": phone,
+//                     "address": address,  
+//                     "city": city,
+//                     "state": state,
+//                     "country": country,       
+//                     "pincode": pincode,
+//                     "payment_mode": "Paid by Razorpay",
+//                     "payment_id": responseb.razorpay_payment_id,
+//                     csrfmiddlewaretoken: token
+//                 }
+//                 $.ajax({
+//                     type: "POST",
+//                     url: "/place-order",
+//                     data: data,
+//                     success: function (responsec) {
+//                         swal("Congratulations!", responsec.status, "success").then((value) => {
+//                             window.location.href = "/my-orders";
+//                         });
+//                     }
+//                 });
+//             },
+//             "prefill": {
+//                 "name": fname + " " + lname,
+//                 "email": email,
+//                 "contact": phone
+//             }, 
+//            "theme": {
+//                 "color": "#3399cc"
+//             }
+//         };
+//         var rzp1 = new Razorpay(options);
+//             rzp1.open();
+//                 }
+//             });
+           
+//         }
+//     });
+// });
+
+
+//for temporary order placement without Razorpay
+
 $(document).ready(function () {
-    $('.paywithrazorpay').click(function (e) {
+    $('.PayWithRazorpay').click(function (e) {
         e.preventDefault();
 
         var fname = $("[name='fname']").val();
@@ -11,40 +97,46 @@ $(document).ready(function () {
         var state = $("[name='state']").val();
         var country = $("[name='country']").val();
         var pincode = $("[name='pincode']").val();
+        var token = $("[name='csrfmiddlewaretoken']").val();
 
-        if (!fname == "" || !lname == "" || !email == "" || !phone == "" || !address == "" || !city == "" || !state == "" || !country == "" || !pincode == "") {
-            alert("All fields are required");
+        if (fname == "" || lname == "" || email == "" || phone == "" || address == "" || city == "" || state == "" || country == "" || pincode == "") {
+            Swal.fire({
+                icon: "error",
+                title: "Alert!",
+                text: "All fields are mandatory",
+            });
             return false;
+        } else {
+            // ✅ Temporary Order Placement without Razorpay
+            var data = {
+                "fname": fname,
+                "lname": lname,
+                "email": email,
+                "phone": phone,
+                "address": address,
+                "city": city,
+                "state": state,
+                "country": country,
+                "pincode": pincode,
+                "payment_mode": "TEMP | COD or Razorpay Skipped",
+                "payment_id": "TEMP123456",  // fake id for now
+                csrfmiddlewaretoken: token
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/place-order",
+                data: data,
+                success: function (responsec) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Congratulations!",
+                        text: responsec.status,
+                    }).then(() => {
+                        window.location.href = "/my-orders";
+                    });
+                }
+            });
         }
-        else {
-            var options = {
-            "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
-            "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-            "currency": "INR",
-            "name": "Acme Corp",
-            "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
-            "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            "handler": function (response){
-                alert(response.razorpay_payment_id);
-                alert(response.razorpay_order_id);
-                alert(response.razorpay_signature);
-            },
-            "prefill": {
-                "name": "Gaurav Kumar",
-                "email": "gaurav.kumar@example.com",
-                "contact": "9000090000"
-            }, 
-           "notes": {
-                "address": "Razorpay Corporate Office"
-            },
-           "theme": {
-                "color": "#3399cc"
-            }
-        };
-        var rzp1 = new Razorpay(options);
-            rzp1.open();
-        }
-        
     });
 });

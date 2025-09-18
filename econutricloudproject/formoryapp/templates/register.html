@@ -1,51 +1,169 @@
-{% extends "main.html" %}
-{% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="">
-                <div class="card mt-3 shadow">
-                    <div class="card-body">
-                        <form action="" method="POST">
-                            {% csrf_token %}
-                            <div class="text-center">
-                                <h4>Register</h4>
-                            </div>
-                            <hr>
-                            <div class="form-group">
-                                <label for="">Username : </label>
-                                {{ form.username }}
-                                {% if form.errors.username %}
-                                   <label class="text-danger">{{ form.errors.username }}</label>
-                                {% endif %}
-                            </div>
-                            <div class="form-group">
-                                <label for="">Email : </label>
-                                {{ form.email }}
-                                {% if form.errors.email %}
-                                   <label class="text-danger">{{ form.errors.email }}</label>
-                                {% endif %}
-                            </div>
-                            <div class="form-group">
-                                <label for="">Password : </label>
-                                {{ form.password1 }}
-                                {% if form.errors.password1 %}
-                                   <label class="text-danger">{{ form.errors.password1 }}</label>
-                                {% endif %}
-                            </div>
-                            <div class="form-group">
-                                <label for="">ConfirmPassword : </label>
-                                {{ form.password2 }}
-                                {% if form.errors.password2 %}
-                                   <label class="text-danger">{{ form.errors.password2 }}</label>
-                                {% endif %}
-                            </div>
-                            <button type="submit" class="btn float-end shadow btn-success px-4">Register</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <style>
+    /* ===== Global Styles ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url("{% static 'images/background.jpg' %}") no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    /* ===== Card Container ===== */
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 450px;
+      animation: fadeIn 0.8s ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    /* ===== Form ===== */
+    form label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 18px;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #4facfe;
+      box-shadow: 0 0 8px rgba(79, 172, 254, 0.4);
+      outline: none;
+    }
+
+    /* ===== Button ===== */
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+
+    /* ===== Form Group ===== */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    /* ===== Error Messages ===== */
+    .error {
+      color: #e74c3c;
+      font-size: 0.85em;
+      margin-top: -12px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 480px) {
+      .card {
+        padding: 30px 20px;
+        border-radius: 15px;
+      }
+      h2 {
+        font-size: 24px;
+      }
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Create Your Account</h2>
+    <form method="POST">
+      {% csrf_token %}
+
+      {{ form.username.label }}
+      {{ form.username }}
+      {% if form.errors.username %}
+        <p class="error">{{ form.errors.username }}</p>
+      {% endif %}
+
+      {{ form.email.label }}
+      {{ form.email }}
+      {% if form.errors.email %}
+        <p class="error">{{ form.errors.email }}</p>
+      {% endif %}
+
+      <!-- Brand Selection -->
+      <div class="form-group">
+        <label for="account_type">Choose Your Brand</label>
+        <select name="account_type" id="account_type" required>
+          <option value="">-- Select Brand --</option>
+          <option value="formory">Formory</option>
+          <option value="mamaskitchen">MAMA’s Kitchen</option>
+          <option value="nutric">Nutric</option>
+        </select>
+      </div>
+
+      {{ form.password1.label }}
+      {{ form.password1 }}
+      {% if form.errors.password1 %}
+        <p class="error">{{ form.errors.password1 }}</p>
+      {% endif %}
+
+      {{ form.password2.label }}
+      {{ form.password2 }}
+      {% if form.errors.password2 %}
+        <p class="error">{{ form.errors.password2 }}</p>
+      {% endif %}
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</body>
+</html>

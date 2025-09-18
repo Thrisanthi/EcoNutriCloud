@@ -1,12 +1,17 @@
 from django.urls import path
 from . import views
+from nutricapp import views 
 
-from formoryapp.controller import authview,cart,wishlist,checkout
+from formoryapp.controller import authview,cart,wishlist,checkout,orders
 urlpatterns = [
     path("formoryhome",views.formoryhome,name = "formoryhome"),
+    path("kitchenhome",views.kitchenhome,name = "kitchenhome"),
     path('category/',views.category,name="category"),
     path('category/<str:slug>',views.categoryview,name="categoryview"),
     path('category/<str:cate_slug>/<str:prod_slug>',views.productview,name='productview'),
+
+    path('product-list',views.productlistAjax),
+    path('searchproduct',views.searchproduct,name='searchproduct'),
 
     path('register/',authview.register,name='register'),
     path('login/',authview.loginpage,name="loginpage"),
@@ -23,5 +28,8 @@ urlpatterns = [
 
     path('checkout',checkout.index,name="checkout"),
     path('place-order',checkout.placeorder,name="placeorder"),
+    path('proceed-to-pay',checkout.razorpaycheck,name="proceedtopay"),
+    path('my-orders',orders.index,name="myorders"),
+    path('view-order/<str:t_no>',orders.view,name="orderview"),
 ]
 
