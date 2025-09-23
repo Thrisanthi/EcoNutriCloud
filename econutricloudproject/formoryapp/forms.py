@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from .models import User, Review
 from django import forms
  
 class CustomUserForm(UserCreationForm):
@@ -11,3 +11,15 @@ class CustomUserForm(UserCreationForm):
         model = User
         fields = ['username','email','password1','password2']
 
+# Review Form
+from django import forms
+from .models import Review
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['rating', 'comment']
+        widgets = {
+            'rating': forms.Select(choices=[(1,1),(2,2),(3,3),(4,4),(5,5)], attrs={'class':'form-select'}),
+            'comment': forms.Textarea(attrs={'rows':3, 'placeholder':'Write your review'}),
+        }

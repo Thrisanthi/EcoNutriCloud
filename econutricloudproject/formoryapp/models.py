@@ -71,6 +71,7 @@ class Order(models.Model):
     total_price = models.FloatField(null=False)
     payment_mode = models.CharField(max_length=150,null=False)
     payment_id = models.CharField(max_length=250,null=True)
+    razorpay_order_id = models.CharField(max_length=250, null=True, blank=True)  # add this field
     orderstatus = (
         ('Pending','Pending'),
         ('Out for Shipping','Out for Shipping'),
@@ -93,19 +94,27 @@ class OrderItem(models.Model):
     
     def __str__(self):
         return f"{self.order.id}-{self.order.tracking_no}"
- 
-class Rating(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="ratings")
+    
+ #------ Reviews -----------
+RATING_CHOICES = [
+    (1, "1 Star"),
+    (2, "2 Stars"),
+    (3, "3 Stars"),
+    (4, "4 Stars"),
+    (5, "5 Stars"),
+]
+
+class Review(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='reviews')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    stars = models.IntegerField(default=1)  # 1–5
-    review = models.TextField(blank=True, null=True)
+    rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES)
+    comment = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        unique_together = ("product", "user")  # one rating per user per product
-
     def __str__(self):
-        return f"{self.product.name} – {self.stars}⭐ by {self.user.username}"
+        return f"{self.user.username} - {self.product.name} ({self.rating})"
+
+    
 
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

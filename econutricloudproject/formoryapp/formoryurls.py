@@ -5,10 +5,20 @@ from nutricapp import views
 from formoryapp.controller import authview,cart,wishlist,checkout,orders
 urlpatterns = [
     path("formoryhome",views.formoryhome,name = "formoryhome"),
-    path("kitchenhome",views.kitchenhome,name = "kitchenhome"),
+    path("about",views.aboutus,name = "aboutus"),
+    path("mainhomepageaboutus",views.mainhomepageaboutus,name = "mainhomepageaboutus"),
+    path("impactpage",views.impactpage,name = "impactpage"),
+    path("privacy",views.privacypolicy,name = "privacypolicy"),
+    path("contactus",views.contactus,name = "contactus"),
+    # path("kitchenhome",views.kitchenhome,name = "kitchenhome"),
     path('category/',views.category,name="category"),
     path('category/<str:slug>',views.categoryview,name="categoryview"),
     path('category/<str:cate_slug>/<str:prod_slug>',views.productview,name='productview'),
+    path("submit-review/<int:product_id>/", views.submit_review, name="submit_review"),
+    path("review/<int:pk>/edit/", views.edit_review, name="edit_review"),
+    path("review/<int:pk>/delete/", views.delete_review, name="delete_review"),
+
+
 
     path('product-list',views.productlistAjax),
     path('searchproduct',views.searchproduct,name='searchproduct'),
@@ -27,8 +37,8 @@ urlpatterns = [
     path('delete-wishlist-item',wishlist.deletewishlistitem,name="deletewishlistitem"),
 
     path('checkout',checkout.index,name="checkout"),
-    path('place-order',checkout.placeorder,name="placeorder"),
-    path('proceed-to-pay',checkout.razorpaycheck,name="proceedtopay"),
+    path('place-order',checkout.placeorder,name="place-order"),
+    path('proceed-to-pay',checkout.razorpaycheck,name="proceed_to_pay"),
     path('my-orders',orders.index,name="myorders"),
     path('view-order/<str:t_no>',orders.view,name="orderview"),
 ]

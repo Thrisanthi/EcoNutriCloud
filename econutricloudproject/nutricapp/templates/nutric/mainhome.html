@@ -49,6 +49,44 @@
     .nav-links a{color:#0f172a; text-decoration:none; font-weight:600; font-size:14px; padding:8px 10px; border-radius:10px}
     .nav-links a:hover{background:rgba(22,163,74,0.06); color:var(--brand)}
     .cta-btn{background:var(--brand); color:#fff; padding:8px 12px; border-radius:10px; font-weight:700; text-decoration:none}
+    /* Search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 10px;
+  padding: 4px 8px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 6px;
+  flex: 1;
+  min-width: 160px;
+}
+
+.search-bar button {
+  border: none;
+  background: var(--brand);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-bar button:hover {
+  background: #15803d; /* darker green */
+}
+
+@media(max-width:900px){
+  .search-bar{width:100%; margin-top:10px;}
+}
+
     /* Mobile menu */
     .menu-toggle{display:none; background:transparent; border:0; font-size:20px}
     @media(max-width:900px){ .nav-links{display:none} .menu-toggle{display:inline-flex} }
@@ -76,13 +114,26 @@
     .test-card{flex:1; background:var(--card); padding:18px; border-radius:12px; box-shadow:var(--shadow)}
     .stars{color:#f59e0b; font-weight:800}
     /* Footer */
-    footer{margin-top:40px;background:linear-gradient(180deg,#fff,#f3f7f6); padding:26px 18px; border-top:1px solid rgba(15,23,42,0.04)}
-    .footer-grid{max-width:1200px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px; align-items:start; padding:8px}
-    .footer-grid h4{margin:0 0 6px}
-    .footer-links a{display:block; color:var(--muted); text-decoration:none; margin-bottom:6px}
-    .payments{display:flex; gap:8px; align-items:center}
-    .payments img{height:30px; object-fit:contain}
-    .copyright{max-width:1200px; margin:12px auto; text-align:center; color:var(--muted); font-size:13px}
+  footer {
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff,#f3f7f6);
+    padding:26px 18px;
+    border-top:1px solid rgba(15,23,42,0.04);
+  }
+  .footer-grid {
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap:40px;
+    align-items:start;
+    padding:8px;
+  }
+  .footer-grid h4{margin:0 0 6px}
+  .footer-links a{display:block; color:var(--muted); text-decoration:none; margin-bottom:6px}
+  .payments{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+  .payments img{height:30px; object-fit:contain}
+  .copyright{max-width:1200px; margin:12px auto; text-align:center; color:var(--muted); font-size:13px}
     /* Responsive */
     @media(max-width:1100px){ .hero{grid-template-columns:1fr 1fr} }
     @media(max-width:820px){
@@ -100,7 +151,7 @@
   <header class="nav" role="banner">
     <div class="nav-left">
       <a href="{% url 'mainhome' %}" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
-        <div class="brand-mark"><img src="{% static '/nutric/images/Econooo.png' %}"></div>
+        <div class="brand-mark"><img src="{% static 'images/econutricloud.png' %}"></div>
         <div>
           <div class="brand-title">EcoNutriCloud</div>
           <div style="font-size:12px; color:var(--muted); margin-top:2px">Fresh · Organic · Fast</div>
@@ -111,11 +162,26 @@
     <nav>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
       <div class="nav-links" id="navLinks">
+        <!-- SEARCH BAR -->
+{% comment %} <form class="search-bar" role="search" style="margin-left:16px;">
+  <input type="text" placeholder="Search..." aria-label="Search">
+  <button type="submit">🔍</button>
+</form> {% endcomment %}
+<div class="search-bar">
+      <form action="{% url "searchproduct" %}" method="POST" style="margin-left:16px;">
+        {% csrf_token %}
+       <div class="input-group">
+         <input type="search" required class="form-control" name="productsearch" id="searchproducts" placeholder="Search products...">
+         <button type="submit" class="input-group-text">🔍</button>
+      </div>
+     </form>
+    </div>
+
         <a href="{% url 'mainhome' %}">HOME</a>
         {% comment %} <a href="{% url 'organic' %}">ORGANIC</a>
         <a href="{% url 'recipes' %}">RECIPES</a>
         <a href="{% url 'nutrition' %}">NUTRITION</a> {% endcomment %}
-        <a href="{% url 'contact' %}">CONTACTS</a>
+        <a href="{% url 'contactus' %}">CONTACTS</a>
         {% comment %} <a href="{% url 'register' %}">REGISTER</a>
         <a href="{% url 'login' %}">LOGIN</a> {% endcomment %}
       </div>
@@ -163,7 +229,7 @@
 
       <!-- Formory -->
       <a class="brand-card" href="{% url 'formoryhome' %}">
-        <img src="{% static '/nutric/images/logo-formory.jpg' %}" alt="Formory logo">
+        <img src="{% static '/nutric/images/formory_kitchen.jpg' %}" alt="Formory logo">
         <h3>Formory Kitchen</h3>
         <p>Fresh fruits, grains & healthy grocery essentials. Cloud kitchen meals — hot, fast & home-style.</p>
         <div class="brand-actions">
@@ -246,40 +312,65 @@
   </main>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid" role="contentinfo" aria-label="Footer">
-      <div>
-        <div style="display:flex; gap:12px; align-items:center; justify-content:flex-start">
-          <div class="brand-mark" style="width:44px;height:44px"><img src="{% static 'images/Econooo.png' %}"></div>
-          <div>
-            <div style="font-weight:800">EcoNutriCloud</div>
-            <div style="font-size:13px; color:var(--muted)">Fresh food & kitchen services</div>
-          </div>
+<footer>
+  <div class="footer-grid" role="contentinfo" aria-label="Footer">
+
+    <!-- Column 1 -->
+    <div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div class="brand-mark">
+          <img src="{% static 'images/econutricloud.png' %}" alt="Formory Kitchen Logo"
+               style="width:40px; height:40px; object-fit:cover; border-radius:6px;">
         </div>
-        <p style="color:var(--muted); margin-top:10px">Delivering wholesome goodness — Nutric, MAMA's Kitchen & Formory under one roof.</p>
+        <div>
+          <div style="font-weight:800; font-size:16px;">EcoNutriCloud</div>
+          <div style="font-size:13px; color:var(--muted)">Fresh food & kitchen services</div>
+        </div>
       </div>
+      <p style="color:var(--muted); margin-top:10px">
+        Delivering wholesome goodness — Nutric, MAMA's Kitchen & EcoNutriCloud under one roof.
+      </p>
+    </div>
 
-      <div>
-        <h4>We accept</h4>
-        <div class="payments" aria-hidden="true" style="margin-top:6px">
-          <!-- ensure these images exist under static/images/payments/ -->
-          <img src="{% static 'images/visa.png' %}" alt="Visa">
-          <img src="{% static 'images/mastercard.png' %}" alt="Mastercard">
-          <img src="{% static 'images/amex.png' %}" alt="Amex">
-          <img src="{% static 'images/upi.png' %}" alt="UPI">
+    <!-- Column 2 (Contact Details) -->
+    <div>
+      <h4>Contact Details</h4>
+      <div class="contacts-info" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/phone.png' %}" alt="Phone" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">+91 9999999999</span>
         </div>
-
-        <div style="margin-top:12px;">
-          <a class="footer-link" href="{% url 'contact' %}" style="color:var(--muted)">Privacy policy</a><br>
-          <a class="footer-link" href="#" style="color:var(--muted)">About us</a>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/email.png' %}" alt="Email" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">econutricloud@gmail.com</span>
         </div>
       </div>
     </div>
 
-    <div class="copyright">
-      <div>© {{ now|date:"Y" }} EcoNutriCloud. All rights reserved. · ISO: <em>ISO-9001</em> (placeholder)</div>
+    <!-- Column 3 (We Accept) -->
+    <div>
+      <h4>We accept</h4>
+      <div class="payments" style="margin-top:10px;">
+        <img src="{% static 'images/visa.png' %}" alt="Visa">
+        <img src="{% static 'images/mastercard.png' %}" alt="Mastercard">
+        <img src="{% static 'images/amex.jpg' %}" alt="Amex">
+        <img src="{% static 'images/upi.png' %}" alt="UPI">
+      </div>
+
+      <div style="margin-top:12px;">
+        <a class="footer-link" href="{% url 'privacypolicy' %}" style="color:var(--muted)">Privacy policy</a><br>
+        <a class="footer-link" href="{% url 'mainhomepageaboutus' %}" style="color:var(--muted)">About us</a>
+      </div>
     </div>
-  </footer>
+
+  </div>
+
+  <!-- Bottom copyright -->
+  <div class="copyright">
+    © {{ now|date:"Y" }} EcoNutriCloud. All rights reserved. · ISO: <em>ISO-9001</em> (placeholder)
+  </div>
+</footer>
+
 
   <!-- Embedded JS -->
   <script>
@@ -332,6 +423,24 @@
         }
       }
     });
+
+    // Search bar submit handler (example)<script>
+    var availableTags = [];
+        $.ajax({
+            method: "GET",
+            url: "/product-list",
+            success: function (response) {
+                startAutocomplete(response);
+
+            }
+        });
+        function startAutocomplete(availableTags)
+        {
+        $( "#searchproducts" ).autocomplete({
+            source: availableTags
+        });
+        }
+  
   </script>
 </body>
 </html>

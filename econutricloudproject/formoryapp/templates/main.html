@@ -28,6 +28,7 @@
         *{
         font-family:'Roboto',sans-serif;
         }
+
         a{
             text-decoration:none;
             color:#000;
@@ -46,6 +47,8 @@
             font-weight: 600;
             min-weight: 45px;
         }
+
+        
     </style>
 </head>
 <body>
@@ -90,6 +93,7 @@
            alertify.success('{{ msg}}');
         {% endfor %}
     </script>
+    {% include "footer.html" %}
     {% block scripts %}
     
     {% endblock scripts %}

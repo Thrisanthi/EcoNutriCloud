@@ -1,26 +1,29 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from  formoryapp.models import *
+from formoryapp.models import *
 from django.contrib.auth.models import User
 import random
+import razorpay
 
 def index(request):
     rawcart = Cart.objects.filter(user=request.user)
     for item in rawcart:
         if item.product_qty > item.product.quantity:
-            Cart.objects.delete(id=item.id)
-    
+            Cart.objects.filter(id=item.id).delete()
+
     cartitems = Cart.objects.filter(user=request.user)
     total_price = 0
     for item in cartitems:
-        total_price = total_price+item.product.selling_price * item.product_qty
-    
+        total_price += item.product.selling_price * item.product_qty
+
     userprofile = Profile.objects.filter(user=request.user).first()
 
-    context = {'cartitems':cartitems,'total_price':total_price,'userprofile':userprofile}  
-    return render(request,'checkout.html',context)
+    context = {'cartitems': cartitems, 'total_price': total_price, 'userprofile': userprofile}
+    return render(request, 'checkout.html', context)
+
 
 @login_required(login_url='loginpage')
 def placeorder(request):
@@ -42,7 +45,6 @@ def placeorder(request):
             userprofile.pincode = request.POST.get('pincode')
             userprofile.save()
 
-
         neworder = Order()
         neworder.user = request.user
         neworder.fname = request.POST.get('fname')
@@ -57,51 +59,75 @@ def placeorder(request):
 
         neworder.payment_mode = request.POST.get('payment_mode')
         neworder.payment_id = request.POST.get('payment_id')
+        neworder.razorpay_order_id = request.POST.get('order_id')
 
         cart = Cart.objects.filter(user=request.user)
         cart_total_price = 0
         for item in cart:
-            cart_total_price = cart_total_price + item.product.selling_price * item.product_qty
+            cart_total_price += item.product.selling_price * item.product_qty
         neworder.total_price = cart_total_price
-        trackno = 'thrisanthi'+str(random.randint(1111111,9999999))
-        while Order.objects.filter(tracking_no=trackno) is None:
-            trackno = 'thrisanthi'+str(random.randint(1111111,9999999))
+
+        trackno = 'username'+str(random.randint(1111111,9999999))
+        while Order.objects.filter(tracking_no=trackno).exists():
+            trackno = 'username' + str(random.randint(1111111,9999999))
         neworder.tracking_no = trackno
         neworder.save()
 
         neworderitems = Cart.objects.filter(user=request.user)
         for item in neworderitems:
             OrderItem.objects.create(
-                order = neworder,
-                product = item.product,
-                price = item.product.selling_price,
-                quantity = item.product_qty
+                order=neworder,
+                product=item.product,
+                price=item.product.selling_price,
+                quantity=item.product_qty
             )
-            # to decrease the product quantity from available stock
+            # Reduce product stock
             orderproduct = Product.objects.filter(id=item.product_id).first()
-            orderproduct.quantity = orderproduct.quantity - item.product_qty
+            orderproduct.quantity -= item.product_qty
             orderproduct.save()
 
-        # to clear the users cart
+        # Clear cart
         Cart.objects.filter(user=request.user).delete()
 
         payMode = request.POST.get('payment_mode')
         if payMode == "Paid by Razorpay":
-            return JsonResponse({'status':"Your Order Has Been Placed Successfully"})
+            return JsonResponse({'status': "Your Order Has Been Placed Successfully"})
         else:
-            messages.success(request,"Your Order Has Been Placed Successfully")
+            messages.success(request, "Your Order Has Been Placed Successfully")
+            return redirect('myorders')
+
     return redirect('formoryhome')
+
 
 @login_required(login_url='loginpage')
 def razorpaycheck(request):
     cart = Cart.objects.filter(user=request.user)
     total_price = 0
     for item in cart:
-        total_price = total_price + item.product.selling_price * item.product_qty
+        total_price += item.product.selling_price * item.product_qty
 
-    return JsonResponse({
-        'total_price': total_price
-    })
+    return JsonResponse({'total_price': total_price})
 
-def orders(request):
-    return HttpResponse("This is my orders page")
+
+def proceed_to_pay(request):
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user)
+        total_price = sum(item.product.selling_price * item.product_qty for item in cart)
+
+        # Razorpay client
+        client = razorpay.Client(auth=("rzp_test_RKc7sSScKAA385", "GSPOWUJvDN5YopIJ4I9ptb2h"))
+
+        # Create Razorpay order
+        payment = client.order.create({
+            "amount": int(total_price * 100),
+            "currency": "INR",
+            "payment_capture": "1"
+        })
+
+        return JsonResponse({
+            "amount": payment["amount"],
+            "id": payment["id"],  # razorpay_order_id
+            "currency": payment["currency"]
+        })
+    else:
+        return JsonResponse({"error": "User not authenticated"}, status=403)

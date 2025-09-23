@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>FormoryKitchen - About & Contact</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif; margin:0; 
+      background:linear-gradient(135deg,#e8f5e9,#f1fff3); 
+      color:#333;
+    }
+    header {background:#2b9348; color:#fff; padding:20px; text-align:center;}
+    section {padding:40px 20px; max-width:1000px; margin:auto;}
+    h2 {color:#2b9348; margin:0;}
+    
+    /* About cards */
+    .about-box {
+      background:#fff; padding:25px; border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1); margin-bottom:30px;
+      cursor:pointer; transition:0.3s;
+    }
+    .about-box:hover {transform:scale(1.02);}
+    .about-header {
+      display:flex; align-items:center; margin-bottom:10px;
+    }
+    .about-header img {
+      width:40px; margin-right:10px;
+    }
+
+    /* Contact */
+    .contact-container {max-width:600px; margin:auto;}
+    form {background:#fff; padding:25px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+    input,textarea,button {
+      width:100%; padding:10px; margin:10px 0;
+      border:1px solid #ccc; border-radius:5px; font-size:14px;
+    }
+    button {background:#2b9348; color:#fff; border:none; cursor:pointer; transition:0.3s;}
+    button:hover {background:#1f6f35;}
+
+    /* Modal Styles */
+    .modal {
+      display:none; 
+      position:fixed; 
+      top:0; left:0; 
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.6); 
+      justify-content:center; 
+      align-items:center;
+      z-index:1000;
+      overflow-y:auto; 
+      padding:40px 20px; 
+    }
+
+    .modal-content {
+      background:linear-gradient(135deg,#ffffff,#f4fff6); 
+      padding:30px; 
+      border-radius:15px; 
+      max-width:800px; 
+      width:100%;
+      position:relative; 
+      animation:fadeIn 0.3s ease-in-out;
+      box-shadow:0 8px 20px rgba(0,0,0,0.25);
+      max-height:90vh; 
+      overflow-y:auto; 
+    }
+
+    .modal-header {
+      display:flex; 
+      align-items:center; 
+      margin-bottom:20px; 
+      border-bottom:2px solid #e0e0e0; 
+      padding-bottom:10px;
+    }
+    .modal-header img {
+      width:50px; 
+      margin-right:12px;
+    }
+    .modal-header h3 {
+      color:#2b9348; 
+      margin:0; 
+      font-size:22px;
+    }
+
+    .modal p {
+      line-height:1.7; 
+      font-size:15px; 
+      color:#444; 
+      margin-bottom:15px;
+    }
+
+    .modal-content img.modal-img {
+      max-width:100%; 
+      border-radius:10px; 
+      margin-top:20px; 
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .close-btn {
+      position:absolute; 
+      top:15px; 
+      right:20px; 
+      font-size:28px; 
+      cursor:pointer; 
+      color:#555; 
+      transition:0.3s;
+    }
+    .close-btn:hover {
+      color:#e53935;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(-20px) scale(0.95);}
+      to {opacity:1; transform:translateY(0) scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to FormoryKitchen</h1>
+    <p>Fresh • Hygienic • Delicious</p>
+  </header>
+<button onclick="window.history.back()" style="width:60px;margin-bottom:20px;margin-left:1200px; padding:5px 5px; background-color:#2b9348; color:#fff; border:none; border-radius:5px; cursor:pointer;">&larr; Back</button>
+  <!-- About Us Section -->
+  <section id="about">
+    <div class="about-box" data-modal="storyModal">
+      <div class="about-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Our Story">
+        <h2>Our Story</h2>
+      </div>
+      <p>At FormoryKitchen, we began with a simple passion: to bring wholesome, home-style meals made with love, care, and uncompromising hygiene. What started as a small initiative in our family kitchen has now grown into a trusted name for freshness, taste, and quality.</p>
+    </div>
+
+    <div class="about-box" data-modal="hygieneModal">
+      <div class="about-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/992/992703.png" alt="Hygiene">
+        <h2>Our Hygiene Promise</h2>
+      </div>
+      <p>Your health is our highest priority, and we never compromise when it comes to cleanliness and safety. At FormoryKitchen, every dish is prepared in a fully sanitized kitchen, where hygiene standards are monitored and maintained at every stage of cooking.</p>
+    </div>
+
+    <div class="about-box" data-modal="missionModal">
+      <div class="about-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png" alt="Mission">
+        <h2>Our Mission</h2>
+      </div>
+      <p>At FormoryKitchen, our mission goes beyond serving food—we aim to serve care, health, and happiness through every meal we create. We believe that good food has the power to bring people together, to spark joy, and to nurture both body and soul.</p>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      <form id="contactForm">
+        <h3>Get in Touch</h3>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="formMsg" style="color:green; font-size:14px; display:none;">✅ Thanks for contacting us! We’ll reply soon.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Modals -->
+  <div class="modal" id="storyModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="modal-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Our Story">
+        <h3>Our Story</h3>
+      </div>
+      <p>Our journey was fueled by a dream to bridge the gap between homemade comfort and modern convenience. In today’s busy world, we realized that many families and professionals were missing out on nutritious, hygienic meals because of time constraints. That’s when FormoryKitchen stepped in—to deliver not just food, but an experience that feels like home.<br>
+        Over the years, we’ve built strong relationships with local farmers and suppliers to ensure every ingredient is fresh, natural, and responsibly sourced. Each recipe has been thoughtfully crafted, balancing tradition with innovation, so every bite carries the warmth of home and the excitement of discovery.<br>
+        From delivering single meals to catering large gatherings, our commitment has always remained the same—to serve food that people can trust and enjoy with their loved ones. What makes us proud is not just the meals we create, but the community of loyal customers who continue to share their lives and stories with us.<br>
+        Today, FormoryKitchen is more than just a kitchen—it’s a family built on values of love, hygiene, and care. And as we grow, we remain true to our roots: spreading happiness one meal at a time.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="hygieneModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="modal-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/992/992703.png" alt="Hygiene">
+        <h3>Our Hygiene Promise</h3>
+      </div>
+      <p>We follow a “clean kitchen, clean food” philosophy. Our chefs and staff undergo regular hygiene training, wear protective gear, and work in a safe, sterilized environment. From washing vegetables to handling raw ingredients, each step is carried out with utmost care to prevent contamination.<br>
+        We maintain strict safety checks before, during, and after food preparation. Fresh ingredients are sourced daily, carefully inspected, and stored under the right conditions to retain their natural flavor and nutrition. All cooking utensils and surfaces are sanitized multiple times a day to ensure a germ-free workspace.<br>
+        Packaging is another area where we hold ourselves to high standards. We use eco-friendly, high-quality, and food-grade packaging that keeps your meal safe, fresh, and intact until it reaches your table.<br>
+        At FormoryKitchen, hygiene isn’t just a practice—it’s a promise. A promise that every meal you enjoy is not only delicious but also safe, clean, and nourishing for you and your family.</p>
+      </div>
+  </div>
+
+  <div class="modal" id="missionModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="modal-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png" alt="Mission">
+        <h3>Our Mission</h3>
+      </div>
+      <p>We are dedicated to making affordable, tasty, and hygienic meals accessible to everyone, without ever compromising on quality. Whether it’s a quick lunch, a family dinner, or a festive gathering, our goal is to be part of your daily life with meals that you can trust and enjoy.<br>
+        Looking ahead, we strive to promote sustainable practices by working closely with local farmers and suppliers, supporting responsible sourcing, and reducing food waste. By encouraging healthy eating habits and providing a variety of nutritious options, we aim to contribute to a healthier, more balanced lifestyle for our community.<br>
+        Our vision is to create a world where healthy, hygienic, and wholesome food is within reach of every household. Every decision we make—big or small—comes back to this mission: to spread happiness, one meal at a time.</p>
+      </div>
+  </div>
+  
+
+  <script>
+    // Open modal when card clicked
+    document.querySelectorAll(".about-box").forEach(card => {
+      card.addEventListener("click", () => {
+        const modalId = card.getAttribute("data-modal");
+        document.getElementById(modalId).style.display = "flex";
+      });
+    });
+
+    // Close modal when X clicked
+    document.querySelectorAll(".close-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.closest(".modal").style.display = "none";
+      });
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener("click", e => {
+      if (e.target.classList.contains("modal")) {
+        e.target.style.display = "none";
+      }
+    });
+
+    // Contact form handler
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      document.getElementById("formMsg").style.display = "block";
+      this.reset();
+    });
+  </script>
+</body>
+</html>

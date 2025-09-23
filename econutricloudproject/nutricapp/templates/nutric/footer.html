@@ -1,0 +1,84 @@
+{% load static %}
+<style>
+  /* Footer */
+  footer {
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff,#f3f7f6);
+    padding:26px 18px;
+    border-top:1px solid rgba(15,23,42,0.04);
+  }
+  .footer-grid {
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap:40px;
+    align-items:start;
+    padding:8px;
+  }
+  .footer-grid h4{margin:0 0 6px}
+  .footer-links a{display:block; color:var(--muted); text-decoration:none; margin-bottom:6px}
+  .payments{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+  .payments img{height:30px; object-fit:contain}
+  .copyright{max-width:1200px; margin:12px auto; text-align:center; color:var(--muted); font-size:13px}
+</style>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid" role="contentinfo" aria-label="Footer">
+
+    <!-- Column 1 -->
+    <div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div class="brand-mark">
+          <img src="{% static 'images/formory_kitchen.jpg' %}" alt="Formory Kitchen Logo"
+               style="width:40px; height:40px; object-fit:cover; border-radius:6px;">
+        </div>
+        <div>
+          <div style="font-weight:800; font-size:16px;">Formory Kitchen</div>
+          <div style="font-size:13px; color:var(--muted)">Fresh food & kitchen services</div>
+        </div>
+      </div>
+      <p style="color:var(--muted); margin-top:10px">
+        Delivering wholesome goodness — Nutric, MAMA's Kitchen & Formory under one roof.
+      </p>
+    </div>
+
+    <!-- Column 2 (Contact Details) -->
+    <div>
+      <h4>Contact Details</h4>
+      <div class="contacts-info" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/phone.png' %}" alt="Phone" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">+91 9999999999</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/email.png' %}" alt="Email" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">econutricloud@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3 (We Accept) -->
+    <div>
+      <h4>We accept</h4>
+      <div class="payments" style="margin-top:10px;">
+        <img src="{% static 'images/visa.png' %}" alt="Visa">
+        <img src="{% static 'images/mastercard.png' %}" alt="Mastercard">
+        <img src="{% static 'images/amex.jpg' %}" alt="Amex">
+        <img src="{% static 'images/upi.png' %}" alt="UPI">
+      </div>
+
+      <div style="margin-top:12px;">
+        <a class="footer-link" href="{% url 'privacypolicy' %}" style="color:var(--muted)">Privacy policy</a><br>
+        <a class="footer-link" href="{% url 'aboutus' %}" style="color:var(--muted)">About us</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom copyright -->
+  <div class="copyright">
+    © {{ now|date:"Y" }} EcoNutriCloud. All rights reserved. · ISO: <em>ISO-9001</em> (placeholder)
+  </div>
+</footer>

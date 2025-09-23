@@ -1,0 +1,364 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Formory Kitchen & Nutri</title>
+<style>
+:root{
+  --primary:#ff7a59;
+  --secondary:#ffd86b;
+  --bg:#fefefe;
+  --text:#111;
+  --muted:#555555;
+  --accent1:#ff7a59;
+  --accent2:#ffd86b;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter, sans-serif;}
+body{background:var(--bg);color:var(--text);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+/* Navbar styling */
+header.navbar {display: flex;align-items: center;justify-content: space-between;padding: 12px 24px;background: linear-gradient(90deg, #4b79a1, #283e51);box-shadow: 0 4px 12px rgba(0,0,0,0.15);border-radius: 0 0 12px 12px;position: relative;}
+/* Logo with image + text */
+.logo {display: flex;align-items: center;gap: 12px;font-weight: bold;font-size: 20px;color: #fff;}
+.logo img {height: 50px;width: auto;border-radius: 12px;object-fit: contain;}
+/* Centered search bar */
+.search-bar {flex: 1;display: flex;justify-content: center;margin: 0 24px;}
+.search-bar input {padding: 8px 16px;border-radius: 8px 0 0 8px;border: none;outline: none;width: 300px;max-width: 100%;}
+.search-bar button {padding: 8px 16px;border-radius: 0 8px 8px 0;border: none;background: #ff7a59;color: #fff;cursor: pointer;font-weight: bold;}
+/* Nav links on right */
+.nav-links {display: flex;gap: 16px;}
+.nav-links a {color: #fff;font-weight: 500;padding: 6px 12px;border-radius: 8px;text-decoration: none;transition: 0.2s;}
+.nav-links a:hover {background: rgba(255, 255, 255, 0.2);}
+
+
+.container{max-width:1200px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:1fr 350px;gap:24px;}
+@media(max-width:900px){.container{grid-template-columns:1fr}header.navbar {flex-wrap: wrap;justify-content: center;gap: 12px;.logo {order: 1;.search-bar {order: 2;width: 100%;justify-content: center;}.nav-links {order: 3;flex-wrap: wrap;justify-content: center;
+}}}}
+
+.main-card{background:#ffffff;border-radius:var(--radius);padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+.main-card h1{margin-bottom:12px;}
+.main-card p{margin-bottom:16px;}
+.section{margin-top:24px;}
+.section h2{margin-bottom:16px;}
+.features{display:flex;flex-wrap:wrap;gap:12px;}
+.feature-card{flex:1 1 200px;background:rgba(196, 226, 162, 0.89);padding:16px;border-radius:var(--radius);}
+.feature-card h4{margin-bottom:8px;}
+.feature-card p{font-size:15px;color:var(--muted);}
+.feature-card:hover {transform: translateY(-6px);box-shadow:0 6px 18px rgba(0,0,0,0.15);background:rgba(180, 220, 150, 1);}
+
+.explore-more{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px;}
+.explore-card{background:rgba(196, 226, 162, 0.89);padding:16px;border-radius:var(--radius);text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+.explore-card h4{margin-bottom:8px;}
+.explore-card p{font-size:14px;color:var(--muted);}
+.explore-card:hover {transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,0.15);background:rgba(170, 210, 140, 1);}
+
+.sidebar{display:flex;flex-direction:column;gap:16px;}
+.sidebar-card{background:#fff;border-radius:var(--radius);padding:16px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+.sidebar-card h4{margin-bottom:8px;}
+.sidebar-card p{font-size:14px;color:var(--muted);}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px;}
+.stat{background:rgba(209, 167, 167);border-radius:var(--radius);padding:12px;text-align:center;}
+.stat b{display:block;font-size:16px;}
+.stat small{color:var(--muted);}
+.stat:hover {transform: translateY(-5px);background: rgba(230, 180, 180, 1);box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);}
+
+.cta-row{display:flex;gap:12px;margin-top:20px}
+.btn{padding:12px 16px;border-radius:10px;font-weight:600;cursor:pointer;border:0}
+.btn-primary{background:linear-gradient(90deg,var(--accent1),#ffb86b);color:#08202a}
+.btn-ghost{background:linear-gradient(90deg,var(--accent1),#ffb86b);color:#08202a}
+.btn-primary:hover, .btn-ghost:hover {transform: translateY(-3px) scale(1.05);box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);opacity: 0.9;}
+.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:all .22s}
+.modal-backdrop.open{opacity:1;pointer-events:auto}
+.modal{width:min(800px,95%);background:#111a2b;border-radius:14px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,0.7);color:#e6eef6;max-height:90vh;overflow-y:auto}
+.modal h2{margin-top:0;color:var(--accent1)}
+.modal p{color:#cfd6de}
+.close{float:right;border:0;background:transparent;font-size:22px;color:var(--muted);cursor:pointer}
+.contact-info p{margin:8px 0;font-size:15px}
+/* Footer */
+  footer {
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff,#f3f7f6);
+    padding:26px 18px;
+    border-top:1px solid rgba(15,23,42,0.04);
+  }
+  .footer-grid {
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap:40px;
+    align-items:start;
+    padding:8px;
+  }
+  .footer-grid h4{margin:0 0 6px}
+  .footer-links a{display:block; color:var(--muted); text-decoration:none; margin-bottom:6px}
+  .payments{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+  .payments img{height:30px; object-fit:contain}
+  .copyright{max-width:1200px; margin:12px auto; text-align:center; color:var(--muted); font-size:13px}
+    /* Responsive */
+    @media(max-width:1100px){ .hero{grid-template-columns:1fr 1fr} }
+    @media(max-width:820px){
+      .hero{grid-template-columns:1fr; gap:12px}
+      .brands-row{grid-template-columns:1fr; padding:0 16px}
+      .footer-grid{grid-template-columns:1fr; text-align:center}
+    }
+    /* small helpers */
+    .rating {display:flex; gap:6px; align-items:center; justify-content:center}
+    .dot{width:6px;height:6px;border-radius:50%;background:rgba(15,23,42,0.06)}
+
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo"><a href="{% url 'mainhome' %}"><img src="{% static '/images/econutricloud.png' %}"></a>EcoNutriCloud</div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search impact metrics...">
+    <button>Search</button>
+  </div>
+  <nav class="nav-links">
+    <a href="{% url 'mainhomepageaboutus' %}"><b>ABOUT</b></a>
+    <a href="{% url 'impactpage' %}"><b>OUR IMPACT</b></a>
+  </nav>
+</header>
+
+<div class="container">
+  <main class="main-card">
+    <h1>About EcoNutriCloud</h1>
+    <p>Formory Kitchen & Nutri delivers wholesome meals combining the warmth of home-cooked flavors with modern nutritional expertise. Every dish is carefully crafted to be delicious, nourishing, and perfectly balanced for a healthy lifestyle.</p>
+
+    <div class="section">
+      <h2>Why Choose Us</h2>
+      <div class="features">
+        <div class="feature-card">
+          <h4>Farm-to-Table</h4>
+          <p>Fresh local ingredients for peak flavor and lower environmental footprint.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Nutrition First</h4>
+          <p>Balanced meals with macro & micro guidance from expert nutritionists.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Custom Plans</h4>
+          <p>Personalized meal options for diverse health goals and taste preferences.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Quick & Fresh</h4>
+          <p>Meals ready-to-eat or delivered fresh to your doorstep efficiently.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Explore More</h2>
+      <div class="explore-more">
+        <div class="explore-card">
+          <h4>Seasonal Recipes</h4>
+          <p>Discover nutritious recipes using fresh, local seasonal ingredients.</p>
+        </div>
+        <div class="explore-card">
+          <h4>Diet Plans</h4>
+          <p>Personalized meal plans designed by our expert nutritionists.</p>
+        </div>
+        <div class="explore-card">
+          <h4>Cooking Tips</h4>
+          <p>Learn simple techniques to enhance flavors while keeping meals healthy.</p>
+        </div>
+        <div class="explore-card">
+          <h4>Community Stories</h4>
+          <p>Read stories from our customers and communities we serve.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row">
+        <button class="btn btn-primary" id="openStory">Read Our Story</button>
+        <button class="btn btn-ghost" id="contactBtn">Contact Us</button>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h4>Chef Poornima</h4>
+      <p>Head Chef</p>
+      <div class="stats">
+        <div class="stat"><b>120+</b><small>Menu Items</small></div>
+        <div class="stat"><b>4.9★</b><small>Avg Rating</small></div>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <h4>Nutritionist Nikitha</h4>
+      <p>Expert Nutritionist</p>
+      <div class="stats">
+        <div class="stat"><b>500+</b><small>Diets Planned</small></div>
+        <div class="stat"><b>95%</b><small>Success Rate</small></div>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <h4>Thrisanthi</h4>
+      <p>Founder & Visionary</p>
+      <div class="stats">
+        <div class="stat"><b>2025</b><small>Founded</small></div>
+        <div class="stat"><b>10k+</b><small>Happy Customers</small></div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+ <!-- Modals -->
+  <div class="modal-backdrop" id="storyModal">
+    <div class="modal">
+      <button class="close" id="closeStory">✕</button>
+      <h2>Our Story</h2>
+      <p>Formory Kitchen began as a simple idea: to bring the warmth of home-cooked meals together with balanced nutrition. Our chefs and nutritionists collaborate to design dishes that taste like home while supporting healthy lifestyles.</p>
+      <p>With locally sourced produce, carefully chosen ingredients, and portion-balanced meals, we make healthy eating simple, tasty, and accessible to everyone.</p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="contactModal">
+    <div class="modal">
+      <button class="close" id="closeContact">✕</button>
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <p>📧 Email: hello@formorykitchen.example</p>
+        <p>📞 Phone: +91 98765 43210</p>
+        <p>📍 Address: 123, Green Valley Street, Bengaluru</p>
+      </div>
+    </div>
+  </div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid" role="contentinfo" aria-label="Footer">
+
+    <!-- Column 1 -->
+    <div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div class="brand-mark">
+          <img src="{% static 'images/econutricloud.png' %}" alt="Formory Kitchen Logo"
+               style="width:40px; height:40px; object-fit:cover; border-radius:6px;">
+        </div>
+        <div>
+          <div style="font-weight:800; font-size:16px;">EcoNutriCloud</div>
+          <div style="font-size:13px; color:var(--muted)">Fresh food & kitchen services</div>
+        </div>
+      </div>
+      <p style="color:var(--muted); margin-top:10px">
+        Delivering wholesome goodness — Nutric, MAMA's Kitchen & EcoNutriCloud under one roof.
+      </p>
+    </div>
+
+    <!-- Column 2 (Contact Details) -->
+    <div>
+      <h4>Contact Details</h4>
+      <div class="contacts-info" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/phone.png' %}" alt="Phone" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">+91 9999999999</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/email.png' %}" alt="Email" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">econutricloud@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3 (We Accept) -->
+    <div>
+      <h4>We accept</h4>
+      <div class="payments" style="margin-top:10px;">
+        <img src="{% static 'images/visa.png' %}" alt="Visa">
+        <img src="{% static 'images/mastercard.png' %}" alt="Mastercard">
+        <img src="{% static 'images/amex.jpg' %}" alt="Amex">
+        <img src="{% static 'images/upi.png' %}" alt="UPI">
+      </div>
+
+      <div style="margin-top:12px;">
+        <a class="footer-link" href="{% url 'privacypolicy' %}" style="color:var(--muted)">Privacy policy</a><br>
+        <a class="footer-link" href="{% url 'mainhomepageaboutus' %}" style="color:var(--muted)">About us</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom copyright -->
+  <div class="copyright">
+    © {{ now|date:"Y" }} EcoNutriCloud. All rights reserved. · ISO: <em>ISO-9001</em> (placeholder)
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+//search
+const searchInput = document.querySelector('.search-bar input');
+const featureCards = document.querySelectorAll('.feature-card');
+const exploreCards = document.querySelectorAll('.explore-card');
+const mainCard = document.querySelector('.main-card'); // main content
+const whyChooseSection = document.querySelector('.section'); // first section (Why Choose Us)
+const exploreSection = document.querySelector('.section:nth-of-type(2)'); // Explore More section
+
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase().trim();
+  
+  // Filter main card
+  const mainText = mainCard.textContent.toLowerCase();
+  mainCard.style.display = mainText.includes(query) || query === '' ? 'block' : 'none';
+
+  // Filter feature cards
+  let featureMatch = false;
+  featureCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if(text.includes(query)) {
+      card.style.display = 'block';
+      featureMatch = true;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  // Show/hide Why Choose Us section
+  whyChooseSection.style.display = featureMatch || query === '' ? 'block' : 'none';
+
+  // Filter explore cards
+  let exploreMatch = false;
+  exploreCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if(text.includes(query)) {
+      card.style.display = 'block';
+      exploreMatch = true;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  // Show/hide Explore More section
+  exploreSection.style.display = exploreMatch || query === '' ? 'block' : 'none';
+});
+
+const storyModal = document.getElementById('storyModal');
+const contactModal = document.getElementById('contactModal');
+
+// Story
+document.getElementById('openStory').onclick = ()=>{storyModal.classList.add('open');document.body.style.overflow='hidden'};
+document.getElementById('closeStory').onclick = ()=>{storyModal.classList.remove('open');document.body.style.overflow=''};
+storyModal.onclick = e=>{if(e.target===storyModal){storyModal.classList.remove('open');document.body.style.overflow=''}};
+
+// Contact
+document.getElementById('contactBtn').onclick = ()=>{contactModal.classList.add('open');document.body.style.overflow='hidden'};
+document.getElementById('closeContact').onclick = ()=>{contactModal.classList.remove('open');document.body.style.overflow=''};
+contactModal.onclick = e=>{if(e.target===contactModal){contactModal.classList.remove('open');document.body.style.overflow=''}};
+
+// ESC key
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){
+    storyModal.classList.remove('open');
+    contactModal.classList.remove('open');
+    document.body.style.overflow='';
+  }
+});
+
+
+</script>
+
+</body>
+</html>
