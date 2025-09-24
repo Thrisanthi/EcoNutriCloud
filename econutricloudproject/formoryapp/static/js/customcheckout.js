@@ -46,6 +46,7 @@ $(document).ready(function () {
                                 "payment_mode": "Paid by Razorpay",
                                 "payment_id": responseb.razorpay_payment_id,
                                 "order_id": responseb.razorpay_order_id,
+                                "signature": responseb.razorpay_signature,   // ✅ include signature
                                 csrfmiddlewaretoken: token
                             };
 

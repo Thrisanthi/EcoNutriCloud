@@ -26,6 +26,7 @@ def index(request):
 
 
 @login_required(login_url='loginpage')
+
 def placeorder(request):
     if request.method == "POST":
         currentuser = User.objects.filter(id=request.user.id).first()
@@ -67,9 +68,9 @@ def placeorder(request):
             cart_total_price += item.product.selling_price * item.product_qty
         neworder.total_price = cart_total_price
 
-        trackno = 'username'+str(random.randint(1111111,9999999))
+        trackno = 'username' + str(random.randint(1111111, 9999999))
         while Order.objects.filter(tracking_no=trackno).exists():
-            trackno = 'username' + str(random.randint(1111111,9999999))
+            trackno = 'username' + str(random.randint(1111111, 9999999))
         neworder.tracking_no = trackno
         neworder.save()
 
@@ -91,12 +92,28 @@ def placeorder(request):
 
         payMode = request.POST.get('payment_mode')
         if payMode == "Paid by Razorpay":
+            # 🔑 Signature Verification Added
+            razorpay_order_id = request.POST.get('order_id')
+            razorpay_payment_id = request.POST.get('payment_id')
+            razorpay_signature = request.POST.get('signature')
+
+            client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+            try:
+                client.utility.verify_payment_signature({
+                    'razorpay_order_id': razorpay_order_id,
+                    'razorpay_payment_id': razorpay_payment_id,
+                    'razorpay_signature': razorpay_signature
+                })
+            except:
+                return JsonResponse({'status': "Payment verification failed"}, status=400)
+
             return JsonResponse({'status': "Your Order Has Been Placed Successfully"})
         else:
             messages.success(request, "Your Order Has Been Placed Successfully")
             return redirect('myorders')
 
     return redirect('formoryhome')
+
 
 
 @login_required(login_url='loginpage')
@@ -114,20 +131,25 @@ def proceed_to_pay(request):
         cart = Cart.objects.filter(user=request.user)
         total_price = sum(item.product.selling_price * item.product_qty for item in cart)
 
-        # Razorpay client
-        client = razorpay.Client(auth=("rzp_test_RKc7sSScKAA385", "GSPOWUJvDN5YopIJ4I9ptb2h"))
+        # Razorpay client (use whichever set of keys is defined in settings)
+        client = razorpay.Client(auth=(
+            getattr(settings, "RAZORPAY_KEY_ID", settings.RAZORPAY_API_KEY),
+            getattr(settings, "RAZORPAY_KEY_SECRET", settings.RAZORPAY_API_SECRET)
+        ))
 
         # Create Razorpay order
         payment = client.order.create({
-            "amount": int(total_price * 100),
+            "amount": int(total_price * 100),  # Razorpay requires amount in paise
             "currency": "INR",
             "payment_capture": "1"
         })
 
+        # Return full payment response (id, amount, currency, etc.)
         return JsonResponse({
-            "amount": payment["amount"],
-            "id": payment["id"],  # razorpay_order_id
-            "currency": payment["currency"]
+            "id": payment.get("id"),
+            "amount": payment.get("amount"),
+            "currency": payment.get("currency"),
+            "status": payment.get("status", "created")
         })
-    else:
-        return JsonResponse({"error": "User not authenticated"}, status=403)
+
+    return JsonResponse({"error": "User not authenticated"}, status=403)
