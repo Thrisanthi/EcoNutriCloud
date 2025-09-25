@@ -77,7 +77,7 @@ class Order(models.Model):
         ('Out for Shipping','Out for Shipping'),
         ('Completed','Completed'),
     )
-    status = models.CharField(max_length=150,choices=orderstatus,default='Pending')
+    status = models.CharField(max_length=150,choices=orderstatus,default='Paid')
     message = models.TextField(null=True)
     tracking_no = models.CharField(max_length=150,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
