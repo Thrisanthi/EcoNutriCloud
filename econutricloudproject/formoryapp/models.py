@@ -128,3 +128,35 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user.username}"
+    
+class DeliveryPartner(models.Model):
+    name = models.CharField(max_length=150, null=False, blank=False)
+    phone = models.CharField(max_length=20, null=False, blank=False)
+    status_choices = (
+        ('Available', 'Available'),
+        ('Busy', 'Busy'),
+        ('Inactive', 'Inactive'),
+    )
+    status = models.CharField(max_length=50, choices=status_choices, default='Available')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.status})"
+
+
+class Delivery(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name="delivery")
+    partner = models.ForeignKey(DeliveryPartner, on_delete=models.SET_NULL, null=True, blank=True, related_name="deliveries")
+    assigned_at = models.DateTimeField(auto_now_add=True)
+    delivered_at = models.DateTimeField(null=True, blank=True)
+    delivery_status_choices = (
+        ('Assigned', 'Assigned'),
+        ('Out for Delivery', 'Out for Delivery'),
+        ('Delivered', 'Delivered'),
+        ('Failed', 'Failed'),
+    )
+    status = models.CharField(max_length=50, choices=delivery_status_choices, default='Assigned')
+    remarks = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Delivery for Order {self.order.id} - {self.status}"

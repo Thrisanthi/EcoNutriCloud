@@ -41,5 +41,11 @@ urlpatterns = [
     path('proceed-to-pay',checkout.razorpaycheck,name="proceed_to_pay"),
     path('my-orders',orders.index,name="myorders"),
     path('view-order/<str:t_no>',orders.view,name="orderview"),
+
+    path("deliveries/", orders.delivery_list, name="delivery_list"),
+    path("deliveries/assign/<int:order_id>/", orders.assign_delivery, name="assign_delivery"),
+    path("deliveries/update/<int:delivery_id>/", orders.update_delivery_status, name="update_delivery_status"),
 ]
+
+
 
