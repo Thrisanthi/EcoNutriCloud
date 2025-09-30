@@ -10,7 +10,6 @@ urlpatterns = [
     path("impactpage",views.impactpage,name = "impactpage"),
     path("privacy",views.privacypolicy,name = "privacypolicy"),
     path("contactus",views.contactus,name = "contactus"),
-    # path("kitchenhome",views.kitchenhome,name = "kitchenhome"),
     path('category/',views.category,name="category"),
     path('category/<str:slug>',views.categoryview,name="categoryview"),
     path('category/<str:cate_slug>/<str:prod_slug>',views.productview,name='productview'),

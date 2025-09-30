@@ -126,30 +126,57 @@ def razorpaycheck(request):
     return JsonResponse({'total_price': total_price})
 
 
+# def proceed_to_pay(request):
+#     if request.user.is_authenticated:
+#         cart = Cart.objects.filter(user=request.user)
+#         total_price = sum(float(item.product.selling_price) * int(item.product_qty) for item in cart)
+
+#         # Razorpay client (use whichever set of keys is defined in settings)
+#         client = razorpay.Client(auth=(
+#             getattr(settings, "RAZORPAY_KEY_ID", settings.RAZORPAY_API_KEY),
+#             getattr(settings, "RAZORPAY_KEY_SECRET", settings.RAZORPAY_API_SECRET)
+#         ))
+
+#         # Create Razorpay order
+#         payment = client.order.create({
+#             "amount": int(total_price * 100),  # Razorpay requires amount in paise
+#             "currency": "INR",
+#             "payment_capture": "1"
+#         })
+
+#         # Return full payment response (id, amount, currency, etc.)
+#         return JsonResponse({
+#             "id": payment.get("id"),
+#             "amount": payment.get("amount"),
+#             "currency": payment.get("currency"),
+#             "status": payment.get("status", "created")
+#         })
+
+#     return JsonResponse({"error": "User not authenticated"}, status=403)
+
+
+@login_required
 def proceed_to_pay(request):
-    if request.user.is_authenticated:
-        cart = Cart.objects.filter(user=request.user)
-        total_price = sum(item.product.selling_price * item.product_qty for item in cart)
+    cart = Cart.objects.filter(user=request.user)
+    total_price = 0
 
-        # Razorpay client (use whichever set of keys is defined in settings)
-        client = razorpay.Client(auth=(
-            getattr(settings, "RAZORPAY_KEY_ID", settings.RAZORPAY_API_KEY),
-            getattr(settings, "RAZORPAY_KEY_SECRET", settings.RAZORPAY_API_SECRET)
-        ))
+    for item in cart:
+        price = float(item.product.selling_price)
+        qty = int(item.product_qty)
+        total_price += price * qty
 
-        # Create Razorpay order
-        payment = client.order.create({
-            "amount": int(total_price * 100),  # Razorpay requires amount in paise
-            "currency": "INR",
-            "payment_capture": "1"
-        })
+    if total_price <= 0:
+        return JsonResponse({"error": "Invalid total amount"}, status=400)
 
-        # Return full payment response (id, amount, currency, etc.)
-        return JsonResponse({
-            "id": payment.get("id"),
-            "amount": payment.get("amount"),
-            "currency": payment.get("currency"),
-            "status": payment.get("status", "created")
-        })
+    client = razorpay.Client(auth=("YOUR_KEY_ID", "YOUR_SECRET"))
+    payment = client.order.create({
+        "amount": int(total_price * 100),  # Convert to paise
+        "currency": "INR",
+        "payment_capture": "1"
+    })
 
-    return JsonResponse({"error": "User not authenticated"}, status=403)
+    return JsonResponse({
+        "id": payment.get("id"),
+        "amount": int(total_price * 100),  # Ensure amount is in paise
+        "currency": payment.get("currency")
+    })

@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<div class="py-3 bg-primary">
+<div class="py-3" style="background-color:9dd99ff">
     <div class="container">
         <a class="text-white" href="{% url 'formoryhome' %}">Home/</a>
         <a class="text-white" href="{% url 'category' %}">Collections</a>
@@ -15,6 +15,10 @@
       <div class="col-md-12">
           <h1>Collections</h1>
           <hr>
+          <div class="col-md-12">
+          <!-- Side headings -->
+            <h2 class="text-primary"><u>Formory:</u></h2>
+          </div>
           <div class="row">
             {% for item in category %}
                <div class="col-md-3">
@@ -29,6 +33,11 @@
                      </a>
                    </div>
                </div>
+               {% if item.name == "Juices" %}
+                  <div class="col-md-12 mt-4">
+                      <h2 class="text-success"><u>Kitchen Recipes:</u></h2>
+                  </div>
+               {% endif %}
              {% endfor %}
           </div>
       </div>
@@ -36,5 +45,3 @@
 </div>
 {% endblock content %}
     
-
-
