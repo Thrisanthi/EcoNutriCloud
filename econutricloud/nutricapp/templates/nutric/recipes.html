@@ -1,0 +1,75 @@
+{% extends "nutric/main.html" %}
+{% load static %}
+
+      {% block title %}
+      Recipes
+      {% endblock title %}
+{% block content%}
+<link rel="stylesheet" href="{% static 'nutric/css/recipes.css' %}">
+<nav>
+    <div class="logo"><img src="{% static 'nutric/images/Econooo.png' %}" height="40" alt="Logo"><h2>EcoNutriCloud</h2></div>
+    <ul id="menu">
+      <li><a href="{% url 'mainhome' %}">HOME</a></li>
+      <li><a href="{% url 'organic' %}">ORGANIC</a></li>
+      <li><a href="{% url 'recipes' %}">RECIPES</a></li>
+      <li><a href="{% url 'nutrition' %}">NUTRITION</a></li>
+      <li><a href="{% url 'maincontact' %}">CONTACT US</a></li>
+      <li><a href="{% url 'kitchenhome' %}">BUY NOW</a></li>
+      <li><a href="#">Login</a></li>
+    </ul>
+  </nav>
+
+
+    <div class="hero" style="background: url('{% static 'nutric/images/recipe.png' %}') center/cover no-repeat;">
+    <h2>Simple recipes made for real, actual, everyday life</h2>
+</div>
+
+
+  <h2>🍲 Watch My Favorite Recipes</h2>
+  <div class="video-container">
+    <!-- Video Card 1 -->
+    <div class="video-card">
+      <video muted preload="metadata">"{% static 'nutric/css/recipes.css' %}"
+        <source src="{% static 'nutric/video/recipe.mp4' %}" type="video/mp4">
+      </video>
+      <h3>PANCAKE</h3>
+    </div>
+
+    <!-- Video Card 2 -->
+    <div class="video-card">
+      <video muted preload="metadata">
+        <source src="{% static 'nutric/video/biriyani.mp4' %}" type="video/mp4">
+      </video>
+      <h3>Chicken Biriyani</h3>
+    </div>
+
+    <!-- Video Card 3 -->
+    <div class="video-card">
+      <video muted preload="metadata">
+        <source src="{% static 'nutric/video/pasta.mp4' %}" type="video/mp4">
+      </video>
+      <h3>Pasta</h3>
+    </div>
+    <div class="video-card">
+      <video muted preload="metadata">
+        <source src="{% static 'nutric/video/brocoli.mp4' %}" type="video/mp4">
+      </video>
+      <h3>Broccoli</h3>
+    </div>
+    <div class="video-card">
+      <video muted preload="metadata">
+        <source src="{% static 'nutric/video/paneer.mp4' %}" type="video/mp4">
+      </video>
+      <h3>Paneer Curry</h3>
+    </div>
+  </div>
+  {% block scripts %}
+   <script src="{% static 'nutric/js/recipes.js' %}"></script>
+    
+    {% endblock scripts %}
+  
+
+
+  <footer><p>&copy; 2025 EcoNutriCloud | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p></footer>
+{%endblock content%}
+

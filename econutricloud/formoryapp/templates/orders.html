@@ -1,0 +1,69 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="py-3" style="background-color:#9dd9ff">
+    <div class="container">
+        <a class="text-black" href="{% url 'formoryhome' %}">Home/</a>
+        <a class="text-black" href="{% url 'myorders' %}">My Orders/</a>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h3 class="mb-0">My Orders</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Tracking No</th>
+                                    <th>Price</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                    <th>Delivary Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if orders %}
+                                    {% for item in orders %}
+                                        <tr>
+                                            <td>{{ item.id }}</td>
+                                            <td>{{ item.tracking_no }}</td>
+                                            <td>{{ item.total_price }}</td>
+                                            <td>{{ item.created_at|date:"d M Y" }}</td>
+                                            <td>{{ item.status }}</td>
+                                            <td>
+                                                <a href="{% url 'orderview' item.tracking_no %}" 
+                                                   class="btn btn-primary btn-sm">
+                                                   View
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'delivery_list' %}" 
+                                                   class="btn btn-primary btn-sm">
+                                                   View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6" class="text-center">No Orders Available</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- col-md-12 -->
+    </div> <!-- row -->
+</div> <!-- container -->
+
+{% endblock content %}

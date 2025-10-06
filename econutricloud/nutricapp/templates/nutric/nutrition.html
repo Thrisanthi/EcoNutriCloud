@@ -1,0 +1,75 @@
+{% extends "nutric/main.html" %}
+{% load static %}
+
+  {% block title %}
+  nutrition
+  {% endblock title %}
+  {%block content%}
+  <link rel="stylesheet" href="{% static 'nutric/css/nutrition.css' %}">
+<nav>
+    <div class="logo"><img src="{% static 'nutric/images/Econooo.png' %}" height="40" alt="Logo"><h2>EcoNutriCloud</h2></div>
+    <ul id="menu">
+      <li><a href="{% url 'mainhome' %}">HOME</a></li>
+      <li><a href="{% url 'organic' %}">ORGANIC</a></li>
+      <li><a href="{% url 'recipes' %}">RECIPES</a></li>
+      <li><a href="{% url 'nutrition' %}">NUTRITION</a></li>
+      <li><a href="{% url 'maincontact' %}">CONTACT US</a></li>
+      <li><a href="{% url 'nutrichome' %}">INFO</a></li>
+      <li><a href="#">Login</a></li>
+    </ul>
+  </nav>
+
+
+
+  <!-- Hero Section -->
+ <header class="hero" style="background: url('{% static 'nutric/images/Food-and-Nutrition.webp' %}') no-repeat center center/cover;">
+  <h2>Nutrition for Everyday Healthy Life</h2>
+</header>
+
+
+  <!-- Nutrition Categories -->
+  <section class="nutrition-cards">
+    <div class="card">
+      <img src="{% static 'nutric/images/Nutrition.jpeg' %}" alt="Vitamins">
+      <h3>Vitamins</h3>
+      <p>Boost immunity and maintain overall health with essential vitamins like A, C, D, and E.</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'nutric/images/minerals.jpg' %}" alt="Minerals">
+      <h3>Minerals</h3>
+      <p>Calcium, iron, and zinc help build strong bones and support vital body functions.</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'nutric/images/proteins.jpg' %}" alt="Proteins">
+      <h3>Proteins</h3>
+      <p>Proteins repair tissues, build muscle, and keep you strong and active.</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'nutric/images/carbs.jpg' %}" alt="Carbohydrates">
+      <h3>Carbohydrates</h3>
+      <p>Carbs provide energy for your body and are vital for brain function.</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'nutric/images/fats.jpg' %}" alt="Healthy Fats">
+      <h3>Healthy Fats</h3>
+      <p>Good fats like omega-3 support heart health and brain development.</p>
+    </div>
+  </section>
+
+  <!-- Tips Section -->
+  <section class="tips">
+    <h2>Healthy Eating Tips</h2>
+    <ul>
+      <li>Eat a variety of colorful fruits and vegetables daily.</li>
+      <li>Drink at least 8 glasses of water.</li>
+      <li>Choose whole grains over refined carbs.</li>
+      <li>Limit processed sugar and junk food.</li>
+      <li>Balance your meals with proteins, carbs, and fats.</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 EcoNutriCloud | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+  </footer>
+{%endblock content%}
