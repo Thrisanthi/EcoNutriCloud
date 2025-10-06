@@ -1,34 +1,143 @@
 {% load static %}
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+ 
+<style>
+  /* Carousel Custom Styling */
+  .carousel-item {
+    height: 70vh;
+    position: relative;
+    overflow: hidden;
+  }
+ 
+  .carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(70%);
+    transition: transform 6s ease-in-out;
+  }
+ 
+  .carousel-item.active img {
+    transform: scale(1.08);
+  }
+ 
+  /* Overlay Text */
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+    animation: fadeUp 1.2s ease-in-out;
+  }
+ 
+  .carousel-caption h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+ 
+  .carousel-caption p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+ 
+  .carousel-caption .btn {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+ 
+  .carousel-caption .btn:hover {
+    background-color: #ff9800;
+    color: #fff;
+    transform: translateY(-3px);
+  }
+ 
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -30%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+</style>
+ 
+<div id="offerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    {% for i in "123456" %}
+      <button type="button" data-bs-target="#offerCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+    {% endfor %}
   </div>
+ 
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a href="{% url 'category' %}"><img src="{% static 'images/vegoffers.jpg' %}" height="400px" class="d-block w-100" alt="First Slide"></a>
+      <img src="{% static 'images/banner1.png' %}" class="d-block w-100" alt="Offer 1">
+      <div class="carousel-caption">
+        <h2>Fresh Veggie Delights</h2>
+        <p>Get up to 25% off on organic vegetables this week!</p>
+        <a href="#" class="btn btn-warning">Explore Offers</a>
+      </div>
     </div>
+ 
     <div class="carousel-item">
-      <a href="{% url 'category' %}"><img src="{% static 'images/formorykitchen.png' %}" height="400px" class="d-block w-100" alt="Second Slide"></a>
+      <img src="{% static 'images/banner2.png' %}" class="d-block w-100" alt="Offer 2">
+      <div class="carousel-caption">
+        <h2>Healthy Breakfast Deals</h2>
+        <p>Start your day right — exclusive morning combos.</p>
+        <a href="#" class="btn btn-warning">Explore Offers</a>
+      </div>
     </div>
+ 
     <div class="carousel-item">
-      <a href="{% url 'category' %}"><img src="{% static 'images/formory.jpg' %}" height="400px" class="d-block w-100" alt="Third Slide"></a>
+      <img src="{% static 'images/banner3.png' %}" class="d-block w-100" alt="Offer 3">
+      <div class="carousel-caption">
+        <h2>Fresh Juices & Smoothies</h2>
+        <p>Stay refreshed with our special fruit blends.</p>
+        <a href="#" class="btn btn-warning">Explore Offers</a>
+      </div>
     </div>
+ 
     <div class="carousel-item">
-      <a href="{% url 'category' %}"><img src="{% static 'images/food.jpeg' %}" height="400px" class="d-block w-100" alt="Fourth Slide"></a>
+      <img src="{% static 'images/banner4.png' %}" class="d-block w-100" alt="Offer 4">
+      <div class="carousel-caption">
+        <h2>Family Feast Fridays</h2>
+        <p>Enjoy delicious meals for the whole family.</p>
+        <a href="#" class="btn btn-warning">Explore Offers</a>
+      </div>
     </div>
+ 
     <div class="carousel-item">
-      <a href="{% url 'category' %}"><img src="{% static 'images/formory-1.jpg' %}" height="400px" class="d-block w-100" alt="Fifth Slide"></a>
+      <img src="{% static 'images/banner5.png' %}" class="d-block w-100" alt="Offer 5">
+      <div class="carousel-caption">
+        <h2>Chef’s Special Menu</h2>
+        <p>Handcrafted dishes curated just for you.</p>
+        <a href="#" class="btn btn-warning">Explore Offers</a>
+      </div>
+    </div>
+ 
+    <div class="carousel-item">
+      <img src="{% static 'images/banner6.png' %}" class="d-block w-100" alt="Offer 6">
+      <div class="carousel-caption">
+        <h2>Weekend Combo Bonanza</h2>
+        <p>Grab exclusive discounts on your favorite meals!</p>
+        <a href="#" class="btn btn-warning">Explore Offers</a>
+      </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+ 
+  <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#offerCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>

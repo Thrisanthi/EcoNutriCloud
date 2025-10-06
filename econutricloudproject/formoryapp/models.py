@@ -46,6 +46,14 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.name}"
     
+    @property
+    def discounted_price(self):
+        offer = self.offers.filter(active=True).first()
+        if offer and offer.is_valid():
+            discount = (offer.discount_percentage / 100) * self.selling_price
+            return round(self.selling_price - discount, 2)
+        return self.selling_price
+    
 class Cart(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
@@ -160,3 +168,23 @@ class Delivery(models.Model):
 
     def __str__(self):
         return f"Delivery for Order {self.order.id} - {self.status}"
+    
+from django.db import models
+from datetime import date
+from .models import Product  # adjust import if in same file
+
+class Offer(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.TextField(blank=True, null=True)
+    discount_percentage = models.DecimalField(max_digits=5, decimal_places=2, help_text="Discount in %")
+    start_date = models.DateField(default=date.today)
+    end_date = models.DateField()
+    active = models.BooleanField(default=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='offers')
+
+    def is_valid(self):
+        return self.active and self.start_date <= date.today() <= self.end_date
+
+    def __str__(self):
+        return f"{self.title} ({self.discount_percentage}%)"
+

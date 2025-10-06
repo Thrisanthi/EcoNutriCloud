@@ -1,84 +1,210 @@
 {% load static %}
 <style>
-  /* Footer */
+  /* 🌟 Modern Footer Styling */
   footer {
-    margin-top:20px;
-    background:linear-gradient(180deg,#fff,#f3f7f6);
-    padding:26px 18px;
-    border-top:1px solid rgba(15,23,42,0.04);
+    margin-top: 40px;
+    background: linear-gradient(135deg, #e8f7ff 0%, #f8fffe 100%);
+    padding: 50px 20px 20px;
+    border-top: 2px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
   }
+ 
+  /* ✨ Floating gradient overlay */
+  footer::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0,180,255,0.2) 0%, transparent 80%);
+    animation: floatGradient 8s ease-in-out infinite;
+  }
+  footer::after {
+    content: "";
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0,255,200,0.15) 0%, transparent 80%);
+    animation: floatGradient 10s ease-in-out infinite reverse;
+  }
+ 
+  @keyframes floatGradient {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.1); }
+    100% { transform: translateY(0) scale(1); }
+  }
+ 
+  /* 🌐 Footer Grid Layout */
   .footer-grid {
-    max-width:1200px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
-    gap:40px;
-    align-items:start;
-    padding:8px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+    z-index: 2;
+    position: relative;
   }
-  .footer-grid h4{margin:0 0 6px}
-  .footer-links a{display:block; color:var(--muted); text-decoration:none; margin-bottom:6px}
-  .payments{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
-  .payments img{height:30px; object-fit:contain}
-  .copyright{max-width:1200px; margin:12px auto; text-align:center; color:var(--muted); font-size:13px}
+ 
+  .footer-grid h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #0a3d62;
+    position: relative;
+  }
+ 
+  .footer-grid h4::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #00b894, #0097a7);
+    margin-top: 4px;
+    border-radius: 2px;
+  }
+ 
+  /* 🔗 Footer Links */
+  .footer-links a,
+  .footer-link {
+    display: block;
+    color: #607d8b;
+    text-decoration: none;
+    margin-bottom: 6px;
+    transition: all 0.3s ease;
+  }
+  .footer-links a:hover,
+  .footer-link:hover {
+    color: #00b894;
+    transform: translateX(5px);
+  }
+ 
+  /* 💳 Payment icons */
+  .payments {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .payments img {
+    height: 32px;
+    width: auto;
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+  }
+  .payments img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+ 
+  /* 📞 Contact Section */
+  .contacts-info div {
+    transition: all 0.3s ease;
+  }
+  .contacts-info div:hover {
+    transform: translateX(4px);
+  }
+ 
+  /* 🏷️ Brand Section */
+  .brand-mark img {
+    animation: floatIcon 4s ease-in-out infinite alternate;
+  }
+  @keyframes floatIcon {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-4px); }
+  }
+ 
+  /* 🪪 Copyright */
+  .copyright {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    text-align: center;
+    color: #607d8b;
+    font-size: 14px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 10px;
+    animation: fadeIn 2s ease forwards;
+  }
+ 
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+ 
+  /* 📱 Responsive */
+  @media (max-width: 768px) {
+    footer {
+      padding: 40px 15px 15px;
+    }
+    .footer-grid {
+      gap: 30px;
+      text-align: center;
+    }
+    .footer-grid h4::after {
+      margin: 6px auto;
+    }
+  }
 </style>
-
-<!-- FOOTER -->
+ 
+<!-- 🌿 FOOTER -->
 <footer>
-  <div class="footer-grid" role="contentinfo" aria-label="Footer">
-
-    <!-- Column 1 -->
-    <div>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <div class="brand-mark">
-          <img src="{% static 'images/formory_kitchen.jpg' %}" alt="Formory Kitchen Logo"
-               style="width:40px; height:40px; object-fit:cover; border-radius:6px;">
-        </div>
-        <div>
-          <div style="font-weight:800; font-size:16px;">Formory Kitchen</div>
-          <div style="font-size:13px; color:var(--muted)">Fresh food & kitchen services</div>
-        </div>
-      </div>
-      <p style="color:var(--muted); margin-top:10px">
+<div class="footer-grid" role="contentinfo" aria-label="Footer">
+ 
+    <!-- 🥗 Column 1 -->
+<div>
+<div style="display:flex; gap:10px; align-items:center;">
+<div class="brand-mark">
+<img src="{% static 'images/formory_kitchen.jpg' %}" alt="Formory Kitchen Logo"
+               style="width:45px; height:45px; object-fit:cover; border-radius:8px;">
+</div>
+<div>
+<div style="font-weight:800; font-size:17px; color:#0a3d62;">Formory Kitchen</div>
+<div style="font-size:13px; color:#607d8b;">Fresh food & kitchen services</div>
+</div>
+</div>
+<p style="color:#607d8b; margin-top:10px; line-height:1.5;">
         Delivering wholesome goodness — Nutric, MAMA's Kitchen & Formory under one roof.
-      </p>
-    </div>
-
-    <!-- Column 2 (Contact Details) -->
-    <div>
-      <h4>Contact Details</h4>
-      <div class="contacts-info" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;">
-        <div style="display:flex; align-items:center; gap:8px;">
-          <img src="{% static 'images/phone.png' %}" alt="Phone" style="height:20px; width:20px; object-fit:contain;">
-          <span style="color:var(--muted)">+91 6305896510</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:8px;">
-          <img src="{% static 'images/email.png' %}" alt="Email" style="height:20px; width:20px; object-fit:contain;">
-          <span style="color:var(--muted)">econutricloud@gmail.com</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column 3 (We Accept) -->
-    <div>
-      <h4>We accept</h4>
-      <div class="payments" style="margin-top:10px;">
-        <img src="{% static 'images/visa.png' %}" alt="Visa">
-        <img src="{% static 'images/mastercard.png' %}" alt="Mastercard">
-        <img src="{% static 'images/amex.jpg' %}" alt="Amex">
-        <img src="{% static 'images/upi.png' %}" alt="UPI">
-      </div>
-
-      <div style="margin-top:12px;">
-        <a class="footer-link" href="{% url 'privacypolicy' %}" style="color:var(--muted)">Privacy policy</a><br>
-        <a class="footer-link" href="{% url 'aboutus' %}" style="color:var(--muted)">About us</a>
-      </div>
-    </div>
-
+</p>
+</div>
+ 
+    <!-- ☎️ Column 2 (Contact Details) -->
+<div>
+<h4>Contact Details</h4>
+<div class="contacts-info" style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+<div style="display:flex; align-items:center; gap:8px;">
+<img src="{% static 'images/phone.png' %}" alt="Phone" style="height:20px; width:20px;">
+<span style="color:#607d8b;">+91 9999999999</span>
+</div>
+<div style="display:flex; align-items:center; gap:8px;">
+<img src="{% static 'images/email.png' %}" alt="Email" style="height:20px; width:20px;">
+<span style="color:#607d8b;">econutricloud@gmail.com</span>
+</div>
+</div>
+</div>
+ 
+    <!-- 💳 Column 3 (We Accept) -->
+<div>
+<h4>We Accept</h4>
+<div class="payments" style="margin-top:10px;">
+<img src="{% static 'images/visa.png' %}" alt="Visa">
+<img src="{% static 'images/mastercard.png' %}" alt="Mastercard">
+<img src="{% static 'images/amex.jpg' %}" alt="Amex">
+<img src="{% static 'images/upi.png' %}" alt="UPI">
+</div>
+ 
+      <div style="margin-top:14px;">
+<a class="footer-link" href="{% url 'privacypolicy' %}">Privacy Policy</a>
+<a class="footer-link" href="{% url 'aboutus' %}">About Us</a>
+</div>
+</div>
+ 
   </div>
-
-  <!-- Bottom copyright -->
-  <div class="copyright">
-    © {{ now|date:"Y" }} EcoNutriCloud. All rights reserved. · ISO: <em>ISO-9001</em> (placeholder)
-  </div>
+ 
+  <!-- 📜 Bottom Copyright -->
+<div class="copyright">
+    © {{ now|date:"Y" }} <strong>EcoNutriCloud</strong>. All rights reserved. · ISO: <em>ISO-9001</em> Certified
+</div>
 </footer>
