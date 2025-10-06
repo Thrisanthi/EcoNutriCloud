@@ -27,8 +27,15 @@ class DeliveryAdmin(admin.ModelAdmin):
 from django.contrib import admin
 from .models import Offer
 
-@admin.register(Offer)
 class OfferAdmin(admin.ModelAdmin):
-    list_display = ('title', 'product', 'discount_percentage', 'start_date', 'end_date', 'active')
-    list_filter = ('active', 'start_date', 'end_date')
+    list_display = ('title', 'product', 'discount_percentage', 'valid_from', 'valid_to', 'active')
+    list_filter = ('active', 'valid_from', 'valid_to')
     search_fields = ('title', 'product__name')
+    readonly_fields = ('discounted_price_display',)
+
+    def discounted_price_display(self, obj):
+        return obj.discounted_price()
+    discounted_price_display.short_description = 'Discounted Price'
+
+admin.site.register(Offer, OfferAdmin)
+

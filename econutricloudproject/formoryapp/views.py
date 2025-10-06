@@ -8,10 +8,13 @@ from nutricapp.models import *
 
 # Create your views here.
 def formoryhome(request):
-    trendingproducts = Product.objects.filter(trending=1)
-    context = {'trendingproducts':trendingproducts}
-    return render(request,"index.html",context)
-
+    trendingproducts = Product.objects.filter(trending=True)[:8]
+    offers = Offer.objects.filter(active=True)
+    context = {
+        'trendingproducts': trendingproducts,
+        'offers': offers,
+    }
+    return render(request, "index.html", context)
 
 
 def category(request):
