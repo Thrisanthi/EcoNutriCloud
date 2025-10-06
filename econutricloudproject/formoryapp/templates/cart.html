@@ -1,10 +1,10 @@
 {% extends "main.html" %}
 {% block content %}
 
-<div class="py-3" style="background-color:9dd99ff">
+<div class="py-3" style="background-color:#9dd9ff">
     <div class="container">
-        <a class="text-white" href="{% url 'formoryhome' %}">Home/</a>
-        <a class="text-white" href="{% url 'cart' %}">Cart/</a>
+        <a class="text-black" href="{% url 'formoryhome' %}">Home/</a>
+        <a class="text-black" href="{% url 'cart' %}">Cart/</a>
     </div>
 </div>
 <div class="py-5">
@@ -44,7 +44,7 @@
                       </div>
                    </div>                   
                 {% endfor %}
-                <a href = "{% url "checkout" %}" class="btn btn-outline-success float-end"> Checkout </a>
+                <a href = "{% url 'checkout' %}" class="btn btn-outline-success float-end"> Checkout </a>
               {% else %}
                  <h4>Your Cart is empty </h4>
               {% endif %}
@@ -55,5 +55,3 @@
 </div>
 {% endblock content %}
     
-
-

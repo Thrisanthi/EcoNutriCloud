@@ -1,8 +1,9 @@
 from django.urls import path
 from . import views
-from nutricapp import views 
+from nutricapp import views
 
-from formoryapp.controller import authview,cart,wishlist,checkout,orders
+
+from formoryapp.controller import authview,cart,wishlist,orders,checkout
 urlpatterns = [
     path("formoryhome",views.formoryhome,name = "formoryhome"),
     path("about",views.aboutus,name = "aboutus"),
@@ -10,6 +11,7 @@ urlpatterns = [
     path("impactpage",views.impactpage,name = "impactpage"),
     path("privacy",views.privacypolicy,name = "privacypolicy"),
     path("contactus",views.contactus,name = "contactus"),
+    # path("kitchenhome",views.kitchenhome,name = "kitchenhome"),
     path('category/',views.category,name="category"),
     path('category/<str:slug>',views.categoryview,name="categoryview"),
     path('category/<str:cate_slug>/<str:prod_slug>',views.productview,name='productview'),
@@ -35,16 +37,16 @@ urlpatterns = [
     path('add-to-wishlist',wishlist.addtowishlist,name="addtowishlist"),
     path('delete-wishlist-item',wishlist.deletewishlistitem,name="deletewishlistitem"),
 
-    path('checkout',checkout.index,name="checkout"),
-    path('place-order',checkout.placeorder,name="place-order"),
-    path('proceed-to-pay',checkout.razorpaycheck,name="proceed_to_pay"),
+    path('checkout/', checkout.checkout, name='checkout'),
+    path('place-order/', checkout.placeorder, name='place-order'),
+    path('proceed-to-pay/', checkout.proceed_to_pay, name='proceed_to_pay'),
+    
     path('my-orders',orders.index,name="myorders"),
     path('view-order/<str:t_no>',orders.view,name="orderview"),
 
     path("deliveries/", orders.delivery_list, name="delivery_list"),
     path("deliveries/assign/<int:order_id>/", orders.assign_delivery, name="assign_delivery"),
     path("deliveries/update/<int:delivery_id>/", orders.update_delivery_status, name="update_delivery_status"),
+    
+    
 ]
-
-
-

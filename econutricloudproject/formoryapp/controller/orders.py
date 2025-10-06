@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from formoryapp.models import Order, OrderItem,Delivery, DeliveryPartner
 from django.contrib import messages
 from django.utils import timezone
+from django.http import JsonResponse
+from django.contrib.auth.models import User
+
 
 @login_required(login_url='loginpage')
 def index(request):
@@ -30,11 +33,13 @@ def view(request, t_no):
 
 
 # List deliveries
+@login_required(login_url='loginpage')
 def delivery_list(request):
     deliveries = Delivery.objects.select_related("order", "partner").all()
     return render(request, "delivery_list.html", {"deliveries": deliveries})
 
 # Assign a delivery partner to an order
+@login_required(login_url='loginpage')
 def assign_delivery(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     partners = DeliveryPartner.objects.filter(status="Available")
@@ -58,6 +63,7 @@ def assign_delivery(request, order_id):
     return render(request, "assign_delivery.html", {"order": order, "partners": partners})
 
 # Update delivery status
+@login_required(login_url='loginpage')
 def update_delivery_status(request, delivery_id):
     delivery = get_object_or_404(Delivery, id=delivery_id)
 
@@ -81,22 +87,3 @@ def update_delivery_status(request, delivery_id):
         return redirect("delivery_list")
 
     return render(request, "update_delivery.html", {"delivery": delivery})
-
-
-# from django.shortcuts import render, redirect
-# from django.contrib import messages
-# from django.contrib.auth.decorators import login_required
-# from formoryapp.forms import CustomUserForm
-# from formoryapp.models import *
-
-# def index(request):
-#     orders = Order.objects.filter(user=request.user).order_by('-id')
-#     context = {'orders':orders}
-#     return render(request,'orders.html',context)
-
-# @login_required(login_url='loginpage')
-# def view(request, t_no):
-#     order = Order.objects.filter(tracking_no=t_no).filter(user=request.user).first()
-#     orderitems = OrderItem.objects.filter(order=order)
-#     context = {'order':order, 'orderitems':orderitems}
-#     return render(request,'orderview.html',context)
