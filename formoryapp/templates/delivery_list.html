@@ -1,0 +1,88 @@
+{% extends "main.html" %}
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="py-3" style="background-color:9dd99ff">
+    <div class="container">
+        <a class="text-white" href="{% url 'formoryhome' %}">Home/</a>
+        <a class="text-white" href="{% url 'delivery_list' %}">Deliveries/</a>
+    </div>
+</div>
+
+<!-- Deliveries Section -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h3 class="mb-0">Deliveries</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Delivery ID</th>
+                                    <th>Order ID</th>
+                                    <th>Partner</th>
+                                    <th>Status</th>
+                                    <th>Assigned At</th>
+                                    <th>Delivered At</th>
+                                    <th>Shipping Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if deliveries %}
+                                    {% for d in deliveries %}
+                                        <tr>
+                                            <td>{{ d.id }}</td>
+                                            <td>{{ d.order.id }}</td>
+                                            <td>
+                                                {% if d.partner %}
+                                                    {{ d.partner.name }} ({{ d.partner.phone }})
+                                                {% else %}
+                                                    <span class="text-muted">Not Assigned</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if d.status == "Delivered" %}
+                                                    <span class="badge bg-success">{{ d.status }}</span>
+                                                {% elif d.status == "Out for Delivery" %}
+                                                    <span class="badge bg-info">{{ d.status }}</span>
+                                                {% elif d.status == "Failed" %}
+                                                    <span class="badge bg-danger">{{ d.status }}</span>
+                                                {% else %}
+                                                    <span class="badge bg-warning text-dark">{{ d.status }}</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ d.assigned_at|date:"d M Y, H:i" }}</td>
+                                            <td>
+                                                {% if d.delivered_at %}
+                                                    {{ d.delivered_at|date:"d M Y, H:i" }}
+                                                {% else %}
+                                                    <span class="text-muted">Pending</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {{ d.order.fname }} {{ d.order.lname }}<br>
+                                                {{ d.order.address }}, {{ d.order.city }}<br>
+                                                {{ d.order.state }}, {{ d.order.country }} - {{ d.order.pincode }}<br>
+                                                <strong>Phone:</strong> {{ d.order.phone }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="7" class="text-center">No Deliveries Found</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- col-md-12 -->
+    </div> <!-- row -->
+</div> <!-- container -->
+
+{% endblock content %}

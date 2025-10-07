@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        {% block title %}
+        Home | Organic Products / Mama's Kitchen / Nutrition
+        {% endblock title %}
+    </title>
+
+
+ 
+    
+</head>
+<body>
+    {% comment %} {% include "nutric/navbar.html" %} {% endcomment %}
+    {% block content %}
+ 
+    {% endblock content %}
+    {% include "nutric/footer.html" %}
+
+    {% block scripts %}
+   
+    
+    {% endblock scripts %}
+</body>
+</html>
+ 

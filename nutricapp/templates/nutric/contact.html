@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutric - Contact Us</title>
+<link rel="stylesheet" href="{% static 'nutric/css/contact.css' %}">
+</head>
+<style>
+   /* Footer */
+  footer {
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff,#f3f7f6);
+    padding:26px 18px;
+    border-top:1px solid rgba(15,23,42,0.04);
+    color:black;
+  }
+  .footer-grid {
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap:40px;
+    align-items:start;
+    padding:8px;
+  }
+  .footer-grid h4{margin:0 0 6px}
+  .footer-links a{display:block; color:var(--muted); text-decoration:none; margin-bottom:6px}
+  .payments{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+  .payments img{height:30px; object-fit:contain}
+  .copyright{max-width:1200px; margin:12px auto; text-align:center; color:var(--muted); font-size:13px}
+</style>
+
+<body>
+
+<header>
+  Nutric - Contact Us
+  <a href="{% url 'nutrichome' %}">Back to Home</a>
+</header>
+
+<main>
+  <h1>Contact Us</h1>
+  <p>If you have questions, suggestions, or feedback about nutrition and wellness, 
+     feel free to reach out to us using the form below or through our contact details.</p>
+
+  <div class="contact-container">
+    
+    <div class="contact-form">
+      <h2>Submit a Question</h2>
+      <form id="contactForm">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="details">More Detail / Explanation</label>
+        <textarea id="details" name="details"></textarea>
+        
+        <div class="file-upload">
+          <label for="file">Attach File (optional)</label>
+          <input type="file" id="file" name="file">
+        </div>
+        
+        <button type="submit" class="submit-btn">Submit Your Question</button>
+      </form>
+    </div>
+
+  
+    <div class="contact-info">
+      <h2>Phone</h2>
+      <p>+91 98765 43210 (Nutric Support Center)</p>
+      
+      <h2>Mailing Address</h2>
+      <p>Nutric Wellness Pvt Ltd</p>
+      <p>Health & Nutrition Center</p>
+      <p>123 Wellness Street, Hyderabad, India</p>
+      
+      <h2>Email</h2>
+      <p>support@nutric.com</p>
+    </div>
+  </div>
+</main>
+
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2>✅ Thank you!</h2>
+    <p>Your question has been submitted successfully. Our team will get back to you soon.</p>
+    <button id="closeBtn">Close</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid" role="contentinfo" aria-label="Footer">
+
+    <!-- Column 1 -->
+    <div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div class="brand-mark">
+          <img src="{% static '/nutric/images/Nutric.png' %}" alt="Nutric Logo"
+               style="width:40px; height:40px; object-fit:cover; border-radius:6px;">
+        </div>
+        <div>
+          <div style="font-weight:800; font-size:16px;">Nutric</div>
+          <div style="font-size:13px; color:var(--muted)">Healthy Living Made Simple</div>
+        </div>
+      </div>
+      <p style="color:var(--muted); margin-top:10px">
+        Nutric empowers healthy living with organic foods, nutrition advice, and sustainable wellness solutions..
+      </p>
+    </div>
+
+    <!-- Column 2 (Contact Details) -->
+    <div>
+      <h4>Contact Details</h4>
+      <div class="contacts-info" style="margin-top:10px; display:flex; flex-direction:column; gap:8px; margin-left:100px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/phone.png' %}" alt="Phone" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">+91 9999999999</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/email.png' %}" alt="Email" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">nutric@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3 (We Accept) -->
+    <div>
+      <div class="payments" style="margin-top:10px; margin-left:100px;">
+        
+      </div>
+
+      <div style="margin-top:12px;">
+        <a class="footer-link" href="{% url 'privacypolicy' %}" style="color:var(--muted)">Privacy policy</a><br>
+        <a class="footer-link" href="{% url 'aboutus' %}" style="color:var(--muted)">About us</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom copyright -->
+  <div class="copyright">
+    © {{ now|date:"Y" }} Nutric. All rights reserved. · ISO: <em>ISO-9001</em> (placeholder)
+  </div>
+</footer>
+
+
+<script>
+  const form = document.getElementById("contactForm");
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("closeBtn");
+
+  // Get the home URL from Django
+  const homeUrl = "{% url 'nutrichome' %}";
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); 
+    popup.style.display = "flex"; 
+    form.reset(); 
+  });
+
+  closeBtn.addEventListener("click", function() {
+    window.location.href = homeUrl;
+  });
+</script>
+
+</body>
+</html>

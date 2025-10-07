@@ -1,0 +1,321 @@
+{% load static %}
+<style>
+   /* Footer */
+  footer {
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff,#f3f7f6);
+    padding:26px 18px;
+    border-top:1px solid rgba(15,23,42,0.04);
+    color:black;
+  }
+  .footer-grid {
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap:40px;
+    align-items:start;
+    padding:8px;
+  }
+  .footer-grid h4{margin:0 0 6px}
+  .footer-links a{display:block; color:var(--muted); text-decoration:none; margin-bottom:6px}
+  .payments{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+  .payments img{height:30px; object-fit:contain}
+  .copyright{max-width:1200px; margin:12px auto; text-align:center; color:var(--muted); font-size:13px}
+</style>
+
+<!-- Success Stories Section -->
+<section class="success-stories">
+  <!-- Back to Home Button -->
+  <a href="{% url 'mainhome' %}" class="back-home">⬅ Back to Home</a>
+
+  <h2>Our Success Stories</h2>
+  <p>
+    Discover how <strong>Mama’s Kitchen</strong>, <strong>Formory</strong>, and <strong>Nutric</strong> 
+    came together to create a holistic ecosystem of wellness.
+  </p>
+
+  <div class="stories-container">
+    <!-- Mama's Kitchen -->
+    <div class="story-card">
+      <h3 onclick="toggleStory('mamaStory')">Mama’s Kitchen</h3>
+      <div id="mamaStory" class="story-content">
+        <p>
+           Mama’s Kitchen began with something simple: a mother’s love for cooking and the desire to share wholesome,
+          authentic meals with her community. What started as a small home kitchen has now grown into a trusted name,
+          representing tradition, innovation, and resilience. <br><br>
+
+          The early days of Mama’s Kitchen were filled with challenges — limited resources, countless hours spent
+          perfecting recipes, and the uncertainty of whether people would embrace food made with such personal care.
+          Yet, what set Mama’s Kitchen apart was its unwavering dedication to authenticity. The meals carried the warmth
+          of family traditions, the richness of natural ingredients, and the deep understanding that food isn’t just
+          about taste — it’s about connection. <br><br>
+
+          Slowly, word spread. Families began to order regularly, young professionals saw Mama’s Kitchen as a reminder
+          of home, and the brand carved a unique niche in a fast-food dominated world. What truly fueled this growth was
+          the focus on <strong>sustainability and health-consciousness</strong> — every dish was designed to nourish the
+          body while bringing comfort to the soul. <br><br>
+
+          But Mama’s Kitchen didn’t stop at being just a local food venture. The team envisioned something bigger:
+          integrating technology into their services, collaborating with like-minded initiatives, and building
+          partnerships that could amplify their impact. This ambition paved the way for connections with
+          <strong>Formory</strong> and <strong>Nutric</strong>, two brands that shared similar values but specialized in
+          different dimensions of lifestyle and wellness. <br><br>
+
+          Today, Mama’s Kitchen stands as more than just a food brand. It is a success story of resilience,
+          adaptability, and community-building. From humble beginnings to becoming part of a wider ecosystem of health
+          and wellness, Mama’s Kitchen has proven that passion and purpose can truly transform lives.
+        </p>
+      </div>
+    </div>
+
+    <!-- Formory -->
+    <div class="story-card">
+      <h3 onclick="toggleStory('formoryStory')">Formory</h3>
+      <div id="formoryStory" class="story-content">
+        <p>
+          While Mama’s Kitchen nurtured hearts and homes with nourishing meals, <strong>Formory</strong> emerged with a
+          vision to extend wellness into everyday living. Formory’s story began with a simple idea: <em>how can we form
+          sustainable habits that last a lifetime?</em> <br><br>
+
+          Formory’s journey was not just about selling products or services — it was about creating <strong>a movement
+          for mindful living</strong>. From eco-friendly kitchenware to sustainable packaging solutions, and from
+          digital platforms that promoted community engagement to wellness programs designed for busy professionals,
+          Formory positioned itself as the bridge between traditional practices and modern demands. <br><br>
+
+          The team behind Formory understood that true health isn’t limited to what we eat; it also includes how we
+          live, what we consume daily, and how consciously we make decisions for the environment. This realization gave
+          birth to a series of initiatives, such as partnerships with <strong>Mama’s Kitchen</strong> to ensure
+          eco-friendly packaging for meals, and collaboration with <strong>Nutric</strong> to provide informative
+          wellness guides for families. <br><br>
+
+          The challenges were immense: convincing customers to shift from convenience-driven consumption to sustainable
+          choices wasn’t easy. But through persistence, education, and genuine storytelling, Formory created a loyal
+          following. People began to recognize that every small choice — from the containers they used to store food to
+          the routines they built for wellness — had a ripple effect on their health and the planet. <br><br>
+
+          Today, Formory is not just a lifestyle brand; it is a <strong>community of changemakers</strong>. Its
+          interlinked success with Mama’s Kitchen and Nutric shows how different visions can unite for a common mission:
+          holistic well-being.
+        </p>
+      </div>
+    </div>
+
+    <!-- Nutric -->
+    <div class="story-card">
+      <h3 onclick="toggleStory('nutricStory')">Nutric</h3>
+      <div id="nutricStory" class="story-content">
+        <p>
+          If Mama’s Kitchen represented tradition and Formory symbolized lifestyle, <strong>Nutric</strong> brought in
+          the power of <strong>science and innovation</strong>. Nutric’s journey began with a simple but profound
+          mission: to make <em>premium nutrition accessible, practical, and personalized</em> for everyone. <br><br>
+
+          The founders of Nutric realized that while people craved healthy meals (like those from Mama’s Kitchen) and
+          sustainable lifestyles (promoted by Formory), there was still a major gap:
+          <strong>scientifically-backed nutrition guidance</strong>. Nutric stepped in to bridge that gap by offering
+          supplements, curated nutrition plans, and digital health tools designed to make wellness simple yet effective.
+          <br><br>
+
+          Nutric’s growth was powered by its commitment to research and data-driven solutions. Collaborating with
+          certified nutritionists, wellness coaches, and healthcare experts, Nutric created products and services that
+          catered to modern challenges like stress, poor diet, and lack of time for self-care. <br><br>
+
+          Its partnership with <strong>Mama’s Kitchen</strong> ensured that food was not only delicious but also
+          nutritionally balanced. At the same time, collaborations with <strong>Formory</strong> helped package and
+          deliver Nutric products in eco-friendly, innovative ways. This interconnection formed a
+          <strong>wellness triangle</strong>: Mama’s Kitchen for soulful meals, Formory for lifestyle practices, and
+          Nutric for scientific nourishment. <br><br>
+
+          The success of Nutric lies in its ability to <strong>adapt science to everyday life</strong>. Customers not
+          only bought products but also embraced knowledge, guidance, and a sense of empowerment. Nutric became more
+          than a nutrition brand — it became a partner in people’s health journeys.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interlinked Section -->
+  <div class="ecosystem">
+    <h3>Interlinked Success – Building an Ecosystem of Wellness</h3>
+    <p>
+      Together, Mama’s Kitchen, Formory, and Nutric form a 360-degree approach to wellness: soulful meals, sustainable
+      habits, and scientific nutrition. Their journeys are interconnected, showing how collaboration can inspire
+      healthier lives everywhere.
+    </p>
+  </div>
+</section>
+
+<!-- CSS -->
+<style>
+ 
+
+.success-stories {
+  position: relative; /* needed for absolute positioning of back-home */
+  padding: 40px;
+  background: #f9fafb;
+  font-family: "Segoe UI", sans-serif;
+  border-radius: 12px;
+  margin: 30px auto;
+  max-width: 1000px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.success-stories h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #2d3748;
+}
+
+.success-stories p {
+  text-align: center;
+  color: #4a5568;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.back-home {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: #2b6cb0;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.back-home:hover {
+  background: #1a4d7a;
+}
+
+.stories-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.story-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+.story-card:hover {
+  transform: scale(1.01);
+}
+.story-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2b6cb0;
+  cursor: pointer;
+}
+.story-content {
+  display: none;
+  margin-top: 15px;
+  line-height: 1.6;
+  color: #2d3748;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+.story-content p {
+  margin: 0;
+}
+.ecosystem {
+  margin-top: 40px;
+  background: #edf2f7;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+.ecosystem h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #2f855a;
+}
+.ecosystem p {
+  font-size: 1rem;
+  color: #2d3748;
+}
+</style>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid" role="contentinfo" aria-label="Footer">
+
+    <!-- Column 1 -->
+    <div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div class="brand-mark">
+          <img src="{% static '/nutric/images/Nutric.png' %}" alt="Nutric Logo"
+               style="width:40px; height:40px; object-fit:cover; border-radius:6px;">
+        </div>
+        <div>
+          <div style="font-weight:800; font-size:16px;">Nutric</div>
+          <div style="font-size:13px; color:var(--muted)">Healthy Living Made Simple</div>
+        </div>
+      </div>
+      <p style="color:var(--muted); margin-top:10px">
+        Nutric empowers healthy living with organic foods, nutrition advice, and sustainable wellness solutions..
+      </p>
+    </div>
+
+    <!-- Column 2 (Contact Details) -->
+    <div>
+      <h4>Contact Details</h4>
+      <div class="contacts-info" style="margin-top:10px; display:flex; flex-direction:column; gap:8px; margin-left:100px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/phone.png' %}" alt="Phone" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">+91 9999999999</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/email.png' %}" alt="Email" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">nutric@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3 (We Accept) -->
+    <div>
+      <div class="payments" style="margin-top:10px; margin-left:100px;">
+        
+      </div>
+
+      <div style="margin-top:12px;">
+        <a class="footer-link" href="{% url 'privacypolicy' %}" style="color:var(--muted)">Privacy policy</a><br>
+        <a class="footer-link" href="{% url 'aboutus' %}" style="color:var(--muted)">About us</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom copyright -->
+  <div class="copyright">
+    © {{ now|date:"Y" }} Nutric. All rights reserved. · ISO: <em>ISO-9001</em> (placeholder)
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+function toggleStory(id) {
+  let content = document.getElementById(id);
+  let allStories = document.querySelectorAll('.story-content');
+
+  // Close all open stories
+  allStories.forEach(story => {
+    if (story.id !== id) {
+      story.style.display = "none";
+    }
+  });
+
+  // Toggle clicked story
+  if (content.style.display === "block") {
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+  }
+}
+</script>

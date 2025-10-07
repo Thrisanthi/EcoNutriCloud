@@ -1,0 +1,161 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #333;
+}
+
+/* Navbar */
+nav {
+    background-color: #25505e;   
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 50px;
+    position: sticky;   
+    top: 0;
+    z-index: 1000;
+}
+nav .logo {
+    display: flex;             
+    align-items: center;      
+}
+nav .logo img {
+    height: 50px;
+    width: auto;
+}
+.logo h2 {
+    display: inline-block;      
+    margin-left: 10px;         
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+nav ul li a:hover,
+nav ul li a.active {
+    color: #84e94a;  
+}
+/* Hero Section */
+.hero {
+  /* background: url("{% static 'nutric/images/Food-and-Nutrition.webp' %}") no-repeat center center/cover; */
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+.hero h2 {
+  position: relative;
+  z-index: 2;
+  font-size: 2.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  max-width: 800px;
+  margin: 0 20px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+  animation: fadeInUp 1.5s ease;
+}
+
+/* Nutrition Cards */
+.nutrition-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 50px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 15px;
+  color: #25505e;
+}
+
+.card p {
+  margin: 0 15px 20px;
+  font-size: 0.95rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Tips */
+.tips {
+  padding: 50px;
+  background: #e8f5e9;
+  text-align: center;
+}
+
+.tips h2 {
+  margin-bottom: 20px;
+  color: #25505e;
+}
+
+.tips ul {
+  list-style: none;
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+}
+
+.tips ul li {
+  margin: 10px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.tips ul li::before {
+  content: "✔";
+  color: #2e7d32;
+  position: absolute;
+  left: 0;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+footer a {
+    color: #4ca0af;
+    text-decoration: none;
+}
+

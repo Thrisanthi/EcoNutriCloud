@@ -1,0 +1,16 @@
+<h2>Update Delivery {{ delivery.id }}</h2>
+<form method="post">
+  {% csrf_token %}
+  <label>Status:</label>
+  <select name="status">
+    <option value="Assigned" {% if delivery.status == "Assigned" %}selected{% endif %}>Assigned</option>
+    <option value="Out for Delivery" {% if delivery.status == "Out for Delivery" %}selected{% endif %}>Out for Delivery</option>
+    <option value="Delivered" {% if delivery.status == "Delivered" %}selected{% endif %}>Delivered</option>
+    <option value="Failed" {% if delivery.status == "Failed" %}selected{% endif %}>Failed</option>
+  </select>
+  <br><br>
+  <label>Remarks:</label>
+  <textarea name="remarks">{{ delivery.remarks }}</textarea>
+  <br><br>
+  <button type="submit">Update</button>
+</form>

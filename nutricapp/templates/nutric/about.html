@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutric - About Us</title>
+<link rel="stylesheet" href="{% static 'nutric/css/about.css' %}">
+</head>
+<style>
+   /* Footer */
+  footer {
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff,#f3f7f6);
+    padding:26px 18px;
+    border-top:1px solid rgba(15,23,42,0.04);
+    color:black;
+  }
+  .footer-grid {
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap:40px;
+    align-items:start;
+    padding:8px;
+  }
+  .footer-grid h4{margin:0 0 6px}
+  .footer-links a{display:block; color:var(--muted); text-decoration:none; margin-bottom:6px}
+  .payments{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+  .payments img{height:30px; object-fit:contain}
+  .copyright{max-width:1200px; margin:12px auto; text-align:center; color:var(--muted); font-size:13px}
+</style>
+
+<body>
+
+<header>
+  Nutric - About Us
+  <a href="{% url 'nutrichome' %}">Back to Home</a>
+</header>
+
+<!-- Mission -->
+<section id="mission">
+  <h2>Our Mission</h2>
+  <div class="cards-container">
+    <div class="card" 
+         data-title="Empower Nutrition" 
+         data-img="images/icons8-mission-100.png"
+         data-text="Our mission is to empower individuals and families with reliable nutritional solutions.
+We aim to educate communities about the importance of balanced diets and healthy lifestyles.
+By collaborating with health professionals, we ensure that our guidance is science-based and practical.
+We believe in accessibility, making nutrition information understandable for all age groups.
+Through local programs, we spread awareness in schools, workplaces, and community centers.
+We focus on long-term health, not quick fixes, promoting sustainable wellness habits.
+Our initiatives target physical health, mental well-being, and overall quality of life.
+Ultimately, our vision is to create healthier, happier communities across the globe.">
+      <img src="{% static 'nutric/images/icons8-mission-100.png' %}" alt="Mission Icon">
+      <h3>Empower Nutrition</h3>
+      <p>To provide nutrition solutions that improve health and wellness for everyone.</p>
+    </div>
+
+    <div class="card" 
+         data-title="Innovation" 
+         data-img="https://img.icons8.com/fluency/96/000000/light-on.png"
+         data-text="Innovation is at the heart of everything we do at Nutric.
+We continuously research modern nutrition science to improve our products.
+Our R&D team focuses on blending traditional wisdom with modern technology.
+We design health solutions that are simple, practical, and effective for daily life.
+Our goal is to make nutrition accessible to both urban and rural populations.
+We experiment with natural ingredients, ensuring safety and effectiveness.
+Innovation also extends to packaging and sustainability, reducing our environmental footprint.
+Every product we create is aimed at making healthier choices easier and enjoyable.">
+      <img src="https://img.icons8.com/fluency/96/000000/light-on.png" alt="Innovation Icon">
+      <h3>Innovation</h3>
+      <p>Innovation and natural ingredients are at the heart of our products.</p>
+    </div>
+
+    <div class="card" 
+         data-title="Sustainability" 
+         data-img="https://img.icons8.com/fluency/96/000000/sustainability.png"
+         data-text="Sustainability is more than a principle; it is a commitment we live by.
+We source ingredients from farms that practice eco-friendly agriculture.
+By reducing chemicals and focusing on organic methods, we protect both health and nature.
+Our packaging is designed to minimize waste, using recyclable and biodegradable materials.
+We support local farmers, ensuring fair wages and long-term partnerships.
+Our energy usage is monitored to reduce carbon footprint in production facilities.
+We believe sustainability strengthens trust with our customers and communities.
+Our promise is to nourish people while protecting the planet for future generations.">
+      <img src="https://img.icons8.com/fluency/96/000000/sustainability.png" alt="Sustainability Icon">
+      <h3>Sustainability</h3>
+      <p>We believe in transparency, integrity, and sustainable practices.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Health Vision -->
+<section id="health-vision">
+  <h2>Health Vision</h2>
+  <div class="cards-container">
+    <div class="card" 
+         data-title="Balanced Nutrition" 
+         data-img="images/icons8-apple-fruit-94.png"
+         data-text="Balanced nutrition is the foundation of a healthy body and mind.
+We promote meals that include fruits, vegetables, whole grains, proteins, and healthy fats.
+Our approach is not about strict diets, but about lifestyle-based healthy eating.
+We aim to reduce the risks of obesity, diabetes, and heart disease through better diet patterns.
+Balanced nutrition also supports mental clarity and emotional well-being.
+We educate families on portion control, food groups, and mindful eating.
+Our resources are designed to help both children and adults develop healthy eating habits.
+By spreading this vision, we contribute to healthier, stronger, and more productive societies.">
+      <img src="{% static 'nutric/images/icons8-apple-fruit-94.png' %}" alt="Health Icon">
+      <h3>Balanced Nutrition</h3>
+      <p>Encouraging balanced nutrition for all age groups to support wellbeing.</p>
+    </div>
+
+    <div class="card" 
+         data-title="Preventive Healthcare" 
+         data-img="https://img.icons8.com/fluency/96/000000/medical-doctor.png"
+         data-text="Preventive healthcare is the most effective way to reduce future health costs.
+We educate communities about early detection of lifestyle diseases.
+Our goal is to encourage regular health check-ups and nutrition-based prevention.
+We work with doctors and nutritionists to provide accurate preventive advice.
+By addressing risks early, we reduce chances of serious health complications.
+Preventive care also empowers individuals to take control of their health journey.
+We integrate wellness programs in schools and workplaces to build awareness.
+Healthy habits formed early can extend lifespan and improve quality of living.">
+      <img src="https://img.icons8.com/fluency/96/000000/medical-doctor.png" alt="Preventive Icon">
+      <h3>Preventive Healthcare</h3>
+      <p>Promoting preventive healthcare through education and guidance.</p>
+    </div>
+
+    <div class="card" 
+         data-title="Natural Ingredients" 
+         data-img="https://img.icons8.com/fluency/96/000000/nature.png"
+         data-text="Nature provides us with the purest form of nutrition.
+We source natural ingredients that are free from harmful chemicals.
+Our philosophy is to use plants, herbs, and organic sources for wellness.
+Natural ingredients reduce side effects and improve overall absorption.
+We emphasize traditional remedies combined with modern nutritional science.
+Sustainability is maintained by choosing renewable natural resources.
+This approach supports both health and environmental protection.
+Our products embody the principle that the best nutrition comes from nature itself.">
+      <img src="https://img.icons8.com/fluency/96/000000/nature.png" alt="Natural Icon">
+      <h3>Natural Ingredients</h3>
+      <p>Using natural and sustainable ingredients in all products.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section id="values">
+  <h2>Our Values</h2>
+  <div class="cards-container">
+    <div class="card" 
+         data-title="Integrity" 
+         data-img="https://img.icons8.com/fluency/96/000000/trust.png"
+         data-text="Integrity is at the heart of Nutric’s promise to its customers.
+We commit to honesty in labeling, marketing, and delivering products.
+Transparency ensures customers trust every step of our process.
+We follow strict quality standards in sourcing and production.
+Integrity also applies to how we treat our employees and partners.
+Fair practices are maintained across our supply chains globally.
+We believe that trust is built by consistency and responsibility.
+Our value of integrity shapes long-term relationships with communities and clients.">
+      <img src="https://img.icons8.com/fluency/96/000000/trust.png" alt="Integrity Icon">
+      <h3>Integrity</h3>
+      <p>Integrity and transparency in all we do.</p>
+    </div>
+
+    <div class="card" 
+         data-title="Community" 
+         data-img="https://img.icons8.com/fluency/96/000000/teamwork.png"
+         data-text="Community is the backbone of health and wellness.
+We design programs that include people of all backgrounds.
+Inclusivity ensures that everyone has access to good nutrition.
+We work with schools, NGOs, and local leaders to spread awareness.
+By promoting teamwork, we create a culture of shared responsibility.
+Our goal is to empower people to inspire others with healthy habits.
+Community-based health programs bring lasting positive change.
+Together, we can create a society where wellness is a shared value.">
+      <img src="https://img.icons8.com/fluency/96/000000/teamwork.png" alt="Community Icon">
+      <h3>Community</h3>
+      <p>Promoting inclusivity and accessibility in health.</p>
+    </div>
+
+    <div class="card" 
+         data-title="Research" 
+         data-img="images/icons8-research-50.png"
+         data-text="Research drives our innovation in nutrition solutions.
+We invest in scientific studies to validate our health claims.
+Partnerships with universities strengthen our research base.
+Our team monitors global trends in food and health science.
+Evidence-based nutrition ensures the effectiveness of our products.
+We adapt our strategies to new discoveries and technologies.
+Research also helps us improve sustainability and reduce waste.
+With research as our foundation, Nutric evolves to meet changing health needs.">
+      <img src="{% static 'nutric/images/icons8-research-50.png' %}"alt="Research Icon">
+      <h3>Research</h3>
+      <p>Innovation through research-backed nutrition solutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="infoModal">
+  <span class="close-btn" id="closeModal">&times;</span>
+  <div class="modal-content">
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <div id="modalText"></div>
+  </div>
+</div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid" role="contentinfo" aria-label="Footer">
+
+    <!-- Column 1 -->
+    <div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div class="brand-mark">
+          <img src="{% static '/nutric/images/Nutric.png' %}" alt="Nutric Logo"
+               style="width:40px; height:40px; object-fit:cover; border-radius:6px;">
+        </div>
+        <div>
+          <div style="font-weight:800; font-size:16px;">Nutric</div>
+          <div style="font-size:13px; color:var(--muted)">Healthy Living Made Simple</div>
+        </div>
+      </div>
+      <p style="color:var(--muted); margin-top:10px">
+        Nutric empowers healthy living with organic foods, nutrition advice, and sustainable wellness solutions..
+      </p>
+    </div>
+
+    <!-- Column 2 (Contact Details) -->
+    <div>
+      <h4>Contact Details</h4>
+      <div class="contacts-info" style="margin-top:10px; display:flex; flex-direction:column; gap:8px; margin-left:100px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/phone.png' %}" alt="Phone" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">+91 9999999999</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="{% static 'images/email.png' %}" alt="Email" style="height:20px; width:20px; object-fit:contain;">
+          <span style="color:var(--muted)">nutric@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3 (We Accept) -->
+    <div>
+      <div class="payments" style="margin-top:10px; margin-left:100px;">
+        
+      </div>
+
+      <div style="margin-top:12px;">
+        <a class="footer-link" href="{% url 'privacypolicy' %}" style="color:var(--muted)">Privacy policy</a><br>
+        <a class="footer-link" href="{% url 'aboutus' %}" style="color:var(--muted)">About us</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom copyright -->
+  <div class="copyright">
+    © {{ now|date:"Y" }} Nutric. All rights reserved. · ISO: <em>ISO-9001</em> (placeholder)
+  </div>
+</footer>
+
+<script src="{% static 'nutric/js/about.js' %}"></script>
+
+</body>
+</html>
