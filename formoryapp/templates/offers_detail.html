@@ -196,7 +196,9 @@ body {
       <div class="offer-card">
         <div class="image-wrapper">
           {% if offer.product.product_image %}
-            <img src="{{ offer.product.product_image.url }}" alt="{{ offer.product.name }}">
+            <a href="{% url 'productview' offer.product.category.slug offer.product.slug %}">
+              <img src="{{ offer.product.product_image.url }}" alt="{{ offer.product.name }}">
+            </a>
           {% else %}
             <img src="{% static 'images/no-image.png' %}" alt="No image available">
           {% endif %}

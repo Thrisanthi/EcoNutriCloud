@@ -54,7 +54,7 @@ class Offer(models.Model):
     ]
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     offer_type = models.CharField(max_length=50, choices=OFFER_TYPES)
-    discount_percentage = models.FloatField(default=0)
+    discount_percentage = models.DecimalField(max_digits=5, decimal_places=0, default=0)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     active = models.BooleanField(default=True)
