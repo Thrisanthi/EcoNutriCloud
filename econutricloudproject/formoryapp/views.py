@@ -3,37 +3,38 @@ from django.http import JsonResponse
 from django.contrib import messages
 from .models import *
 from nutricapp.models import *
-
-
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Avg
+from .forms import ReviewForm
+from django.utils import timezone
 
 # Create your views here.
 def formoryhome(request):
     trendingproducts = Product.objects.filter(trending=True)[:8]
-    offers = Offer.objects.filter(active=True)
+
+    # Example categories for banners
+    banner_categories = [
+        {"title": "Fresh Veggie Delights", "slug": "vegetables", "image": "banner1.png"},
+        {"title": "Healthy Breakfast Deals", "slug": "breakfast", "image": "banner2.png"},
+        {"title": "Fresh Juices & Smoothies", "slug": "juices", "image": "banner3.png"},
+        {"title": "Family Feast Fridays", "slug": "lunch", "image": "banner4.png"},
+        {"title": "Chef’s Special Menu", "slug": "dinner", "image": "banner5.png"},
+        {"title": "Weekend Combo Bonanza", "slug": "desserts", "image": "banner6.png"},
+    ]
+
     context = {
         'trendingproducts': trendingproducts,
-        'offers': offers,
+        'banner_categories': banner_categories,
     }
     return render(request, "index.html", context)
-
 
 def category(request):
     category = Category.objects.filter(status=True)
     context = {'category':category}
     return render(request,'category.html',context)
 
-# def categoryview(request,slug):
-#     if(Category.objects.filter(slug=slug,status=True)):
-#         products = Product.objects.filter(category__slug=slug)
-#         category = Category.objects.filter(slug=slug).first()
-#         context = {'products':products,'category':category}
-#         return render(request,"productsindex.html",context)
-#     else:
-#         messages.warning(request,'No such category found')
-#         return redirect('category')
 
-# Import Avg for calculating average ratings
-from django.db.models import Avg
 
 # Updated categoryview to include average ratings
 def categoryview(request, slug):
@@ -52,27 +53,9 @@ def categoryview(request, slug):
         messages.warning(request, 'No such category found')
         return redirect('category')
 
-# def productview(request,cate_slug,prod_slug):
-#     if(Category.objects.filter(slug=cate_slug,status=True)):
-#         if(Product.objects.filter(slug=prod_slug,status=True)):
-#             products = Product.objects.filter(slug=prod_slug,status=True).first()
-#             context = {'products':products}
-#         else:
-#             messages.error(request,"No such category found")
-#             return redirect('category')
-#     else:
-#         messages.error(request,"No such category found")
-#         return redirect('category')
-#     return render(request,"productsview.html",context)
+
 
 # Updated productview to include review functionality
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.http import JsonResponse
-from django.db.models import Avg
-from .models import Category, Product
-from .forms import ReviewForm
-
 def productview(request, cate_slug, prod_slug):
     # Check if category exists
     if not Category.objects.filter(slug=cate_slug, status=True).exists():
@@ -142,14 +125,6 @@ def productview(request, cate_slug, prod_slug):
         'star_percent': star_percent,
     }
     return render(request, "productsview.html", context)
-
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
-from .models import Review, Product
-
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.db.models import Avg
 
 @csrf_exempt
 def submit_review(request, product_id):
@@ -228,6 +203,67 @@ def searchproduct(request):
                 messages.info(request,"No products found")
                 return redirect(request.META.get('HTTP_REFERER'))
     return redirect(request.META.get('HTTP_REFERER'))
+
+# ===================== OFFERS =====================
+
+def offers(request):
+    """Displays the main offers page with live data (Deals + Combos)."""
+    now = timezone.now()
+
+    deals_of_week = Offer.objects.filter(
+        offer_type='deal_of_the_week',
+        start_time__lte=now,
+        end_time__gte=now,
+        active=True
+    )
+
+    combo_offers = Offer.objects.filter(
+        offer_type='combo_offer',
+        discount_percentage__in=[10, 20],
+        start_time__lte=now,
+        end_time__gte=now,
+        active=True
+    )
+
+    context = {
+        'deals_of_week': deals_of_week,
+        'combo_offers': combo_offers,
+        'offer_types': [
+            {"type": "deal_of_the_week", "label": "Deal of the Week"},
+            {"type": "combo_offer", "label": "Combo Offer"},
+        ],
+    }
+    return render(request, 'offers.html', context)
+
+
+def offers_detail(request, offer_type):
+    # Get current UTC time (since your offer times are stored in UTC)
+    now = timezone.now()
+
+    print("=== DEBUG: Offers Detail View ===")
+    print("Offer Type requested:", offer_type)
+    print("Current UTC time:", now)
+
+    # 🧩 Step 1: Deactivate expired offers automatically
+    Offer.objects.filter(end_time__lt=now, active=True).update(active=False)
+
+    # 🧩 Step 2: Get only active and currently valid offers
+    offers = Offer.objects.filter(
+        offer_type=offer_type,
+        active=True,
+        end_time__gte=now
+    ).select_related('product')
+
+    print("Offers found:", offers.count())
+    for o in offers:
+        print(o.product.name, o.start_time, o.end_time)
+    print("=================================")
+
+    # 🧩 Step 3: Render the template
+    return render(request, "offers_detail.html", {
+        "offers": offers,
+        "offer_type": offer_type,
+    })
 
 def aboutus(request):
     return render(request,"aboutus.html")

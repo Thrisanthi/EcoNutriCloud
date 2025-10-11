@@ -24,18 +24,34 @@ class DeliveryAdmin(admin.ModelAdmin):
     list_filter = ("status",)
     search_fields = ("order__id", "partner__name")
 
-from django.contrib import admin
-from .models import Offer
+# ===== Offer Admin =====
+@admin.register(Offer)
+class OffersAdmin(admin.ModelAdmin):
+    list_display = ('product', 'offer_type', 'discount_percentage', 'start_time', 'end_time', 'active')
+    list_filter = ('offer_type', 'active')
+    search_fields = ('product__name',)
+    ordering = ('-start_time',)
+    fieldsets = (
+        ("Offer Details", {
+            'fields': ('product', 'offer_type', 'discount_percentage')
+        }),
+        ("Validity Period", {
+            'fields': ('start_time', 'end_time')
+        }),
+        ("Status", {
+            'fields': ('active',)
+        }),
+    )
 
-class OfferAdmin(admin.ModelAdmin):
-    list_display = ('title', 'product', 'discount_percentage', 'valid_from', 'valid_to', 'active')
-    list_filter = ('active', 'valid_from', 'valid_to')
-    search_fields = ('title', 'product__name')
-    readonly_fields = ('discounted_price_display',)
+# ===== Inline Offer inside Product (optional, for convenience) =====
+class OfferInline(admin.TabularInline):
+    model = Offer
+    extra = 1
 
-    def discounted_price_display(self, obj):
-        return obj.discounted_price()
-    discounted_price_display.short_description = 'Discounted Price'
+# ===== Product Admin =====
 
-admin.site.register(Offer, OfferAdmin)
-
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'selling_price', 'trending', 'status')
+    list_filter = ('category', 'trending', 'status')
+    search_fields = ('name', 'category__name', 'tag')
+    inlines = [OfferInline]

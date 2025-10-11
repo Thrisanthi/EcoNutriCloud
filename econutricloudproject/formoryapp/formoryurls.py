@@ -48,5 +48,6 @@ urlpatterns = [
     path("deliveries/assign/<int:order_id>/", orders.assign_delivery, name="assign_delivery"),
     path("deliveries/update/<int:delivery_id>/", orders.update_delivery_status, name="update_delivery_status"),
     
-    
+    path('offers/', views.offers, name='offers'),
+    path('offers/<str:offer_type>/', views.offers_detail, name='offers_detail'),
 ]

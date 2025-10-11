@@ -46,14 +46,21 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name}"
-    
-    @property
-    def discounted_price(self):
-        offer = self.offers.filter(active=True).first()
-        if offer and offer.is_valid():
-            discount = (offer.discount_percentage / 100) * self.selling_price
-            return round(self.selling_price - discount, 2)
-        return self.selling_price
+
+class Offer(models.Model):
+    OFFER_TYPES = [
+        ('deal_of_the_week', 'Deal of the Week'),
+        ('combo_offer', 'Combo Offer'),
+    ]
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    offer_type = models.CharField(max_length=50, choices=OFFER_TYPES)
+    discount_percentage = models.DecimalField(max_digits=5, decimal_places=0, default=0)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.product.name} - {self.offer_type}"   
     
 class Cart(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -169,28 +176,4 @@ class Delivery(models.Model):
 
     def __str__(self):
         return f"Delivery for Order {self.order.id} - {self.status}"
-
-from django.db import models
-from datetime import date
-
-class Offer(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
-    title = models.CharField(max_length=100)
-    description = models.TextField(blank=True, null=True)
-    discount_percentage = models.FloatField(null=False)
-    image = models.ImageField(upload_to='offers/', blank=True, null=True)
-    active = models.BooleanField(default=True)
-    valid_from = models.DateTimeField(auto_now_add=True)
-    valid_to = models.DateTimeField(null=True, blank=True)
-
-    def discounted_price(self):
-        if self.product:
-            # Convert discount_percentage to Decimal
-            discount_percentage = Decimal(str(self.discount_percentage))
-            selling_price = self.product.selling_price  # already Decimal
-            discount = (discount_percentage / Decimal('100')) * selling_price
-            final_price = selling_price - discount
-            # Round to 2 decimal places
-            return final_price.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-        return Decimal('0.00')
 
